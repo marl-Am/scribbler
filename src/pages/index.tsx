@@ -7,11 +7,13 @@ import {
   SignOutButton,
   useUser,
 } from "@clerk/nextjs";
+import { Key, ReactElement, JSXElementConstructor, ReactNode, ReactPortal, PromiseLikeOfReactNode } from "react";
 
 export default function Home() {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
 
   const user = useUser();
+
+  const { data } = api.posts.getAll.useQuery();
 
   return (
     <>
@@ -26,8 +28,16 @@ export default function Home() {
           {user.isSignedIn && <SignOutButton />}
         </div>
 
+        <div>
+          {data?.map((post) => (
+            <div key={post.id}>{post.content}</div>
+          ))}
+        </div>
+
         {/* <SignUpButton /> */}
       </main>
     </>
   );
 }
+
+// runs on our device
