@@ -4,24 +4,11 @@ import {
   SignInButton,
   SignUpButton,
   SignOutButton,
-  useUser,
+  useUser
 } from "@clerk/nextjs";
 
-const CreateUserWizard = () => {
-  const { user } = useUser();
-  if (!user) return null;
-
-  return (
-    <div className="flex w-full gap-4">
-      <img
-        src={user.profileImageUrl}
-        alt="Profile image"
-        className="ml-1 mr-1 h-12 w-12 rounded-full"
-      />
-      <input placeholder="Type some text" className="bg-transparent"></input>
-    </div>
-  );
-};
+import Link from "next/link";
+import CreateUserWizard from "../CreateUserWizard";
 
 
 const Navbar: React.FC = () => {
@@ -36,28 +23,41 @@ const Navbar: React.FC = () => {
   return (
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
-        <div>{user.isSignedIn && <CreateUserWizard />}</div>
-        <a href="/">Home</a>
-        <a href="/cart">Cart</a>
-        <a href="/dashboard">Dashboard</a>
-        <a href="/landing">Landing</a>
+        {user.isSignedIn && (
+          <div>
+            <CreateUserWizard />
+          </div>
+        )}
+
+        <Link href="/">Home</Link>
+        <Link href="/cart">Cart</Link>
+        <Link href="/dashboard">Dashboard</Link>
+        {/* <Link href="/landing">Landing</Link> */}
 
         <div className="flex md:order-2">
-          <button
-            type="button"
-            className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
-          >
-            {!user.isSignedIn && <SignInButton />}
-            {user.isSignedIn && <SignOutButton />}
-          </button>
+          {!user.isSignedIn && (
+            <SignInButton>
+              <button className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0">
+                Sign In
+              </button>
+            </SignInButton>
+          )}
+
+          {user.isSignedIn && (
+
+            <SignOutButton>
+              <button className="ml-3 mr-3 rounded-lg bg-yellow-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 md:mr-0">
+                Sign Out
+              </button>
+            </SignOutButton>
+          )}
 
           {!user.isSignedIn && (
-            <button
-              type="button"
-              className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0"
-            >
-              <SignUpButton />
-            </button>
+            <SignUpButton>
+              <button className="ml-3 mr-3 rounded-lg bg-orange-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 md:mr-0">
+                Sign Up
+              </button>
+            </SignUpButton>
           )}
 
           <button
