@@ -10,11 +10,11 @@ import {
 import Link from "next/link";
 // import CreateUserWizard from "../CreateUserWizard";
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
   const user = useUser();
   // if (!user || !user.user) return null;
-  const displayName =
-    `${user.user?.firstName}` || `${user.user?.primaryEmailAddress}`;
+  // const displayName =
+  //   `${user.user?.firstName}` || `${user.user?.primaryEmailAddress}`;
 
   return (
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
@@ -28,7 +28,7 @@ const Navbar = () => {
             <div className="flex">
               <img
                 src={user.user?.profileImageUrl}
-                alt={`${displayName}'s Profile`}
+                alt="User profile image"
                 className="ml-1 mr-1 h-10 w-10 rounded-full"
               />
             </div>
