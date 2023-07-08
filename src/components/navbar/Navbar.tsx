@@ -8,33 +8,31 @@ import {
 } from "@clerk/nextjs";
 
 import Link from "next/link";
-import CreateUserWizard from "../CreateUserWizard";
+// import CreateUserWizard from "../CreateUserWizard";
 
-
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const user = useUser();
-
-  const { data, isLoading } = api.posts.getAll.useQuery();
-
-  if (isLoading) return <div>Loading...</div>;
-
-  if (!data) return <div>Something went wrong...</div>;
+  // if (!user || !user.user) return null;
+  const displayName =
+    `${user.user?.firstName}` || `${user.user?.primaryEmailAddress}`;
 
   return (
     <nav className="border-gray-200 bg-white dark:bg-gray-900">
       <div className="mx-auto flex flex-wrap items-center justify-between p-4">
-        {user.isSignedIn && (
-          <div>
-            <CreateUserWizard />
-          </div>
-        )}
-
         <Link href="/">Home</Link>
         <Link href="/cart">Cart</Link>
         <Link href="/dashboard">Dashboard</Link>
-        {/* <Link href="/landing">Landing</Link> */}
 
         <div className="flex md:order-2">
+          {user.isSignedIn && (
+            <div className="flex">
+              <img
+                src={user.user?.profileImageUrl}
+                alt={`${displayName}'s Profile`}
+                className="ml-1 mr-1 h-10 w-10 rounded-full"
+              />
+            </div>
+          )}
           {!user.isSignedIn && (
             <SignInButton>
               <button className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0">
