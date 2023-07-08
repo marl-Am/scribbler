@@ -44,7 +44,6 @@ const Navbar: React.FC = () => {
           )}
 
           {user.isSignedIn && (
-
             <SignOutButton>
               <button className="ml-3 mr-3 rounded-lg bg-yellow-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 md:mr-0">
                 Sign Out

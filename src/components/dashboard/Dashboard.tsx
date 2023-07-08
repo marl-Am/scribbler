@@ -3,13 +3,13 @@ import { api } from "~/utils/api";
 import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
 const Dashboard: React.FC = () => {
-  const user = useUser();
+  // const user = useUser();
 
-  const { data, isLoading } = api.posts.getAll.useQuery();
+  // const { data, isLoading } = api.posts.getAll.useQuery();
 
-  if (isLoading) return <div>Loading...</div>;
+  // if (isLoading) return <div>Loading...</div>;
 
-  if (!data) return <div>Something went wrong...</div>;
+  // if (!data) return <div>Something went wrong...</div>;
 
   return (
     <div>

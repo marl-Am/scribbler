@@ -13,6 +13,7 @@ const CreateUserWizard = () => {
         alt={`@${user.firstName}'s profile picture`}
         className="ml-1 mr-1 h-12 w-12 rounded-full"
       />
+      {/* <div>Hello, {user.firstName} welcome to Clerk</div>; */}
       {/* <input placeholder="Type some text" className="bg-transparent"></input> */}
     </div>
   );
