@@ -24,6 +24,21 @@ const Navbar: React.FC = () => {
         <Link href="/dashboard">Dashboard</Link>
 
         <div className="flex md:order-2">
+          {!user.isSignedIn && (
+            <SignInButton>
+              <button className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0">
+                Sign In
+              </button>
+            </SignInButton>
+          )}
+          {!user.isSignedIn && (
+            <SignUpButton>
+              <button className="ml-3 mr-3 rounded-lg bg-orange-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 md:mr-0">
+                Sign Up
+              </button>
+            </SignUpButton>
+          )}
+
           {user.isSignedIn && (
             <div className="flex">
               <img
@@ -33,28 +48,12 @@ const Navbar: React.FC = () => {
               />
             </div>
           )}
-          {!user.isSignedIn && (
-            <SignInButton>
-              <button className="ml-3 mr-3 rounded-lg bg-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 md:mr-0">
-                Sign In
-              </button>
-            </SignInButton>
-          )}
-
           {user.isSignedIn && (
             <SignOutButton>
               <button className="ml-3 mr-3 rounded-lg bg-yellow-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-yellow-800 focus:outline-none focus:ring-4 focus:ring-yellow-300 dark:bg-yellow-600 dark:hover:bg-yellow-700 dark:focus:ring-yellow-800 md:mr-0">
                 Sign Out
               </button>
             </SignOutButton>
-          )}
-
-          {!user.isSignedIn && (
-            <SignUpButton>
-              <button className="ml-3 mr-3 rounded-lg bg-orange-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 md:mr-0">
-                Sign Up
-              </button>
-            </SignUpButton>
           )}
 
           <button
