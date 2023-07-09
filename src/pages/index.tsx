@@ -1,8 +1,8 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 
 import Navbar from "~/components/navbar/Navbar";
-import Cart from "~/components/cart/Cart";
-import Dashboard from "~/components/dashboard/Dashboard";
+// import Cart from "~/components/cart/Cart";
+// import Dashboard from "~/components/dashboard/Dashboard";
 import Footer from "~/components/footer/Footer";
 import ProductCard from "~/components/productCard/ProductCard";
 import { prisma } from "~/server/db";
@@ -20,7 +20,7 @@ interface HomeProps {
 }
 
 export default function Home({ data }: HomeProps) {
-  const router = useRouter();
+  // const router = useRouter();
   if (!data) return NotFound();
 
   // const MainContent = () => {
