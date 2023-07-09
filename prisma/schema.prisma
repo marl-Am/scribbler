@@ -11,79 +11,79 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Account {
-  id           Int       @id @default(autoincrement())
-  email        String    @unique
-  name         String
-  githubId     String?   @unique
-  googleId     String?   @unique
-  isAdmin      Boolean   @default(false)
-  orders       Order[]
-  cartItems    CartItem[]
-  @@index([id])
-}
-
-model Category {
-  id           Int       @id @default(autoincrement())
-  name         String
-  products     Product[]
-}
-
-model Product {
-  id           Int       @id @default(autoincrement())
-  name         String
-  description  String
-  price        Int
-  image        String
-  createdAt    DateTime  @default(now())
-  cartItems    CartItem[]
-  orderItems   OrderItem[]
-  category     Category  @relation(fields: [categoryId], references: [id])
-  categoryId   Int
-  @@index([categoryId])
-}
-
-model CartItem {
-  id           Int      @id @default(autoincrement())
-  quantity     Int
-  account         Account     @relation(fields: [accountId], references: [id])
-  accountId       Int
-  product      Product  @relation(fields: [productId], references: [id])
-  productId    Int
-  @@index([accountId, productId])
-  @@index([productId])
-}
-
-model Order {
-  id           Int         @id @default(autoincrement())
-  total        Int
-  Account         Account        @relation(fields: [accountId], references: [id])
-  accountId       Int
-  createdAt    DateTime    @default(now())
-  orderItems   OrderItem[]
-  @@index([accountId])
-}
-
-model OrderItem {
-  id           Int       @id @default(autoincrement())
-  quantity     Int
-  product      Product   @relation(fields: [productId], references: [id])
-  productId    Int
-  order        Order     @relation(fields: [orderId], references: [id])
-  orderId      Int
-  @@index([productId, orderId])
-  @@index([orderId])
-}
-
-// model Post {
-//   id        String   @id @default(cuid())
-//   createdAt DateTime @default(now())
-
-//   content  String @db.VarChar(255)
-//   authorId String
-
-//   @@index([authorId])
+// model Account {
+//   id           Int       @id @default(autoincrement())
+//   email        String    @unique
+//   name         String
+//   githubId     String?   @unique
+//   googleId     String?   @unique
+//   isAdmin      Boolean   @default(false)
+//   orders       Order[]
+//   cartItems    CartItem[]
+//   @@index([id])
 // }
+
+// model Category {
+//   id           Int       @id @default(autoincrement())
+//   name         String
+//   products     Product[]
+// }
+
+// model Product {
+//   id           Int       @id @default(autoincrement())
+//   name         String
+//   description  String
+//   price        Int
+//   image        String
+//   createdAt    DateTime  @default(now())
+//   cartItems    CartItem[]
+//   orderItems   OrderItem[]
+//   category     Category  @relation(fields: [categoryId], references: [id])
+//   categoryId   Int
+//   @@index([categoryId])
+// }
+
+// model CartItem {
+//   id           Int      @id @default(autoincrement())
+//   quantity     Int
+//   account         Account     @relation(fields: [accountId], references: [id])
+//   accountId       Int
+//   product      Product  @relation(fields: [productId], references: [id])
+//   productId    Int
+//   @@index([accountId, productId])
+//   @@index([productId])
+// }
+
+// model Order {
+//   id           Int         @id @default(autoincrement())
+//   total        Int
+//   Account         Account        @relation(fields: [accountId], references: [id])
+//   accountId       Int
+//   createdAt    DateTime    @default(now())
+//   orderItems   OrderItem[]
+//   @@index([accountId])
+// }
+
+// model OrderItem {
+//   id           Int       @id @default(autoincrement())
+//   quantity     Int
+//   product      Product   @relation(fields: [productId], references: [id])
+//   productId    Int
+//   order        Order     @relation(fields: [orderId], references: [id])
+//   orderId      Int
+//   @@index([productId, orderId])
+//   @@index([orderId])
+// }
+
+model Post {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  content  String @db.VarChar(255)
+  authorId String
+
+  @@index([authorId])
+}
 
 // enum Role {
 //   Account

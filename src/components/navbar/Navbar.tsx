@@ -3,7 +3,6 @@ import { api } from "~/utils/api";
 import {
   SignInButton,
   SignUpButton,
-  SignOutButton,
   useUser,
   UserButton,
 } from "@clerk/nextjs";
@@ -22,13 +21,6 @@ const Navbar: React.FC = () => {
             Your Brand
           </span>
         </div>
-        {/* {user.isSignedIn && (
-          <img
-            src={user.user?.profileImageUrl}
-            alt="User profile image"
-            className="ml-1 mr-1 h-10 w-10 rounded-full lg:hidden"
-          />
-        )} */}
       </div>
 
       <div className="block lg:hidden">
@@ -59,32 +51,9 @@ const Navbar: React.FC = () => {
           >
             Home
           </Link>
-          {/* <Link
-            className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
-            href="/dashboard"
-          >
-            Dashboard
-          </Link> */}
         </div>
 
         <div className="mt-4 lg:mt-0 lg:flex lg:items-center lg:justify-end">
-          {/* <div className="relative">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 20 22"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              shape-rendering="geometricPrecision"
-              className="h-6 transition-all ease-in-out hover:scale-110 hover:text-gray-500 dark:hover:text-gray-300"
-            >
-              <path d="M4 1L1 5V19C1 19.5304 1.21071 20.0391 1.58579 20.4142C1.96086 20.7893 2.46957 21 3 21H17C17.5304 21 18.0391 20.7893 18.4142 20.4142C18.7893 20.0391 19 19.5304 19 19V5L16 1H4Z"></path>
-              <path d="M1 5H19"></path>
-              <path d="M14 9C14 10.0609 13.5786 11.0783 12.8284 11.8284C12.0783 12.5786 11.0609 13 10 13C8.93913 13 7.92172 12.5786 7.17157 11.8284C6.42143 11.0783 6 10.0609 6 9"></path>
-            </svg>
-          </div> */}
           {!user.isSignedIn && (
             <div className="mb-2 lg:mb-0 lg:mr-2">
               <SignInButton>
@@ -106,11 +75,6 @@ const Navbar: React.FC = () => {
           )}
 
           {user.isSignedIn && (
-            // <img
-            //   src={user.user?.profileImageUrl}
-            //   alt="User profile image"
-            //   className="ml-1 mr-1 hidden h-10 w-10 rounded-full lg:block"
-            // />
             <div className="flex gap-4">
               <UserButton afterSignOutUrl="/" />
               <Link
@@ -135,16 +99,6 @@ const Navbar: React.FC = () => {
               </Link>
             </div>
           )}
-
-          {/* {user.isSignedIn && (
-            <div className="flex items-center">
-              <SignOutButton>
-                <button className="btn ml-2 inline-block rounded border border-white px-4 py-2 text-sm leading-none text-white hover:border-transparent hover:bg-white hover:text-yellow-500 lg:mt-0">
-                  Sign Out
-                </button>
-              </SignOutButton>
-            </div>
-          )} */}
         </div>
       </div>
     </nav>
