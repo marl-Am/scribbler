@@ -14,7 +14,7 @@ const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="flex flex-wrap items-center justify-between bg-teal-500 p-6">
+    <nav className="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between bg-teal-500 p-6">
       <div className="flex items-center">
         <div className="mr-6 flex-shrink-0 text-white">
           <span className="text-xl font-semibold tracking-tight">
