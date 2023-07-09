@@ -9,10 +9,24 @@ import Navbar from "~/components/navbar/Navbar";
 import Cart from "~/components/cart/Cart";
 import Dashboard from "~/components/dashboard/Dashboard";
 import Footer from "~/components/footer/Footer";
-import ProductCard from "~/components/products/ProductCard";
+import ProductCard from "~/components/productCard/ProductCard";
+import { prisma } from "~/server/db";
+import NotFound from "./404";
 
-export default function Home() {
+interface HomeProps {
+  data: {
+    id: number;
+    name: string;
+    price: number;
+    shortDescription: string;
+    imageUrl: string;
+    stock: number;
+  }[];
+}
+
+export default function Home({ data }: HomeProps) {
   const router = useRouter();
+  if (!data) return NotFound();
 
   const MainContent = () => {
     if (router.pathname === "/cart") {
@@ -27,51 +41,6 @@ export default function Home() {
       );
     }
   };
-
-  const data = [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 49.99,
-      shortDescription: "This is a short description of Product 1",
-      imageUrl: "/assets/product-image.jpg",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 59.99,
-      shortDescription: "This is a short description of Product 2",
-      imageUrl: "/assets/product-image.jpg",
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      price: 39.99,
-      shortDescription: "This is a short description of Product 3",
-      imageUrl: "/assets/product-image.jpg",
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      price: 29.99,
-      shortDescription: "This is a short description of Product 4",
-      imageUrl: "/assets/product-image.jpg",
-    },
-    {
-      id: 5,
-      name: "Product 5",
-      price: 89.99,
-      shortDescription: "This is a short description of Product 5",
-      imageUrl: "/assets/product-image.jpg",
-    },
-    {
-      id: 6,
-      name: "Product 6",
-      price: 19.99,
-      shortDescription: "This is a short description of Product 6",
-      imageUrl: "/assets/product-image.jpg",
-    },
-  ];
 
   return (
     <>
@@ -88,4 +57,12 @@ export default function Home() {
     </>
   );
 }
+
+export async function getServerSideProps() {
+  const data = await prisma.product.findMany();
+  return {
+    props: { data },
+  };
+}
+
 // runs on our device

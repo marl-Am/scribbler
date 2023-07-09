@@ -22,7 +22,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           <img
             src={product.imageUrl}
             alt={product.name}
-            className="object-cover ease-in-out group-hover:opacity-75 scale-110 "
+            className="scale-110 object-cover ease-in-out group-hover:opacity-75 "
           />
         </div>
 
@@ -32,8 +32,10 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           <p>${product.price}</p>
           {/* <button className="add-btn">Add to Cart</button> */}
         </div>
-          {/* {product.shortDescription} */}
-          <button className="add-btn mt-1 w-full">Add to Cart</button>
+        <p className="text-base font-medium text-gray-900">
+          {product.shortDescription}
+        </p>
+        {/* <button className="add-btn mt-1 w-full">Add to Cart</button> */}
       </Link>
     </div>
   );

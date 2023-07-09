@@ -11,6 +11,16 @@ generator client {
   provider = "prisma-client-js"
 }
 
+model Product {
+  id              Int     @id @default(autoincrement())
+  name            String
+  price           Float
+  shortDescription String
+  imageUrl        String
+  stock           Int
+}
+
+
 // model Account {
 //   id           Int       @id @default(autoincrement())
 //   email        String    @unique
@@ -75,15 +85,15 @@ generator client {
 //   @@index([orderId])
 // }
 
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
+// model Post {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
 
-  content  String @db.VarChar(255)
-  authorId String
+//   content  String @db.VarChar(255)
+//   authorId String
 
-  @@index([authorId])
-}
+//   @@index([authorId])
+// }
 
 // enum Role {
 //   Account
