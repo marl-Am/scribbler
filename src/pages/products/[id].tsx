@@ -1,24 +1,3 @@
-// import { useRouter } from "next/router";
-
-// function ProductPage() {
-//   const router = useRouter();
-//   const { id } = router.query;
-
-//   // If the product data is still loading
-//   if (!product) {
-//     return <div>Loading...</div>;
-//   }
-
-//   return (
-//     <div>
-//       <h1>{product.name}</h1>
-//       <img src={product.imageUrl} alt={product.name} />
-//       <p>Price: ${product.price}</p>
-//       <p>{product.shortDescription}</p>
-//     </div>
-//   );
-// }
-
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -38,13 +17,18 @@ function ProductPage() {
   const { id } = router.query;
   const [product, setProduct] = useState<Product | null>(null);
 
-  useEffect(() => {
-    // Fetch product data based on id
-    // This is just an example, you'll need to replace this with your own code to fetch the data
-    fetch(`/api/product/${id}`)
-      .then((response) => response.json())
-      .then((data) => setProduct(data));
-  }, [id]);
+ useEffect(() => {
+   if (typeof id === "string") {
+     fetch(`/api/product/${id}`)
+       .then((response) => response.json())
+       .then((data) => setProduct(data as Product))
+       .catch((error) => {
+         console.error("Failed to fetch product: ", error);
+       });
+   }
+ }, [id]);
+
+
 
   if (!product) {
     return <div>Loading...</div>;
