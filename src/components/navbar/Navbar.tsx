@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { api } from "~/utils/api";
 import {
   SignInButton,
-  SignUpButton,
   useUser,
   UserButton,
 } from "@clerk/nextjs";

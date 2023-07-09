@@ -1,10 +1,5 @@
 import { useRouter } from "next/router";
 
-import Head from "next/head";
-import { api } from "~/utils/api";
-
-import { useUser } from "@clerk/nextjs";
-
 import Navbar from "~/components/navbar/Navbar";
 import Cart from "~/components/cart/Cart";
 import Dashboard from "~/components/dashboard/Dashboard";

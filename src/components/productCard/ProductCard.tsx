@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
-// import Image from "next/image";
 
 type ProductProps = {
   product: {
@@ -13,7 +12,6 @@ type ProductProps = {
 };
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
-//   const [isLoading, setLoading] = useState(true);
 
   return (
     <div className="group">
