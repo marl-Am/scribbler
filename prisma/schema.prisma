@@ -11,66 +11,130 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model Post {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-
-  content  String @db.VarChar(255)
-  authorId String
-
-  @@index([authorId])
+model Account {
+  id           Int       @id @default(autoincrement())
+  email        String    @unique
+  name         String
+  githubId     String?   @unique
+  googleId     String?   @unique
+  isAdmin      Boolean   @default(false)
+  orders       Order[]
+  cartItems    CartItem[]
+  @@index([id])
 }
 
+model Category {
+  id           Int       @id @default(autoincrement())
+  name         String
+  products     Product[]
+}
+
+model Product {
+  id           Int       @id @default(autoincrement())
+  name         String
+  description  String
+  price        Int
+  image        String
+  createdAt    DateTime  @default(now())
+  cartItems    CartItem[]
+  orderItems   OrderItem[]
+  category     Category  @relation(fields: [categoryId], references: [id])
+  categoryId   Int
+  @@index([categoryId])
+}
+
+model CartItem {
+  id           Int      @id @default(autoincrement())
+  quantity     Int
+  account         Account     @relation(fields: [accountId], references: [id])
+  accountId       Int
+  product      Product  @relation(fields: [productId], references: [id])
+  productId    Int
+  @@index([accountId, productId])
+  @@index([productId])
+}
+
+model Order {
+  id           Int         @id @default(autoincrement())
+  total        Int
+  Account         Account        @relation(fields: [accountId], references: [id])
+  accountId       Int
+  createdAt    DateTime    @default(now())
+  orderItems   OrderItem[]
+  @@index([accountId])
+}
+
+model OrderItem {
+  id           Int       @id @default(autoincrement())
+  quantity     Int
+  product      Product   @relation(fields: [productId], references: [id])
+  productId    Int
+  order        Order     @relation(fields: [orderId], references: [id])
+  orderId      Int
+  @@index([productId, orderId])
+  @@index([orderId])
+}
+
+// model Post {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
+
+//   content  String @db.VarChar(255)
+//   authorId String
+
+//   @@index([authorId])
+// }
+
 // enum Role {
-//   USER
+//   Account
 
 //   ADMIN
 // }
 
-// model User {
+// model Account {
 //   id        String   @id @default(cuid())
 //   createdAt DateTime @default(now())
-//   role      Role     @default(USER)
+//   role      Role     @default(Account)
 // }
 
-// model User {
+// model Account {
 //   id        String    @id @default(uuid())
-//   username  String?
+//   Accountname  String?
 //   profile   String?
 //   email     String    @unique
-//   role      UserRole  @default(USER)
+//   role      AccountRole  @default(Account)
 //   cart      Cart[]    @relation("cart")
 //   history   History[] @relation("history")
 //   createdAt DateTime  @default(now())
 // }
 
-// enum UserRole {
-//   USER
+// enum AccountRole {
+//   Account
 //   ADMIN
 // }
 
 
 // model History {
 //   id       String    @id @default(uuid())
-//   author   User?     @relation("history", fields: [userId], references: [id])
-//   userId   String?
+//   author   Account?     @relation("history", fields: [accountId], references: [id])
+//   accountId   String?
 //   products Product[] @relation("history-payment")
 // }
 
 // model Cart {
 //   id       String    @id @default(uuid())
-//   author   User?     @relation("cart", fields: [userId], references: [id])
-//   userId   String?
+//   author   Account?     @relation("cart", fields: [accountId], references: [id])
+//   accountId   String?
 //   products Product[] @relation("products")
 // }
 
 // model Product {
 //   id                 String   @id @default(uuid())
 //   title              String
-//   author             Cart?    @relation("products", fields: [userId], references: [id])
-//   userId             String?
-//   userPaymentHistory History? @relation("history-payment", fields: [userPaymentId], references: [id])
-//   userPaymentId      String?
+//   author             Cart?    @relation("products", fields: [accountId], references: [id])
+//   accountId             String?
+//   AccountPaymentHistory History? @relation("history-payment", fields: [AccountPaymentId], references: [id])
+//   AccountPaymentId      String?
 //   price              Int
 //   description        String
 //   image              String

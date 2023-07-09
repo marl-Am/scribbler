@@ -2,14 +2,57 @@ import React from "react";
 import { api } from "~/utils/api";
 import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
+import ProductCard from "../products/ProductCard";
+
 const Landing: React.FC = () => {
   const user = useUser();
 
-  const { data, isLoading } = api.posts.getAll.useQuery();
 
-  if (isLoading) return <div>Loading...</div>;
+  const data = [
+    {
+      id: 1,
+      name: "Product 1",
+      price: 49.99,
+      shortDescription: "This is a short description of Product 1",
+      imageUrl: "/assets/product-image.jpg",
+    },
+    {
+      id: 2,
+      name: "Product 2",
+      price: 59.99,
+      shortDescription: "This is a short description of Product 2",
+      imageUrl: "/assets/product-image.jpg",
+    },
+    {
+      id: 3,
+      name: "Product 3",
+      price: 39.99,
+      shortDescription: "This is a short description of Product 3",
+      imageUrl: "/assets/product-image.jpg",
+    },
+    {
+      id: 4,
+      name: "Product 4",
+      price: 29.99,
+      shortDescription: "This is a short description of Product 4",
+      imageUrl: "/assets/product-image.jpg",
+    },
+    {
+      id: 5,
+      name: "Product 5",
+      price: 89.99,
+      shortDescription: "This is a short description of Product 5",
+      imageUrl: "/assets/product-image.jpg",
+    },
+    {
+      id: 6,
+      name: "Product 6",
+      price: 19.99,
+      shortDescription: "This is a short description of Product 6",
+      imageUrl: "/assets/product-image.jpg",
+    },
+  ];
 
-  if (!data) return <div>Something went wrong...</div>;
 
   return (
     <div>
@@ -19,11 +62,14 @@ const Landing: React.FC = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div>
-        {data?.map((post) => (
-          <div key={post.id}>{post.content}</div>
-        ))}
+
+      <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8 mt-4 mb-6 ml-2 mr-2">
+        {data &&
+          data.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
       </div>
+      
     </div>
   );
 };

@@ -3,11 +3,31 @@
 @tailwind utilities;
 
 body {
-    @apply bg-black text-slate-100;
+    @apply text-slate-100;
 
     overscroll-behavior: none;
 }
 
 .btn {
     margin: 0;
+}
+
+/* footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    min-height: 5%;
+    margin: 0;
+    padding: 0;
+} */
+
+footer {
+    position: static;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    text-align: center;
 }
