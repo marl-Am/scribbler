@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
+
 
 type ProductProps = {
   product: {
@@ -11,16 +13,25 @@ type ProductProps = {
   };
 };
 
+const imageStyle = {
+  maxWidth: "100%",
+  height: "auto",
+};
+
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <div className="group">
       <Link href={`/products/${product.id}`}>
-        <div className="aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-7 relative w-full cursor-pointer overflow-hidden rounded-lg bg-gray-200">
-          <img
+        <div className="relative cursor-pointer overflow-hidden rounded-lg">
+          <Image
             src={product.imageUrl}
             alt={product.name}
-            className="scale-110 object-cover ease-in-out group-hover:opacity-75 "
+            className="scale-110 object-cover ease-in-out group-hover:opacity-75"
+            style={imageStyle}
+            width={355}
+            height={355}
+            loading="lazy"
           />
         </div>
 

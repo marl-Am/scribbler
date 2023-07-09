@@ -1,15 +1,6 @@
 import React from "react";
-import { api } from "~/utils/api";
-import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
 const Cart: React.FC = () => {
-  // const user = useUser();
-
-  // const { data, isLoading } = api.posts.getAll.useQuery();
-
-  // if (isLoading) return <div>Loading...</div>;
-
-  // if (!data) return <div>Something went wrong...</div>;
 
   return (
     <div>

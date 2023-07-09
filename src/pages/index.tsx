@@ -23,19 +23,19 @@ export default function Home({ data }: HomeProps) {
   const router = useRouter();
   if (!data) return NotFound();
 
-  const MainContent = () => {
-    if (router.pathname === "/cart") {
-      return <Cart />;
-    } else if (router.pathname === "/dashboard") {
-      return <Dashboard />;
-    } else {
-      return (
-        <>
-          <h1>Router Error</h1>
-        </>
-      );
-    }
-  };
+  // const MainContent = () => {
+  //   if (router.pathname === "/cart") {
+  //     return <Cart />;
+  //   } else if (router.pathname === "/dashboard") {
+  //     return <Dashboard />;
+  //   } else {
+  //     return (
+  //       <>
+  //         <h1>Router Error</h1>
+  //       </>
+  //     );
+  //   }
+  // };
 
   return (
     <>
