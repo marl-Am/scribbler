@@ -65,21 +65,6 @@ const Navbar: React.FC = () => {
             </div>
           )}
 
-          {/* {!user.isSignedIn && (
-            <div className="mb-2 lg:mb-0 lg:mr-2">
-              <SignUpButton>
-                <button className="btn ml-3 mr-3 rounded-lg bg-orange-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-orange-800 focus:outline-none focus:ring-4 focus:ring-orange-300 dark:bg-orange-600 dark:hover:bg-orange-700 dark:focus:ring-orange-800 md:mr-0">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </div>
-          )} */}
-
-          {/* {user.isSignedIn && (
-            <div className="flex mr-4">
-              <UserButton afterSignOutUrl="/" />
-            </div>
-          )} */}
           <Link
             className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
             href="/cart"
