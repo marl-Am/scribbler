@@ -1,9 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import Navbar from "~/components/navbar/Navbar";
-import Footer from "~/components/footer/Footer";
-
 interface Product {
   id: number;
   name: string;
@@ -36,7 +33,6 @@ function ProductPage() {
 
   return (
     <div className="flex min-h-screen flex-col">
-      <Navbar />
       <div className="mt-24 flex flex-grow text-black">
         <div className="image-div ml-4 w-1/2">
           <Image
@@ -57,7 +53,6 @@ function ProductPage() {
           <button className="add-btn mt-1 w-full">Add to Cart</button>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }
