@@ -13,7 +13,7 @@ type ProductProps = {
 };
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  const [isLoading, setLoading] = useState(true);
+//   const [isLoading, setLoading] = useState(true);
 
   return (
     <div className="group">
@@ -22,22 +22,18 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           <img
             src={product.imageUrl}
             alt={product.name}
-            className={`object-cover duration-700 ease-in-out group-hover:opacity-75 ${
-              isLoading
-                ? "scale-110 blur-2xl grayscale"
-                : "scale-100 blur-0 grayscale-0"
-            }`}
-            onLoad={() => setLoading(false)}
+            className="object-cover ease-in-out group-hover:opacity-75 scale-110 "
           />
         </div>
 
         <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
           <h3>{product.name}</h3>
+
           <p>${product.price}</p>
+          {/* <button className="add-btn">Add to Cart</button> */}
         </div>
-        <p className="mt-1 text-sm italic text-gray-500">
-          {product.shortDescription}
-        </p>
+          {/* {product.shortDescription} */}
+          <button className="add-btn mt-1 w-full">Add to Cart</button>
       </Link>
     </div>
   );

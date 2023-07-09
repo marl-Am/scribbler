@@ -31,3 +31,10 @@ footer {
     padding: 10px;
     text-align: center;
 }
+
+.add-btn {
+    background-color: rgb(204, 0, 0);
+    border-color: rgb(204, 0, 0);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+}
