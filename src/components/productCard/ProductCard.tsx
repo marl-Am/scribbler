@@ -23,14 +23,14 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
     <div className="group">
       <Link href={`/products/${product.id}`}>
-        <div className="relative cursor-pointer overflow-hidden rounded-lg">
+        <div className="relative overflow-hidden rounded-lg bg-black">
           <Image
             src={product.imageUrl}
             alt={product.name}
-            className="scale-110 object-cover ease-in-out group-hover:opacity-75"
+            className="scale-10 object-cover ease-in-out group-hover:opacity-75"
             style={imageStyle}
-            width={355}
-            height={355}
+            width={350}
+            height={350}
             loading="lazy"
           />
         </div>

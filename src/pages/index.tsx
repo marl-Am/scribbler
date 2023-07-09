@@ -41,6 +41,7 @@ export default function Home({ data }: HomeProps) {
     <>
       <Navbar />
       <main className="mt-24">
+        {/* <MainContent /> */}
         <div className="mb-6 ml-2 mr-2 mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {data &&
             data.map((product) => (
