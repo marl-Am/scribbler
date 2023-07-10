@@ -1,6 +1,3 @@
-// import { useRouter } from "next/router";
-// import Cart from "~/components/cart/Cart";
-// import Dashboard from "~/components/dashboard/Dashboard";
 import ProductCard from "~/components/productCard/ProductCard";
 import { prisma } from "~/server/db";
 import NotFound from "./404";
@@ -17,31 +14,18 @@ interface HomeProps {
 }
 
 export default function Home({ data }: HomeProps) {
-  // const router = useRouter();
   if (!data) return NotFound();
-
-  // const MainContent = () => {
-  //   if (router.pathname === "/cart") {
-  //     return <Cart />;
-  //   } else if (router.pathname === "/dashboard") {
-  //     return <Dashboard />;
-  //   } else {
-  //     return (
-  //       <>
-  //         <h1>Router Error</h1>
-  //       </>
-  //     );
-  //   }
-  // };
 
   return (
     <>
       <main className="mt-24">
-        {/* <MainContent /> */}
         <div className="mb-6 ml-2 mr-2 mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
           {data &&
             data.map((product) => (
-              <ProductCard product={product} key={product.id} />
+              <ProductCard
+                product={product}
+                key={product.id}
+              />
             ))}
         </div>
       </main>

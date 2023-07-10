@@ -32,9 +32,14 @@ footer {
     text-align: center;
 }
 
-.add-btn {
+/* .add-btn {
     background-color: rgb(204, 0, 0);
     border-color: rgb(204, 0, 0);
     color: rgb(255, 255, 255);
     font-weight: bold;
+} */
+
+Image {
+    width: 100%;
+    height: auto;
 }
