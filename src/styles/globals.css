@@ -43,3 +43,7 @@ Image {
     width: 100%;
     height: auto;
 }
+
+.my-element {
+    margin: 0px auto !important;
+}
