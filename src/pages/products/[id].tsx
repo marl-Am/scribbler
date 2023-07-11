@@ -9,7 +9,6 @@ import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useCart } from "~/context/CartContext";
 
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 
 interface Product {
@@ -50,7 +49,7 @@ function ProductPage() {
   const handleAddToCart = (product: Product) => {
     setIsLoading(true);
     addToCart(product);
-     toast("Added to cart.");
+    toast("Item Added To Cart");
     setIsLoading(false);
   };
 
@@ -81,18 +80,7 @@ function ProductPage() {
             Add
             <FontAwesomeIcon icon={faShoppingCart} className="ml-2 w-5" />
           </button>
-          <ToastContainer
-            position="top-right"
-            autoClose={3000}
-            hideProgressBar={false}
-            newestOnTop
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="dark"
-          />
+        
           {/* <button
             onClick={() => removeFromCart(product.id)}
             className="rounded-lg bg-red-500 px-4 py-2 text-white transition duration-200 hover:bg-red-700"

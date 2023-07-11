@@ -54,6 +54,11 @@ const Navbar: React.FC = () => {
           </Link>
         </div>
 
+        <form>
+          <input type="text" placeholder="Find product"/>
+          <button type="submit">Submit</button>
+        </form>
+
         <div className="mt-4 lg:mt-0 lg:flex lg:items-center lg:justify-end">
           <Link
             className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
