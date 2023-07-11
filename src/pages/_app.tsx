@@ -13,23 +13,27 @@ import "react-toastify/dist/ReactToastify.css";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <Navbar />
-      <CartProvider>
-        <Component {...pageProps} />
-        <ToastContainer
-          position="top-right"
-          autoClose={3000}
-          hideProgressBar={false}
-          newestOnTop
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-        />
-      </CartProvider>
-      <Footer />
+      <div className="flex min-h-screen flex-col">
+        <Navbar />
+        <CartProvider>
+          <main className="flex-grow">
+            <Component {...pageProps} />
+          </main>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={2000}
+            hideProgressBar={false}
+            newestOnTop
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="dark"
+          />
+        </CartProvider>
+        <Footer />
+      </div>
     </ClerkProvider>
   );
 };

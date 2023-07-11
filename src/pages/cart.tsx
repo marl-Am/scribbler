@@ -13,7 +13,7 @@ const Cart: React.FC = () => {
   const totalSum = cart.reduce((sum, product) => sum + product.price, 0);
   return (
     <div className="mb-24 mt-24 justify-center text-black">
-      <h1 className="text-center">Your Cart</h1>
+      <h1 className="text-center mt-2 mb-2">Your Cart</h1>
       {cart.length === 0 ? (
         <p className="text-center">No items in cart.</p>
       ) : (
