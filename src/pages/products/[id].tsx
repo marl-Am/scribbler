@@ -4,11 +4,11 @@ import Image from "next/image";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+// import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 import { useCart } from "~/context/CartContext";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 
 interface Product {
@@ -25,7 +25,7 @@ function ProductPage() {
   const { id } = router.query;
   const [product, setProduct] = useState<Product | null>(null);
 
-  const { cart, addToCart, removeFromCart } = useCart();
+  const { addToCart } = useCart();
   const [isLoading, setIsLoading] = useState(false);
   const atcBtnStyle = isLoading
     ? `pt-3 pb-2 bg-blue-500 text-white w-full mt-2 rounded-sm font-semibold text-xl flex justify-center items-baseline hover:bg-blue-700 opacity-25 cursor-none`

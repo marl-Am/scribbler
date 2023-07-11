@@ -7,7 +7,7 @@ import Navbar from "~/components/navbar/Navbar";
 import Footer from "~/components/footer/Footer";
 import { CartProvider } from "~/context/CartContext";
 
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MyApp: AppType = ({ Component, pageProps }) => {

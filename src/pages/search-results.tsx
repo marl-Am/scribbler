@@ -1,42 +1,8 @@
-// import { useRouter } from "next/router";
-// import SearchResults from "~/components/search/SearchResults";
+import type { GetServerSideProps } from "next";
 
-
-// export default function SearchResultsPage() {
-//   const router = useRouter();
-//   const searchQuery = router.query.query as string;
-
-//   return (
-//     <>
-//       <div className="mt-24 text-black">
-//         <h1>Search Results</h1>
-//         <SearchResults searchQuery={searchQuery} />
-//       </div>
-//     </>
-//   );
-// }
-// import { GetServerSideProps } from "next";
-// import { prisma } from "~/server/db";
-
-
-// export const getServerSideProps: GetServerSideProps = async (context) => {
-//   const { query } = context.query;
-
-//   const products = await prisma.product.findMany({
-//     where: {
-//       name: {
-//         contains: query,
-//         mode: "insensitive",
-//       },
-//     },
-//   });
-
-//   return { props: { products } };
-// };
-
-import { GetServerSideProps } from "next";
 import Link from "next/link";
 import Image from "next/image";
+
 import { prisma } from "~/server/db";
 
 type SearchResultsProps = {
@@ -50,9 +16,7 @@ type SearchResultsProps = {
   }>;
 };
 
-
 export default function SearchResults({ products }: SearchResultsProps) {
-
   if (products.length === 0) {
     return (
       <div className="mb-24 mt-24 justify-center text-black">
@@ -74,7 +38,7 @@ export default function SearchResults({ products }: SearchResultsProps) {
     <div className="mb-24 mt-24 justify-center text-black">
       <h1 className="mb-2 mt-2 text-center">Search Results</h1>
       {products.map((product) => (
-        <Link href={`/products/${product.id}`}>
+        <Link href={`/products/${product.id}`} key={product.id}>
           <h2>{product.name}</h2>
           <p>{product.shortDescription}</p>
           <Image
@@ -92,7 +56,6 @@ export default function SearchResults({ products }: SearchResultsProps) {
     </div>
   );
 }
-
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context.query;

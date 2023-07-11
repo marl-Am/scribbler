@@ -11,10 +11,15 @@ const Navbar: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
 
-  const handleSearchSubmit = async (event: React.FormEvent) => {
+  const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
-    router.push(`/search-results?query=${encodeURIComponent(searchQuery)}`);
+    router
+      .push(`/search-results?query=${encodeURIComponent(searchQuery)}`)
+      .catch((error) => {
+        console.error(error);
+      });
   };
+
 
   return (
     <nav className="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between bg-teal-500 p-6">
