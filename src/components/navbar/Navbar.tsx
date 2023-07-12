@@ -3,6 +3,7 @@ import { SignInButton, useUser, UserButton } from "@clerk/nextjs";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useCart } from "~/context/CartContext";
 
 const Navbar: React.FC = () => {
   const user = useUser();
@@ -10,6 +11,12 @@ const Navbar: React.FC = () => {
 
   const [searchQuery, setSearchQuery] = useState("");
   const router = useRouter();
+
+  const { cart } = useCart();
+  const numberOfItemsInCart = cart.reduce(
+    (count, item) => count + item.stock,
+    0
+  );
 
   const handleSearchSubmit = (event: React.FormEvent) => {
     event.preventDefault();
@@ -19,7 +26,6 @@ const Navbar: React.FC = () => {
         console.error(error);
       });
   };
-
 
   return (
     <nav className="fixed top-0 z-50 flex w-full flex-wrap items-center justify-between bg-teal-500 p-6">
@@ -62,6 +68,13 @@ const Navbar: React.FC = () => {
           >
             Home
           </Link>
+
+          <Link
+            className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
+            href="/orders"
+          >
+            Orders
+          </Link>
         </div>
 
         <form onSubmit={handleSearchSubmit} className="text-black">
@@ -78,12 +91,19 @@ const Navbar: React.FC = () => {
         </form>
 
         <div className="mt-4 lg:mt-0 lg:flex lg:items-center lg:justify-end">
-          <Link
-            className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
-            href="/cart"
-          >
-            Cart
-          </Link>
+          <div className="relative inline-block">
+            <Link
+              className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
+              href="/cart"
+            >
+              Cart
+            </Link>
+            {numberOfItemsInCart > 0 && (
+              <span className="absolute right-0 top-0 translate-x-[-50%] translate-y-[-50%] transform rounded-full bg-red-500 p-1 text-xs text-white">
+                {numberOfItemsInCart}
+              </span>
+            )}
+          </div>
 
           {!user.isSignedIn && (
             <div className="mb-2 lg:mb-0 lg:mr-2">

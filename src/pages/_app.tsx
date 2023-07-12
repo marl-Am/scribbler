@@ -14,8 +14,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
       <div className="flex min-h-screen flex-col">
-        <Navbar />
         <CartProvider>
+          <Navbar />
           <main className="flex-grow">
             <Component {...pageProps} />
           </main>
