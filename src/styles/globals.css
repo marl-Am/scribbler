@@ -8,9 +8,9 @@ body {
     overscroll-behavior: none;
 }
 
-.btn {
+/* .btn {
     margin: 0;
-}
+} */
 
 /* footer {
     position: absolute;
@@ -44,6 +44,6 @@ Image {
     height: auto;
 }
 
-.my-element {
+/* .my-element {
     margin: 0px auto !important;
-}
+} */

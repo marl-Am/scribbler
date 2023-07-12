@@ -71,6 +71,13 @@ const Navbar: React.FC = () => {
 
           <Link
             className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
+            href="/inbox"
+          >
+            Inbox
+          </Link>
+
+          <Link
+            className="mr-4 block text-teal-200 hover:text-white lg:inline-block"
             href="/orders"
           >
             Orders
