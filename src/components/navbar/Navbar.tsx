@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                           </div>
                           <form onSubmit={handleSearchSubmit}>
                             <input
-                              className="h-8 w-full rounded-md text-white bg-gray-700 p-1 pl-8 ring-yellow-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
+                              className="h-8 w-full rounded-md text-white bg-gray-700 p-1 pl-8 ring-cyan-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
                               type="search"
                               placeholder="Search"
                               value={searchQuery}
@@ -200,7 +200,7 @@ const Navbar: React.FC = () => {
                   <li className="nav_link active">
                     <Link
                       href={"/"}
-                      className="text-md nav_link capitalize text-white hover:text-yellow-500"
+                      className="text-md nav_link capitalize text-black hover:text-black"
                     >
                       Home
                     </Link>
@@ -225,10 +225,10 @@ const Navbar: React.FC = () => {
                       </li>
                     </>
                   )}
-                  <li className="text-md nav_link capitalize text-black hover:text-yellow-500">
+                  <li className="text-md nav_link capitalize hover:text-cyan-500">
                     {!user.isSignedIn && (
                       <SignInButton>
-                        <button className="btn text-white">Sign In</button>
+                        <button className="btn text-black hover:bg-white">Sign In</button>
                       </SignInButton>
                     )}
                   </li>
@@ -254,7 +254,7 @@ const Navbar: React.FC = () => {
                   </div>
                   <form onSubmit={handleSearchSubmit}>
                     <input
-                      className="h-8 w-full rounded-md bg-gray-100 p-1 pl-8 text-black ring-yellow-300 ring-opacity-75 focus:bg-gray-100 focus:outline-none focus:ring"
+                      className="h-8 w-full rounded-md bg-gray-100 p-1 pl-8 text-black ring-cyan-300 ring-opacity-75 focus:bg-gray-100 focus:outline-none focus:ring"
                       type="search"
                       placeholder="Search"
                       value={searchQuery}
