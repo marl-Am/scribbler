@@ -65,6 +65,7 @@ const Navbar: React.FC = () => {
                         .filter((link) => user.isSignedIn || link.href === "/")
                         .map((link, index) => (
                           <li
+                            key={index} // This is the new line
                             className={
                               activeLink === index ? "nav_link active" : ""
                             }

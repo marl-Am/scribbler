@@ -13,12 +13,6 @@ type ProductProps = {
   };
 };
 
-
-const imageStyle = {
-  maxWidth: "100%",
-  height: "auto",
-};
-
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
 
   return (
