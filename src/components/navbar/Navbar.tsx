@@ -30,6 +30,7 @@ const Navbar: React.FC = () => {
       });
   };
 
+
   const links = [
     { href: "/", text: "Home" },
     { href: "/orders", text: "Orders" },
@@ -75,7 +76,7 @@ const Navbar: React.FC = () => {
                               className="text-md capitalize"
                               href={link.href}
                             >
-                              {link.text}
+                              <button className="btn">{link.text}</button>
                             </Link>
                           </li>
                         ))}
@@ -112,7 +113,7 @@ const Navbar: React.FC = () => {
                           </div>
                           <form onSubmit={handleSearchSubmit}>
                             <input
-                              className="h-8 w-full rounded-md text-white bg-gray-700 p-1 pl-8 ring-cyan-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
+                              className="h-8 w-full rounded-md bg-gray-700 p-1 pl-8 text-white ring-cyan-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
                               type="search"
                               placeholder="Search"
                               value={searchQuery}
@@ -169,7 +170,7 @@ const Navbar: React.FC = () => {
                       {/* Hamburger Icon */}
                       <li className="block lg:hidden">
                         <button
-                          className="h-7 w-7 rounded border-yellow-400 p-1 ring-yellow-300 ring-opacity-50 focus:bg-gray-800 focus:outline-none focus:ring"
+                          className="h-7 w-7 rounded  p-1 ring-yellow-500 ring-opacity-50 focus:bg-gray-800 focus:outline-none focus:ring"
                           onClick={() => setIsOpen(!isOpen)}
                         >
                           <svg
@@ -190,12 +191,12 @@ const Navbar: React.FC = () => {
 
             {/* Mobile Nav */}
             <section
-              className={`space-y-4 bg-black p-4 lg:hidden ${
+              className={`space-y-4 border border-yellow-500 p-4 lg:hidden ${
                 isOpen ? "block" : "hidden"
               }`}
               id="menu"
             >
-              <div className="">
+              <div>
                 <ul className="flex flex-col space-y-5">
                   <li className="nav_link active">
                     <Link
@@ -228,7 +229,9 @@ const Navbar: React.FC = () => {
                   <li className="text-md nav_link capitalize hover:text-cyan-500">
                     {!user.isSignedIn && (
                       <SignInButton>
-                        <button className="btn text-black hover:bg-white">Sign In</button>
+                        <button className="btn text-black hover:bg-white">
+                          Sign In
+                        </button>
                       </SignInButton>
                     )}
                   </li>

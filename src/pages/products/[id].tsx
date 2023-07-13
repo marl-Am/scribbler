@@ -68,30 +68,32 @@ function ProductPage() {
                 </div>
 
                 <div className="flex items-center pt-3">
-                  <span className="font-hk text-2xl text-secondary">
+                  <span className=" text-2xl text-secondary">
                     ${product.price}
                   </span>
                 </div>
               </div>
 
               <div className="flex pb-5">
-                <p className="font-hk text-secondary">Availability:</p>
-                <p className="font-hkbold pl-3">
-                  <div
-                    className={`${
-                      product.stock == 1 ? "text-green-500" : "text-red-500"
-                    }`}
-                  >
-                    {product.stock == 1 ? "In Stock" : "Out of Stock"}
-                  </div>
+                <p className="font-mono text-secondary">
+                  Availability:
+                  <span className="inline-block">
+                    <span
+                      className={`${
+                        product.stock === 1 ? "text-green-500" : "text-red-500"
+                      } text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl`}
+                    >
+                      {product.stock === 1 ? "In Stock" : "Out of Stock"}
+                    </span>
+                  </span>
                 </p>
               </div>
 
               <div>
-                <h4 className="tab-item font-hk hover:bg-grey-light bg-white px-0 py-5 text-center font-bold text-secondary sm:text-left">
+                <h4 className="px-0 py-5 text-left font-bold text-secondary">
                   Description
                 </h4>
-                <p className="font-hk pb-5 text-secondary">
+                <p className=" pb-5 text-secondary">
                   {product.shortDescription}
                 </p>
               </div>

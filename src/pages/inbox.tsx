@@ -6,8 +6,8 @@ export default function Inbox({}) {
       <Head>
         <title>Inbox</title>
       </Head>
-      <div className="mt-32 text-center">
-        <h1 className="text-black">Inbox</h1>
+      <div className="flex min-h-screen flex-col items-center justify-center">
+        <h1 className="mt-2 text-3xl text-black">Index</h1>
       </div>
     </>
   );

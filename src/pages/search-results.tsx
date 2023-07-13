@@ -42,7 +42,9 @@ export default function SearchResults({ products }: SearchResultsProps) {
 
   return (
     <>
-      {/* <h1 className="mb-2 mt-2 text-center text-white">Search Results</h1> */}
+      <Head>
+        <title>Search Results</title>
+      </Head>
       <div className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
         {products.map((product) => (
           <>

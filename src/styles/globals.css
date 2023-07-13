@@ -95,3 +95,8 @@ Image {
     height: auto;
     max-width: 100%;
 }
+
+/*  */
+#summary {
+    background-color: #f6f6f6;
+}
