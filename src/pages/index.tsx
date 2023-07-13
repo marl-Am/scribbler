@@ -18,16 +18,12 @@ export default function Home({ data }: HomeProps) {
 
   return (
     <>
-      <main className="mt-32">
-        <div className="mb-6 ml-2 mr-2 mt-4 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {data &&
-            data.map((product) => (
-              <ProductCard
-                product={product}
-                key={product.id}
-              />
-            ))}
-        </div>
+      <div className="divider"></div>
+      <main className="mb-8 mt-8 flex flex-wrap justify-center gap-4">
+        {data &&
+          data.map((product) => (
+            <ProductCard product={product} key={product.id} />
+          ))}
       </main>
     </>
   );

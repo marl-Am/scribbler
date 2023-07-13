@@ -3,10 +3,14 @@
 @tailwind utilities;
 
 body {
-    @apply text-slate-100;
+    /* @apply text-slate-100; */
 
     overscroll-behavior: none;
 }
+
+/* * {
+    background-color: white;
+} */
 
 /* .btn {
     margin: 0;
@@ -39,11 +43,43 @@ body {
     font-weight: bold;
 } */
 
-Image {
+/* Image {
     width: 100%;
     height: auto;
-}
+} */
 
 /* .my-element {
     margin: 0px auto !important;
 } */
+
+/* Navbar */
+.nav-container {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    animation: FadeIn 1.5s;
+}
+
+.nav_link {
+    color: #6b7280;
+}
+
+.nav_linl:hover {
+    color: #f59e08;
+}
+
+.nav_link.active {
+    color: black;
+    background-color: #f59e0b;
+    border-radius: 7px;
+    width: fit-content;
+    padding: 5px;
+    text-align: center;
+}

@@ -19,41 +19,54 @@ type SearchResultsProps = {
 export default function SearchResults({ products }: SearchResultsProps) {
   if (products.length === 0) {
     return (
-      <div className="mb-24 mt-24 justify-center text-black">
-        <Image
-          className="my-element mb-12 pt-0"
-          src={"/assets/SearchError.svg"}
-          alt={"Nothing found"}
-          width={75}
-          height={75}
-        />
-        <h1 className="mb-2 mt-2 text-center">
-          We couldn’t find a match for your search.
-        </h1>
-      </div>
+      <>
+        <div className="flex min-h-screen flex-col items-center justify-center">
+          <Image
+            className="my-element pt-0"
+            src={"/assets/SearchError.svg"}
+            alt={"Nothing found"}
+            width={100}
+            height={100}
+          />
+          <h1 className="text-white mt-2">
+            We couldn’t find a match for your search.
+          </h1>
+        </div>
+      </>
     );
   }
 
   return (
-    <div className="mb-24 mt-24 justify-center text-black">
-      <h1 className="mb-2 mt-2 text-center">Search Results</h1>
-      {products.map((product) => (
-        <Link href={`/products/${product.id}`} key={product.id}>
-          <h2>{product.name}</h2>
-          <p>{product.shortDescription}</p>
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            className="scale-10 object-cover ease-in-out group-hover:opacity-75"
-            width={350}
-            height={350}
-            loading="lazy"
-          />
-          <p>Price: {product.price}</p>
-          <p>Stock: {product.stock}</p>
-        </Link>
-      ))}
-    </div>
+    <>
+      {/* <h1 className="mb-2 mt-2 text-center text-white">Search Results</h1> */}
+      <div className="flex min-h-screen items-center justify-center">
+        {products.map((product) => (
+          <>
+            <Link href={`/products/${product.id}`}>
+              <div className="card w-72 bg-base-100 shadow-xl">
+                <figure className="px-10 pt-10">
+                  <Image
+                    className="rounded-xl"
+                    src={product.imageUrl}
+                    alt={product.name}
+                    width={304}
+                    height={180}
+                    loading="lazy"
+                  />
+                </figure>
+                <div className="card-body items-center text-center">
+                  <h2 className="card-title">{product.name}</h2>
+                  <p>${product.price}</p>
+                  {/* <div className="card-actions">
+              <button className="btn-primary btn">View</button>
+            </div> */}
+                </div>
+              </div>
+            </Link>
+          </>
+        ))}
+      </div>
+    </>
   );
 }
 

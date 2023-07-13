@@ -16,7 +16,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
       <div className="flex min-h-screen flex-col">
         <CartProvider>
           <Navbar />
-          <main className="flex-grow">
+          <main className="">
             <Component {...pageProps} />
           </main>
           <ToastContainer

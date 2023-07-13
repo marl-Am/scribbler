@@ -22,27 +22,32 @@ const imageStyle = {
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
 
   return (
-    <div className="group">
+    <>
       <Link href={`/products/${product.id}`}>
-        <div className="relative overflow-hidden rounded-lg bg-black">
-          <Image
-            src={product.imageUrl}
-            alt={product.name}
-            className="scale-10 object-cover ease-in-out group-hover:opacity-75"
-            style={imageStyle}
-            width={350}
-            height={350}
-            loading="lazy"
-          />
-        </div>
-
-        <div className="mt-4 flex items-center justify-between text-base font-medium text-gray-900">
-          <h3>{product.name}</h3>
-          <p>${product.price}</p>
+        <div className="card w-72 bg-base-100 shadow-xl">
+          <figure className="px-10 pt-10">
+            <Image
+              className="rounded-xl"
+              src={product.imageUrl}
+              alt={product.name}
+              width={304}
+              height={180}
+              loading="lazy"
+            />
+          </figure>
+          <div className="card-body items-center text-center">
+            <h2 className="card-title">{product.name}</h2>
+            <p>${product.price}</p>
+            {/* <div className="card-actions">
+              <button className="btn-primary btn">View</button>
+            </div> */}
+          </div>
         </div>
       </Link>
-    </div>
+    </>
   );
 };
 
 export default ProductCard;
+
+
