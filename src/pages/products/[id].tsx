@@ -34,7 +34,13 @@ function ProductPage() {
   }, [id]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <>
+        <div className="flex min-h-screen flex-col items-center justify-center">
+          <h1 className="mt-2 text-2xl text-black">Loading...</h1>
+        </div>
+      </>
+    );
   }
 
   const handleAddToCart = (product: Product) => {

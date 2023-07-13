@@ -55,7 +55,7 @@ const Navbar: React.FC = () => {
                         height={48}
                       ></Image>
                       <h2 className="text-sm font-bold capitalize tracking-wider text-black lg:text-lg">
-                        Shop
+                        Scribbler
                       </h2>
                     </div>
                   </Link>
