@@ -46,7 +46,7 @@ export default function Footer() {
               rel="noreferrer noopener"
             >
               <svg
-                class="h-6 w-6 text-black"
+                className="h-6 w-6 text-black"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
