@@ -2,6 +2,7 @@ import type { GetServerSideProps } from "next";
 
 import Link from "next/link";
 import Image from "next/image";
+import Head from "next/head";
 
 import { prisma } from "~/server/db";
 
@@ -20,6 +21,9 @@ export default function SearchResults({ products }: SearchResultsProps) {
   if (products.length === 0) {
     return (
       <>
+        <Head>
+          <title>Search Results</title>
+        </Head>
         <div className="flex min-h-screen flex-col items-center justify-center">
           <Image
             className="my-element pt-0"
@@ -28,7 +32,7 @@ export default function SearchResults({ products }: SearchResultsProps) {
             width={100}
             height={100}
           />
-          <h1 className="text-white mt-2">
+          <h1 className="mt-2 text-black">
             We couldn’t find a match for your search.
           </h1>
         </div>
@@ -39,7 +43,7 @@ export default function SearchResults({ products }: SearchResultsProps) {
   return (
     <>
       {/* <h1 className="mb-2 mt-2 text-center text-white">Search Results</h1> */}
-      <div className="flex min-h-screen items-center justify-center">
+      <div className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
         {products.map((product) => (
           <>
             <Link href={`/products/${product.id}`}>

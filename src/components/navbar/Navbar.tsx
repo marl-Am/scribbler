@@ -53,7 +53,7 @@ const Navbar: React.FC = () => {
                         width={48}
                         height={48}
                       ></Image>
-                      <h2 className="text-sm font-bold capitalize tracking-wider text-gray-200 lg:text-lg">
+                      <h2 className="text-sm font-bold capitalize tracking-wider text-black lg:text-lg">
                         Shop
                       </h2>
                     </div>
@@ -112,7 +112,7 @@ const Navbar: React.FC = () => {
                           </div>
                           <form onSubmit={handleSearchSubmit}>
                             <input
-                              className="h-8 w-full rounded-md bg-gray-700 p-1 pl-8 ring-yellow-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
+                              className="h-8 w-full rounded-md text-white bg-gray-700 p-1 pl-8 ring-yellow-300 focus:bg-gray-100 focus:text-black focus:outline-none focus:ring"
                               type="search"
                               placeholder="Search"
                               value={searchQuery}
@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
                             <div className="indicator">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-5 w-5 text-gray-400 hover:text-gray-200 focus:text-gray-200"
+                                className="h-7 w-7 text-black hover:text-gray-700 focus:text-gray-200"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
@@ -169,11 +169,11 @@ const Navbar: React.FC = () => {
                       {/* Hamburger Icon */}
                       <li className="block lg:hidden">
                         <button
-                          className="h-7 w-7 rounded p-1 ring-yellow-300 ring-opacity-50 focus:bg-gray-800 focus:outline-none focus:ring"
+                          className="h-7 w-7 rounded border-yellow-400 p-1 ring-yellow-300 ring-opacity-50 focus:bg-gray-800 focus:outline-none focus:ring"
                           onClick={() => setIsOpen(!isOpen)}
                         >
                           <svg
-                            className="h-5 w-5 fill-current text-gray-400 hover:text-white lg:h-6 lg:w-6"
+                            className="h-5 w-5 fill-current text-black hover:text-white lg:h-6 lg:w-6"
                             viewBox="0 0 20 20"
                             xmlns="http://www.w3.org/2000/svg"
                           >
@@ -190,7 +190,7 @@ const Navbar: React.FC = () => {
 
             {/* Mobile Nav */}
             <section
-              className={`space-y-4 bg-yellow-100 p-4 lg:hidden ${
+              className={`space-y-4 bg-black p-4 lg:hidden ${
                 isOpen ? "block" : "hidden"
               }`}
               id="menu"
@@ -200,7 +200,7 @@ const Navbar: React.FC = () => {
                   <li className="nav_link active">
                     <Link
                       href={"/"}
-                      className="text-md nav_link capitalize text-gray-500 hover:text-yellow-500"
+                      className="text-md nav_link capitalize text-white hover:text-yellow-500"
                     >
                       Home
                     </Link>
@@ -210,7 +210,7 @@ const Navbar: React.FC = () => {
                       <li className="">
                         <Link
                           href={"/orders"}
-                          className="text-md nav_link capitalize text-gray-500 hover:text-yellow-500"
+                          className="text-md nav_link capitalize text-white hover:text-yellow-500"
                         >
                           Orders
                         </Link>
@@ -218,17 +218,17 @@ const Navbar: React.FC = () => {
                       <li className="">
                         <Link
                           href={"/inbox"}
-                          className="text-md nav_link capitalize text-gray-500 hover:text-yellow-500"
+                          className="text-md nav_link capitalize text-white hover:text-yellow-500"
                         >
                           Inbox
                         </Link>
                       </li>
                     </>
                   )}
-                  <li className="text-md nav_link capitalize text-gray-500 hover:text-yellow-500">
+                  <li className="text-md nav_link capitalize text-black hover:text-yellow-500">
                     {!user.isSignedIn && (
                       <SignInButton>
-                        <button className="btn">Sign In</button>
+                        <button className="btn text-white">Sign In</button>
                       </SignInButton>
                     )}
                   </li>
@@ -254,7 +254,7 @@ const Navbar: React.FC = () => {
                   </div>
                   <form onSubmit={handleSearchSubmit}>
                     <input
-                      className="h-8 w-full rounded-md bg-gray-100 p-1 pl-8 ring-yellow-300 ring-opacity-75 focus:bg-gray-100 focus:outline-none focus:ring"
+                      className="h-8 w-full rounded-md bg-gray-100 p-1 pl-8 text-black ring-yellow-300 ring-opacity-75 focus:bg-gray-100 focus:outline-none focus:ring"
                       type="search"
                       placeholder="Search"
                       value={searchQuery}

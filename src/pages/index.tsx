@@ -1,6 +1,7 @@
 import ProductCard from "~/components/productCard/ProductCard";
 import { prisma } from "~/server/db";
 import NotFound from "./404";
+import Head from "next/head";
 
 interface HomeProps {
   data: {
@@ -18,8 +19,11 @@ export default function Home({ data }: HomeProps) {
 
   return (
     <>
-      <div className="divider"></div>
-      <main className="mb-8 mt-8 flex flex-wrap justify-center gap-4">
+      {/* <div className="divider"></div> */}
+      <Head>
+        <title>Home</title>
+      </Head>
+      <main className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
         {data &&
           data.map((product) => (
             <ProductCard product={product} key={product.id} />

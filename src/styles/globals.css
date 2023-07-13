@@ -83,3 +83,15 @@ body {
     padding: 5px;
     text-align: center;
 }
+
+/*  */
+.text-secondary {
+    --tw-text-opacity: 1;
+    color: rgb(45 27 21/var(--tw-text-opacity));
+}
+
+/*  */
+Image {
+    height: auto;
+    max-width: 100%;
+}
