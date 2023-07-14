@@ -1,6 +1,16 @@
+import { useRouter } from "next/router";
+import { useUser } from "@clerk/nextjs";
 import Head from "next/head";
 
 export default function Orders({}) {
+  const user = useUser();
+  const router = useRouter();
+
+  if (!user) {
+    router.push("/");
+    return null;
+  }
+
   return (
     <>
       <Head>
