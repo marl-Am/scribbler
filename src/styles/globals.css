@@ -100,3 +100,40 @@ Image {
 #summary {
     background-color: #f6f6f6;
 }
+
+/*  */
+@media (max-width: 768px) {
+
+    /* Adjust the width value to the one that suits your needs */
+    .cartPage h1,
+    .cartPage h2,
+    .cartPage h3,
+    .cartPage span,
+    .cartPage p,
+    .cartPage label,
+    .cartPage button {
+        /* Adjust font-size as per your needs */
+        font-size: 70%;
+        /* This decreases the font size to 80% of its original size */
+    }
+
+    .checkoutButton {
+        /* Define your smaller button size here. Let's make the button 80% of its original size */
+        width: 99%;
+        height: 80%;
+        /* And let's reduce the font size of the button text */
+        font-size: 0.5rem;
+        text-transform: none;
+        /* Adjust according to your preference */
+    }
+
+        select {
+            /* Define your smaller button size here. Let's make the button 80% of its original size */
+            width: 80%;
+            height: 80%;
+            /* And let's reduce the font size of the button text */
+            font-size: 0.5rem;
+            text-transform: none;
+            /* Adjust according to your preference */
+        }
+}
