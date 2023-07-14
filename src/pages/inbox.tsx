@@ -7,7 +7,10 @@ export default function Inbox({}) {
   const router = useRouter();
 
   if (!user) {
-    router.push("/");
+    router
+      .push("/")
+      .then(() => {console.log("Unauthorized Access. Redirected to home page");})
+      .catch((e) => console.error(e));
     return null;
   }
 
