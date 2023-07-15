@@ -8,49 +8,6 @@ body {
     overscroll-behavior: none;
 }
 
-/* * {
-    background-color: white;
-} */
-
-/* .btn {
-    margin: 0;
-} */
-
-/* footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    min-height: 5%;
-    margin: 0;
-    padding: 0;
-} */
-
-/* footer {
-    position: static;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 10px;
-    text-align: center;
-} */
-
-/* .add-btn {
-    background-color: rgb(204, 0, 0);
-    border-color: rgb(204, 0, 0);
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-} */
-
-/* Image {
-    width: 100%;
-    height: auto;
-} */
-
-/* .my-element {
-    margin: 0px auto !important;
-} */
 
 /* Navbar */
 .nav-container {
@@ -78,7 +35,7 @@ body {
 .nav_link.active {
     color: black;
     background-color: #f59e0b;
-    border-radius: 7px;
+    border-radius: 2px;
     width: fit-content;
     padding: 5px;
     text-align: center;
@@ -92,8 +49,8 @@ body {
 
 /*  */
 Image {
+    width: 100%;
     height: auto;
-    max-width: 100%;
 }
 
 /*  */
@@ -113,27 +70,56 @@ Image {
     .cartPage label,
     .cartPage button {
         /* Adjust font-size as per your needs */
-        font-size: 70%;
+        font-size: 80%;
         /* This decreases the font size to 80% of its original size */
     }
 
-    .checkoutButton {
+
+
+    select {
         /* Define your smaller button size here. Let's make the button 80% of its original size */
-        width: 99%;
+        width: auto;
         height: 80%;
         /* And let's reduce the font size of the button text */
-        font-size: 0.5rem;
+        font-size: 0.9rem;
         text-transform: none;
         /* Adjust according to your preference */
     }
 
-        select {
-            /* Define your smaller button size here. Let's make the button 80% of its original size */
-            width: 80%;
-            height: 80%;
-            /* And let's reduce the font size of the button text */
-            font-size: 0.5rem;
-            text-transform: none;
-            /* Adjust according to your preference */
-        }
+    .details-font {
+        font-size: 0.5rem;
+    }
+
+    .checkoutBtn {
+        width: auto;
+        height: auto;
+    }
+
+    .standard {
+        width: 100px;
+        height: auto;
+        padding: 2px;
+        display: block;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    main {
+        margin-left: 8px;
+        margin-right: 9px;
+    }
+
+    .mobile .nav_link {
+        color: black;
+        animation: FadeIn 1.5s;
+        background-color: transparent;
+        font: bold;
+        padding: 0;
+    }
+
+    .mobile .nav_link:hover {
+        text-decoration: underline;
+    }
 }

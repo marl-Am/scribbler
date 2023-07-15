@@ -191,32 +191,32 @@ const Navbar: React.FC = () => {
 
             {/* Mobile Nav */}
             <section
-              className={`space-y-4 border border-yellow-500 p-4 lg:hidden ${
+              className={`space-y-4 border border-black p-4 lg:hidden ${
                 isOpen ? "block" : "hidden"
               }`}
               id="menu"
             >
               <div>
-                <ul className="flex flex-col space-y-5">
-                  <li className="nav_link active">
+                <ul className="mobile flex flex-col space-y-5">
+                  <li className=" nav_link active bg-gray-300">
                     <Link
                       href={"/"}
-                      className="text-md nav_link capitalize text-black hover:text-black"
+                      className="text-md nav_link capitalize hover:text-yellow-500"
                     >
                       Home
                     </Link>
                   </li>
                   {user.isSignedIn && (
                     <>
-                      <li className="">
+                      <li className="text-md nav_link capitalize">
                         <Link
                           href={"/orders"}
-                          className="text-md nav_link capitalize text-white hover:text-yellow-500"
+                          className="text-md nav_link capitalize hover:text-yellow-500"
                         >
                           Orders
                         </Link>
                       </li>
-                      <li className="">
+                      <li className="text-md nav_link capitalize">
                         <Link
                           href={"/inbox"}
                           className="text-md nav_link capitalize text-white hover:text-yellow-500"

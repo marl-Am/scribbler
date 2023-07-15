@@ -33,8 +33,10 @@ const Cart: React.FC = () => {
           ) : (
             <div className="bg-gray-100">
               <div className="container mx-auto mt-10">
-                <div className="my-10 flex shadow-md">
+                {/*  */}
+                <div className="my-10 shadow-md">
                   {/*  */}
+
                   <div
                     className="w-3/4 bg-white px-10 py-10"
                     id="shopping-cart"
@@ -45,11 +47,11 @@ const Cart: React.FC = () => {
                         {cart.length} Items
                       </h2>
                     </div>
-                    <div className="mb-5 mt-10 flex">
+                    <div className="details-font mb-5 mt-10 flex">
                       <h3 className="w-2/5 text-xs font-semibold uppercase text-gray-600">
-                        Product Details
+                        Product&nbsp;Details
                       </h3>
-                      <h3 className="text-centertext-xs w-1/5 font-semibold uppercase text-gray-600">
+                      <h3 className="w-1/5 text-center text-xs font-semibold uppercase text-gray-600">
                         Quantity
                       </h3>
                       <h3 className="w-1/5 text-center text-xs font-semibold uppercase text-gray-600">
@@ -72,12 +74,11 @@ const Cart: React.FC = () => {
                               alt={product.name}
                               width="100"
                               height="100"
-                              className="h-24"
                               loading="lazy"
                             />
                           </div>
                           <div className="ml-4 flex flex-grow flex-col justify-between">
-                            <span className="text-sm font-bold">
+                            <span className="product-name text-sm font-bold">
                               {product.name}
                             </span>
                             {/* <span className="text-xs text-red-500">
@@ -119,11 +120,11 @@ const Cart: React.FC = () => {
 
                   <div id="summary" className="w-1/4 px-8 py-10">
                     <h1 className="border-b pb-8 text-2xl font-semibold">
-                      Order Summary
+                      Order&nbsp;Summary
                     </h1>
                     <div className="mb-5 mt-10 flex justify-between">
                       <span className="text-sm font-semibold uppercase">
-                        {cart.length} Items
+                        {cart.length}&nbsp;Items&nbsp;
                       </span>
                       <span className="text-sm font-semibold">${totalSum}</span>
                     </div>
@@ -132,19 +133,19 @@ const Cart: React.FC = () => {
                       <label className="mb-3 inline-block text-sm font-medium">
                         Shipping:
                       </label>
-                      <select className="block w-full p-2 text-sm text-gray-600">
-                        <option>Standard - $10.50</option>
-                      </select>
+                      <div className="standard block w-full p-2 text-sm bg-gray-200 text-gray-600">
+                        <p>Standard&nbsp;-&nbsp;$10.50</p>
+                      </div>
                     </div>
                     {/*  */}
 
                     {/*  */}
                     <div className="mt-8 border-t">
                       <div className="flex justify-between py-6 text-sm font-semibold uppercase">
-                        <span>Total cost</span>
+                        <span>Total&nbsp;Cost:&nbsp;</span>
                         <span>${FINAL_PRICE}</span>
                       </div>
-                      <button className="checkoutButton w-full bg-indigo-500 py-3 text-sm font-semibold uppercase text-white hover:bg-indigo-600">
+                      <button className="checkoutBtn w-full bg-indigo-500 py-3 text-sm font-semibold uppercase text-white hover:bg-indigo-600">
                         Checkout
                       </button>
                     </div>
