@@ -28,9 +28,9 @@ body {
     color: black;
 }
 
-.nav_link:hover {
+/* .nav_link:hover {
     color: #f59e08;
-}
+} */
 
 .nav_link.active {
     color: black;
@@ -57,6 +57,16 @@ Image {
 #summary {
     background-color: #f6f6f6;
 }
+
+/*  */
+.dark-blue-text {
+    color: #007185;
+}
+
+/* input:hover {
+    cursor: pointer;
+    text-decoration: underline;
+} */
 
 /*  */
 @media (max-width: 768px) {
@@ -121,5 +131,9 @@ Image {
 
     .mobile .nav_link:hover {
         text-decoration: underline;
+    }
+
+    .product-name {
+        font-size: 0.8rem;
     }
 }

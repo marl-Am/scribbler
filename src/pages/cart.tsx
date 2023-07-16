@@ -78,18 +78,25 @@ const Cart: React.FC = () => {
                             />
                           </div>
                           <div className="ml-4 flex flex-grow flex-col justify-between">
-                            <span className="product-name text-sm font-bold">
-                              {product.name}
-                            </span>
-                            {/* <span className="text-xs text-red-500">
-                            Brand Name
-                          </span> */}
-                            <button
-                              onClick={() => removeFromCart(product.id)}
-                              className="text-md font-semibold text-gray-500 hover:text-red-500"
+                            <Link href={`/products/${product.id}`}>
+                              <p className="product-name whitespace-nowrap text-sm font-bold hover:underline">
+                                {product.name}
+                              </p>
+                            </Link>
+
+                            <form
+                              onSubmit={(e) => {
+                                e.preventDefault();
+                                removeFromCart(product.id);
+                              }}
                             >
-                              Remove
-                            </button>
+                              <input
+                                type="submit"
+                                value="Delete"
+                                className="dark-blue-text bg-white px-2 py-1 text-sm font-semibold text-black hover:underline hover:cursor-pointer"
+                              />
+                            </form>
+
                           </div>
                         </div>
                         <div className="flex w-1/5 justify-center">
@@ -133,7 +140,7 @@ const Cart: React.FC = () => {
                       <label className="mb-3 inline-block text-sm font-medium">
                         Shipping:
                       </label>
-                      <div className="standard block w-full p-2 text-sm bg-gray-200 text-gray-600">
+                      <div className="standard block w-full bg-gray-200 p-2 text-sm text-gray-600">
                         <p>Standard&nbsp;-&nbsp;$10.50</p>
                       </div>
                     </div>

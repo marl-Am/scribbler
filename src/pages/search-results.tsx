@@ -48,27 +48,29 @@ export default function SearchResults({ products }: SearchResultsProps) {
       <div className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
         {products.map((product) => (
           <>
-            <Link href={`/products/${product.id}`}>
-              <div className="card w-72 bg-base-100 shadow-xl">
-                <figure className="px-10 pt-10">
-                  <Image
-                    className="rounded-xl"
-                    src={product.imageUrl}
-                    alt={product.name}
-                    width={304}
-                    height={180}
-                    loading="lazy"
-                  />
-                </figure>
-                <div className="card-body items-center text-center">
-                  <h2 className="card-title">{product.name}</h2>
-                  <p>${product.price}</p>
-                  {/* <div className="card-actions">
-              <button className="btn-primary btn">View</button>
-            </div> */}
+            <div key={product.id}>
+              <Link href={`/products/${product.id}`}>
+                <div className="card w-72 bg-base-100 shadow-xl">
+                  <figure className="px-10 pt-10">
+                    <Image
+                      className="rounded-xl"
+                      src={product.imageUrl}
+                      alt={product.name}
+                      width={304}
+                      height={180}
+                      loading="lazy"
+                    />
+                  </figure>
+                  <div className="card-body items-center text-center">
+                    <h2 className="card-title">{product.name}</h2>
+                    <p>${product.price}</p>
+                    {/* <div className="card-actions">
+                   <button className="btn-primary btn">View</button>
+                  </div> */}
+                  </div>
                 </div>
-              </div>
-            </Link>
+              </Link>
+            </div>
           </>
         ))}
       </div>

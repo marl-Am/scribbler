@@ -50,70 +50,74 @@ function ProductPage() {
 
   return (
     <>
-      <Head>
-        <title>{product.name}</title>
-      </Head>
-      <div>
-        <div className="-mx-5 ml-4 mr-4 flex flex-col justify-between pb-24 pt-16 lg:flex-row">
-          <div className="mt-24 flex flex-grow text-black">
-            <div className="image-div ml-4 mr-4 w-1/2">
-              <Image
-                src={product.imageUrl}
-                alt={product.name}
-                width={650}
-                height={650}
-              />
-            </div>
-
-            <div className="details-div ml-4 mr-4 flex w-1/2 flex-col justify-between text-2xl">
-              <div className="border-grey-dark mb-8 border-b">
-                <div className="flex items-center">
-                  <h2 className="font-butler lg:text-4.5xl text-3xl md:text-4xl">
-                    {product.name}
-                  </h2>
-                </div>
-
-                <div className="flex items-center pt-3">
-                  <span className=" text-2xl text-secondary">
-                    ${product.price}
-                  </span>
-                </div>
+      <div key={product.id}>
+        <Head>
+          <title>{product.name}</title>
+        </Head>
+        <div>
+          <div className="-mx-5 ml-4 mr-4 flex flex-col justify-between pb-24 pt-16 lg:flex-row">
+            <div className="mt-24 flex flex-grow text-black">
+              <div className="image-div ml-4 mr-4 w-1/2">
+                <Image
+                  src={product.imageUrl}
+                  alt={product.name}
+                  width={650}
+                  height={650}
+                />
               </div>
 
-              <div className="flex pb-5">
-                <p className="text-sm text-secondary">
-                  Availability:&nbsp;
-                  <span className="inline-block text-sm">
-                    <span
-                      className={`${
-                        product.stock === 1 ? "text-green-500" : "text-red-500"
-                      } text-sm`}
-                    >
-                      {product.stock === 1 ? " In Stock" : " Out of Stock"}
+              <div className="details-div ml-4 mr-4 flex w-1/2 flex-col justify-between text-2xl">
+                <div className="border-grey-dark mb-8 border-b">
+                  <div className="flex items-center">
+                    <h2 className="font-butler lg:text-4.5xl text-3xl md:text-4xl">
+                      {product.name}
+                    </h2>
+                  </div>
+
+                  <div className="flex items-center pt-3">
+                    <span className=" text-2xl text-secondary">
+                      ${product.price}
                     </span>
-                  </span>
-                </p>
-              </div>
+                  </div>
+                </div>
 
-              <div>
-                <h6 className="px-0 py-5 text-left font-bold text-secondary">
-                  Description
-                </h6>
-                <p className="description pb-5 text-secondary">
-                  {product.shortDescription}
-                </p>
-              </div>
+                <div className="flex pb-5">
+                  <p className="text-sm text-secondary">
+                    Availability:&nbsp;
+                    <span className="inline-block text-sm">
+                      <span
+                        className={`${
+                          product.stock === 1
+                            ? "text-green-500"
+                            : "text-red-500"
+                        } text-sm`}
+                      >
+                        {product.stock === 1 ? " In Stock" : " Out of Stock"}
+                      </span>
+                    </span>
+                  </p>
+                </div>
 
-              <div className="group flex pb-8">
-                <button
-                  onClick={() => handleAddToCart(product)}
-                  className={`btn-outline btn mr-4 md:mr-6 ${
-                    product.stock === 1 ? "" : "disabled"
-                  }`}
-                  disabled={product.stock !== 1}
-                >
-                  {product.stock === 1 ? "Add to Cart" : "Out of Stock"}
-                </button>
+                <div>
+                  <h6 className="px-0 py-5 text-left font-bold text-secondary">
+                    Description
+                  </h6>
+                  <p className="description pb-5 text-secondary">
+                    {product.shortDescription}
+                  </p>
+                </div>
+
+                <div className="group flex pb-8">
+                  <button
+                    onClick={() => handleAddToCart(product)}
+                    className={`btn-outline btn mr-4 md:mr-6 ${
+                      product.stock === 1 ? "" : "disabled"
+                    }`}
+                    disabled={product.stock !== 1}
+                  >
+                    {product.stock === 1 ? "Add to Cart" : "Out of Stock"}
+                  </button>
+                </div>
               </div>
             </div>
           </div>

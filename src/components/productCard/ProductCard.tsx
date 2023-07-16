@@ -17,7 +17,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
 
   return (
     <>
-      <Link href={`/products/${product.id}`}>
+      <Link href={`/products/${product.id}`} key={product.id}>
         <div className="card w-72 bg-base-100 shadow-xl">
           <figure className="px-10 pt-10">
             <Image

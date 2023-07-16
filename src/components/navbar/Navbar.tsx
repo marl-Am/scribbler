@@ -40,12 +40,12 @@ const Navbar: React.FC = () => {
   return (
     <div className="nav-container">
       <div className="nav-body">
-        <header className="">
-          <nav className="">
+        <header>
+          <nav>
             <section className="bg-grey-800 border-md px-2.5 py-1.5 shadow-md">
               <main className="flex items-center justify-between">
                 <section className="flex items-center space-x-8">
-                  <Link className="" href="/">
+                  <Link href="/">
                     <div className="flex items-center space-x-2">
                       <Image
                         className="rounded object-cover"
@@ -93,7 +93,7 @@ const Navbar: React.FC = () => {
 
                 {/* Search & Cart & User Icon */}
                 <section className="flex items-center space-x-5">
-                  <div className="">
+                  <div>
                     <ul className="flex items-center space-x-4">
                       <li className="hidden lg:block">
                         <div className="relative">
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
                       </li>
 
                       {/* User Icon */}
-                      <li className="">
+                      <li>
                         {user.isSignedIn && (
                           <div className="w-7 rounded-full object-cover">
                             <UserButton afterSignOutUrl="/" />
@@ -239,7 +239,7 @@ const Navbar: React.FC = () => {
               </div>
 
               {/* Mobile Search Bar*/}
-              <section className="" w-full>
+              <section className="w-full">
                 <div className="relative">
                   <div className="absolute left-1.5 top-1.5">
                     <svg
