@@ -6,7 +6,8 @@ export default {
     extend: {},
   },
   daisyui: {
-    themes: ["light"],
+    // lofi is defalt theme, dark will be default dark mode theme
+    themes: ["lofi"],
   },
   plugins: [require("daisyui")],
 } satisfies Config;

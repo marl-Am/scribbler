@@ -43,7 +43,7 @@ const handleSubmit = (event: React.FormEvent) => {
   };
 
   return (
-    <div className="nav-container">
+    <div className="nav-container border-b-4 border-purple-600">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
