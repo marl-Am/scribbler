@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <footer className="footer bg-base-200 p-10 text-base-content">
+      <footer className="footer bg-base-200 text-base-content p-10">
         <div>
           <span className="footer-title">Services</span>
           <a className="link-hover link">Branding</a>
@@ -20,7 +20,7 @@ export default function Footer() {
           <a className="link-hover link">Cookie policy</a>
         </div>
       </footer>
-      <footer className="footer border-t border-base-300 bg-base-200 px-10 py-4 text-base-content">
+      <footer className="footer border-base-300 bg-base-200 text-base-content border-t px-10 py-4">
         <div className="grid-flow-col items-center">
           <svg
             width="24"

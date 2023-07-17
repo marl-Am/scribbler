@@ -1,94 +1,69 @@
-import type { GetServerSideProps } from "next";
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { products } from '~/data/products';
 
-import Link from "next/link";
 import Image from "next/image";
 import Head from "next/head";
+import Product from '~/components/Product';
 
-import { prisma } from "~/server/db";
-
-type SearchResultsProps = {
-  products: Array<{
-    id: number;
-    name: string;
-    price: number;
-    shortDescription: string;
-    imageUrl: string;
-    stock: number;
-  }>;
-};
-
-export default function SearchResults({ products }: SearchResultsProps) {
-  if (products.length === 0) {
-    return (
-      <>
-        <Head>
-          <title>Search Results</title>
-        </Head>
-        <div className="flex min-h-screen flex-col items-center justify-center">
-          <Image
-            className="my-element pt-0"
-            src={"/assets/SearchError.svg"}
-            alt={"Nothing found"}
-            width={100}
-            height={100}
-          />
-          <h1 className="mt-2 text-black">
-            We couldn’t find a match for your search.
-          </h1>
-        </div>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Head>
-        <title>Search Results</title>
-      </Head>
-      <div className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
-        {products.map((product) => (
-          <>
-            <div key={product.id}>
-              <Link href={`/products/${product.id}`}>
-                <div className="card w-72 bg-base-100 shadow-xl">
-                  <figure className="px-10 pt-10">
-                    <Image
-                      className="rounded-xl"
-                      src={product.imageUrl}
-                      alt={product.name}
-                      width={304}
-                      height={180}
-                      loading="lazy"
-                    />
-                  </figure>
-                  <div className="card-body items-center text-center">
-                    <h2 className="card-title">{product.name}</h2>
-                    <p>${product.price}</p>
-                    {/* <div className="card-actions">
-                   <button className="btn-primary btn">View</button>
-                  </div> */}
-                  </div>
-                </div>
-              </Link>
-            </div>
-          </>
-        ))}
-      </div>
-    </>
-  );
+interface Product {
+  id: string;
+  name: string;
+  price: number;
+  emoji: string;
+  currency: string;
+  image: string;
 }
 
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { query } = context.query;
-  const queryStr = query as string;
+export default function SearchResults() {
+  const router = useRouter();
+  const [searchResults, setSearchResults] = useState<Product[]>([]);
 
-  const products = await prisma.product.findMany({
-    where: {
-      name: {
-        contains: queryStr,
-      },
-    },
-  });
+  useEffect(() => {
+    if (router.query.term) {
+      const term = router.query.term.toString();
+      const results = products.filter(product =>
+        product.name.toLowerCase().includes(term.toLowerCase())
+      );
+      setSearchResults(results);
+    }
+  }, [router.query]);
 
-  return { props: { products } };
-};
+  const renderSearchResults = () => {
+    if (searchResults.length) {
+      return (
+        <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
+          {searchResults.map((product) => (
+            <Product product={product} key={product.id} />
+          ))}
+        </div>
+      );
+    } else {
+      return (
+        <>
+          <Head>
+            <title>Item Not Found</title>
+          </Head>
+          <div className="flex min-h-screen flex-col items-center justify-center">
+            <Image
+              className="my-element pt-0"
+              src={"/SearchError.svg"}
+              alt={"Nothing found"}
+              width={100}
+              height={100}
+            />
+            <h1 className="mt-2 text-black">
+              We couldn’t find a match for your search.
+            </h1>
+          </div>
+        </>
+      );
+    }
+  };
+
+  return (
+    <div>
+      {renderSearchResults()}
+    </div>
+  );
+}

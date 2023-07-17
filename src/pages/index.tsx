@@ -1,43 +1,12 @@
-import ProductCard from "~/components/productCard/ProductCard";
-import { prisma } from "~/server/db";
-import NotFound from "./404";
-import Head from "next/head";
+import Product from "~/components/Product";
+import { products } from "~/data/products";
 
-interface HomeProps {
-  data: {
-    id: number;
-    name: string;
-    price: number;
-    shortDescription: string;
-    imageUrl: string;
-    stock: number;
-  }[];
-}
-
-export default function Home({ data }: HomeProps) {
-  if (!data) return NotFound();
-
+export default function Home() {
   return (
-    <>
-      {/* <div className="divider"></div> */}
-      <Head>
-        <title>Home</title>
-      </Head>
-      <main className="mb-8 mt-8 flex flex-wrap justify-start gap-4 p-6">
-        {data &&
-          data.map((product) => (
-            <ProductCard product={product} key={product.id} />
-          ))}
-      </main>
-    </>
+    <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
+      {products.map((product) => (
+        <Product product={product} key={product.id} />
+      ))}
+    </div>
   );
 }
-
-export async function getServerSideProps() {
-  const data = await prisma.product.findMany();
-  return {
-    props: { data },
-  };
-}
-
-// runs on our device
