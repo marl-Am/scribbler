@@ -43,7 +43,7 @@ const handleSubmit = (event: React.FormEvent) => {
   };
 
   return (
-    <div className="nav-container border-b-4 border-purple-600">
+    <div className="nav-container border-b-4 border-base-200">
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
@@ -95,9 +95,9 @@ const handleSubmit = (event: React.FormEvent) => {
         <div className="navbar-center">
           <Link
             href={"/"}
-            className="hover:text-purple-600 ml-2 mr-2 text-xl normal-case"
+            className="hover:text-purple-600 ml-2 mr-2 text-xl"
           >
-            Scribbler
+            SCRIBBLER
           </Link>
         </div>
 
