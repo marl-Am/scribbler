@@ -1,3 +1,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.shipping-box {
+    background: #1C2F3C;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+section #shiping {
+    padding: 50px;
+    background: #001524;
+    color: white;
+}
