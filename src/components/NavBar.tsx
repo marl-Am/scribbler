@@ -198,7 +198,7 @@ const handleSubmit = (event: React.FormEvent) => {
                 <path d="M17 17h-11v-14h-2"></path>
                 <path d="M6 5l14 1l-1 7h-13"></path>
               </svg>
-              <span className="badge badge-primary badge-xs indicator-item absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform">
+              <span className="indicator-item badge badge-primary badge-xs absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform">
                 {cartCount}
               </span>
             </div>
