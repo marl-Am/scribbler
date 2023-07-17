@@ -1,10 +1,10 @@
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
-import { products } from '~/data/products';
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { products } from "~/data/products";
 
 import Image from "next/image";
 import Head from "next/head";
-import Product from '~/components/Product';
+import Product from "~/components/Product";
 
 interface Product {
   id: string;
@@ -22,7 +22,7 @@ export default function SearchResults() {
   useEffect(() => {
     if (router.query.term) {
       const term = router.query.term.toString();
-      const results = products.filter(product =>
+      const results = products.filter((product) =>
         product.name.toLowerCase().includes(term.toLowerCase())
       );
       setSearchResults(results);
@@ -32,11 +32,13 @@ export default function SearchResults() {
   const renderSearchResults = () => {
     if (searchResults.length) {
       return (
-        <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
-          {searchResults.map((product) => (
-            <Product product={product} key={product.id} />
-          ))}
-        </div>
+        <>
+          <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
+            {searchResults.map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
+          </div>
+        </>
       );
     } else {
       return (
@@ -44,6 +46,7 @@ export default function SearchResults() {
           <Head>
             <title>Item Not Found</title>
           </Head>
+          
           <div className="flex min-h-screen flex-col items-center justify-center">
             <Image
               className="my-element pt-0"
@@ -61,9 +64,5 @@ export default function SearchResults() {
     }
   };
 
-  return (
-    <div>
-      {renderSearchResults()}
-    </div>
-  );
+  return <div>{renderSearchResults()}</div>;
 }
