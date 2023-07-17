@@ -82,7 +82,7 @@ const handleSubmit = (event: React.FormEvent) => {
               )}
               {!user.isSignedIn && (
                 <div className="block lg:hidden">
-                  <SignInButton>
+                  <SignInButton mode="modal">
                     <button className="btn text-black hover:bg-purple-600">
                       Sign In
                     </button>
@@ -167,7 +167,7 @@ const handleSubmit = (event: React.FormEvent) => {
           {/* Sign In */}
           {!user.isSignedIn && (
             <div className="hidden lg:block">
-              <SignInButton>
+              <SignInButton mode="modal">
                 <button className="btn text-black hover:bg-white">
                   Sign In
                 </button>
