@@ -83,7 +83,7 @@ const handleSubmit = (event: React.FormEvent) => {
               {!user.isSignedIn && (
                 <div className="block lg:hidden">
                   <SignInButton mode="modal">
-                    <button className="btn text-black hover:bg-purple-600">
+                    <button className="btn-sm btn text-black hover:bg-purple-600 hover:text-white">
                       Sign In
                     </button>
                   </SignInButton>
@@ -95,7 +95,7 @@ const handleSubmit = (event: React.FormEvent) => {
         <div className="navbar-center">
           <Link
             href={"/"}
-            className="btn-ghost btn ml-2 mr-2 text-xl normal-case"
+            className="hover:text-purple-600 ml-2 mr-2 text-xl normal-case"
           >
             Scribbler
           </Link>
@@ -168,7 +168,7 @@ const handleSubmit = (event: React.FormEvent) => {
           {!user.isSignedIn && (
             <div className="hidden lg:block">
               <SignInButton mode="modal">
-                <button className="btn text-black hover:bg-white">
+                <button className="btn-sm btn text-black hover:bg-purple-600 hover:text-white">
                   Sign In
                 </button>
               </SignInButton>
