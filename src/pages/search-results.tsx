@@ -46,7 +46,6 @@ export default function SearchResults() {
           <Head>
             <title>Item Not Found</title>
           </Head>
-          
           <div className="flex min-h-screen flex-col items-center justify-center">
             <Image
               className="my-element pt-0"

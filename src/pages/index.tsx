@@ -5,11 +5,11 @@ export default function Home() {
   return (
     <>
       <div className="mx-auto ml-2 mr-2 mt-2 justify-center">
-        <section id="shipping" className="py-8 text-center">
+        <section id="shipping" className="bg-black py-4 text-center">
           <div className="container">
             <div className="-mx-4 flex flex-wrap">
               <div className="w-full px-4 md:w-1/4">
-                <div className="shipping-box mb-4 rounded bg-blue-900 p-4">
+                <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
                   {/* <div className="box-icon inline-block">
                     <i className="fas fa-truck text-3xl text-green-600"></i>
                   </div> */}
@@ -23,7 +23,7 @@ export default function Home() {
               </div>
 
               <div className="w-full px-4 md:w-1/4">
-                <div className="shipping-box mb-4 rounded bg-blue-900 p-4">
+                <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
                   {/* <div className="box-icon inline-block">
                     <i className="far fa-address-book text-3xl text-green-600"></i>
                   </div> */}
@@ -36,7 +36,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="w-full px-4 md:w-1/4">
-                <div className="shipping-box mb-4 rounded bg-blue-900 p-4">
+                <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
                   {/* <div className="box-icon inline-block">
                     <i className="far fa-money-bill-alt text-3xl text-green-600"></i>
                   </div> */}
@@ -49,7 +49,7 @@ export default function Home() {
                 </div>
               </div>
               <div className="w-full px-4 md:w-1/4">
-                <div className="shipping-box mb-4 rounded bg-blue-900 p-4">
+                <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
                   {/* <div className="box-icon inline-block">
                     <i className="fas fa-recycle text-3xl text-green-600"></i>
                   </div> */}
