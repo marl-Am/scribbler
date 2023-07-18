@@ -1,9 +1,11 @@
+// import Carousel from "~/components/Carousel";
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 
 export default function Home() {
   return (
     <>
+    {/* <Carousel/> */}
       <div className="mx-auto ml-2 mr-2 mt-2 justify-center">
         <section id="shipping" className="bg-black py-4 text-center">
           <div className="container">
