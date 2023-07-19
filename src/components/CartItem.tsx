@@ -28,7 +28,7 @@ export default function CartItem({ item }: ItemProps) {
       <div className="ml-2 mr-2">
         <button
           onClick={() => removeItemFromCart()}
-          className="h-10 w-10 rounded-full p-1 transition-colors duration-200 hover:bg-emerald-50" // use w-10 h-10 for width and height
+          className="h-10 w-10 rounded-full p-1 transition-colors duration-200 hover:bg-emerald-50"
         >
           <Image alt="delete icon" src="./trash.svg" width={25} height={25} />
         </button>

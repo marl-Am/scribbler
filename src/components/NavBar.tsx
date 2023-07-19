@@ -21,20 +21,15 @@ const NavBar: React.FC = () => {
     setSearchTerm(event.target.value);
   };
 
-const handleSubmit = (event: React.FormEvent) => {
-  event.preventDefault();
-  if (searchTerm) {
-    router
-      .push(`/search-results?term=${searchTerm}`)
-      .then(() => dialogRef.current?.close())
-      .catch((err) => console.log(err)); // Handle any errors here.
-  }
-};
-
-
-
-
-
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault();
+    if (searchTerm) {
+      router
+        .push(`/search-results?term=${searchTerm}`)
+        .then(() => dialogRef.current?.close())
+        .catch((err) => console.log(err)); // Handle any errors here.
+    }
+  };
 
   const closeDialog = (event: React.MouseEvent) => {
     event.stopPropagation(); // This will stop the event from bubbling up and prevent any parent handler from being executed.
@@ -43,8 +38,8 @@ const handleSubmit = (event: React.FormEvent) => {
   };
 
   return (
-    <div className="nav-container border-b-4 border-base-200">
-      <div className="navbar bg-base-100">
+    <div className="nav-container">
+      <div className="navbar h-14 bg-gradient-to-r from-purple-500 to-pink-500">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle btn">
@@ -83,7 +78,7 @@ const handleSubmit = (event: React.FormEvent) => {
               {!user.isSignedIn && (
                 <div className="block lg:hidden">
                   <SignInButton mode="modal">
-                    <button className="btn-sm btn text-black hover:bg-purple-600 hover:text-white">
+                    <button className="btn-sm btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
                       Sign In
                     </button>
                   </SignInButton>
@@ -92,12 +87,12 @@ const handleSubmit = (event: React.FormEvent) => {
             </ul>
           </div>
         </div>
-        <div className="navbar-center">
+        <div className="navbar-center text-3xl font-bold">
           <Link
             href={"/"}
-            className="hover:text-purple-600 ml-2 mr-2 text-xl"
+            className="ml-2 mr-2 bg-gradient-to-l bg-clip-text hover:bg-gradient-to-r hover:underline"
           >
-            SCRIBBLER
+            SCRIBBLER (Site Is Unfinished)
           </Link>
         </div>
 
@@ -168,7 +163,7 @@ const handleSubmit = (event: React.FormEvent) => {
           {!user.isSignedIn && (
             <div className="hidden lg:block">
               <SignInButton mode="modal">
-                <button className="btn-sm btn text-black hover:bg-purple-600 hover:text-white">
+                <button className="btn-sm btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
                   Sign In
                 </button>
               </SignInButton>

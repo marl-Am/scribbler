@@ -1,14 +1,25 @@
 // import Carousel from "~/components/Carousel";
 import Product from "~/components/Product";
 import { products } from "~/data/products";
+import Head from "next/head";
+import Hero from "~/components/Hero";
 
 export default function Home() {
   return (
     <>
-    {/* <Carousel/> */}
+      <Head>
+        <title>Home</title>
+      </Head>
+      {/* <div className="flex items-center justify-center">
+        <Hero/>
+      </div> */}
+      <Hero />
       <div className="mx-auto ml-2 mr-2 mt-2 justify-center">
         <section id="shipping" className="bg-black py-4 text-center">
           <div className="container">
+            {/* <div className="flex items-center justify-center">
+              <Carousel />
+            </div> */}
             <div className="-mx-4 flex flex-wrap">
               <div className="w-full px-4 md:w-1/4">
                 <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
@@ -67,10 +78,69 @@ export default function Home() {
           </div>
         </section>
       </div>
+      <article className="flex justify-center">
+        <ul className="mb-2 ml-2 mr-2 mt-4 flex flex-wrap gap-4">
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            All
+          </li>
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            Books
+          </li>
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            Clothes
+          </li>
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            Games
+          </li>
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            Sort Price -
+          </li>
+          <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            Sort Price +
+          </li>
+        </ul>
+      </article>
       <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
+        {/* <article className="">
+          <ul>
+            <li>All</li>
+            <li>Books</li>
+            <li>Clothes</li>
+            <li>Games</li>
+          </ul>
+        </article> */}
         {products.map((product) => (
           <Product product={product} key={product.id} />
         ))}
+      </div>
+      <div className="flex justify-center">
+        <div className="join gap-2 mb-2">
+          <input
+            className="btn-square join-item btn"
+            type="radio"
+            name="options"
+            aria-label="1"
+            checked
+          />
+          <input
+            className="btn-square join-item btn"
+            type="radio"
+            name="options"
+            aria-label="2"
+          />
+          <input
+            className="btn-square join-item btn"
+            type="radio"
+            name="options"
+            aria-label="3"
+          />
+          <input
+            className="btn-square join-item btn"
+            type="radio"
+            name="options"
+            aria-label="4"
+          />
+        </div>
       </div>
     </>
   );

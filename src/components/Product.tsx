@@ -45,7 +45,7 @@ export default function Product({ product }: ProductProps) {
         className="text-4xl"
         alt={name}
         width={205}
-        height={180}
+        height={170}
       ></Image>
       <div className="text-lg">{name}</div>
       <div className="mt-auto text-2xl font-semibold">
@@ -59,5 +59,6 @@ export default function Product({ product }: ProductProps) {
         Add to cart
       </button>
     </article>
+
   );
 }

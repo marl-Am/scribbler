@@ -11,25 +11,26 @@ import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "use-shopping-cart";
 
 import NavBar from "~/components/NavBar";
+// import Head from "next/head";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
+      {/* <Head>
+        <title>Scribbler</title>
+        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+      </Head> */}
       <div className="flex min-h-screen flex-col">
-
         <CartProvider
           mode="payment"
           cartMode="client-only"
           // Connects to our Stripe account (stored in an .env.local file)
           stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-
           // Redirected here after successful payments (url stored in .env.local file)
           successUrl={`${process.env.NEXT_PUBLIC_URL as string}/success`}
-
           // Redirected here when you click back on Stripe Checkout (url stored in .env.local file)
           cancelUrl={`${process.env.NEXT_PUBLIC_URL as string}/?success=false`}
           currency="USD"
-
           // Only customers from US will be able to purchase
           // Having this setting means that we will capture shipping address
           allowedCountries={["US"]}
