@@ -15,11 +15,6 @@ section #shiping {
     color: white;
 }
 
-.bg-purple {
-    --tw-bg-opacity: 1;
-    background-color: rgb(147 51 234 / var(--tw-bg-opacity));
-}
-
 .get-started {
     --tw-border-opacity: 1;
     border-color: hsl(var(--p) / var(--tw-border-opacity));
@@ -79,3 +74,13 @@ section #shiping {
     color: hsl(var(--bc) / var(--tw-text-opacity));
     outline-color: hsl(var(--bc) / 1);
 }
+
+/* .center-this {
+
+} */
+/* 
+@media (max-width: 600px) {
+    footer {
+            min-height: 5%;
+        }
+} */

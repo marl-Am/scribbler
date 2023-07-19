@@ -38,7 +38,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           shouldPersist={true}
         >
           <NavBar />
-          <main className="">
+          <main className="mb-2 px-4 sm:ml-4 sm:mr-4">
             <Component {...pageProps} />
           </main>
           <ToastContainer

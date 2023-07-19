@@ -39,7 +39,7 @@ const NavBar: React.FC = () => {
 
   return (
     <div className="nav-container">
-      <div className="navbar h-14 bg-gradient-to-r from-purple-500 to-pink-500">
+      <div className="navbar">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn-ghost btn-circle btn">
@@ -87,10 +87,10 @@ const NavBar: React.FC = () => {
             </ul>
           </div>
         </div>
-        <div className="navbar-center text-3xl font-bold">
+        <div className="navbar-center text-2xl font-bold">
           <Link
             href={"/"}
-            className="ml-2 mr-2 bg-gradient-to-l bg-clip-text hover:bg-gradient-to-r hover:underline"
+            className="ml-2 mr-2 hover:underline"
           >
             SCRIBBLER (Site Is Unfinished)
           </Link>
