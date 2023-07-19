@@ -33,6 +33,7 @@ export default function SearchResults() {
     if (searchResults.length) {
       return (
         <>
+        <h2 className="text-center font-bold">Search Results</h2>
           <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
             {searchResults.map((product) => (
               <Product product={product} key={product.id} />

@@ -1,4 +1,4 @@
-// import Carousel from "~/components/Carousel";
+
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 import Head from "next/head";

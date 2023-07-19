@@ -35,7 +35,7 @@ export default function Product({ product }: ProductProps) {
   const addToCart = () => {
     addItem(product, { count: quantity });
     setQuantity(1);
-    toast(`${product.name}` + ", Added To Cart");
+    toast("Added To Cart: " + `${product.name}`);
   };
 
   return (

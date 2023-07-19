@@ -40,75 +40,94 @@ const NavBar: React.FC = () => {
   return (
     <div className="nav-container">
       <div className="navbar">
+        {/* Dropdown */}
         <div className="navbar-start">
           <div className="dropdown">
-            <label tabIndex={0} className="btn-ghost btn-circle btn">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h7"
-                />
+            <label tabIndex={0} className="btn-ghost btn-square btn">
+              <svg viewBox="0 0 100 80" width="35" height="35">
+                <rect width="100" height="20"></rect>
+                <rect y="30" width="100" height="20"></rect>
+                <rect y="60" width="100" height="20"></rect>
               </svg>
             </label>
             <ul
               tabIndex={0}
               className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 gap-3 bg-base-100 p-2 shadow"
             >
-              <Link href="/" className="hover:text-purple-600">
+              <Link
+                href="/"
+                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+              >
                 Homepage
               </Link>
               {user.isSignedIn && (
-                <Link href="/orders" className="hover:text-purple-600">
+                <Link
+                  href="/orders"
+                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                >
                   Orders
                 </Link>
               )}
+
               {user.isSignedIn && (
-                <Link href="/inbox" className="hover:text-purple-600">
+                <Link
+                  href="/inbox"
+                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                >
                   Inbox
                 </Link>
               )}
+
               {!user.isSignedIn && (
-                <div className="block lg:hidden">
+                <div className="">
                   <SignInButton mode="modal">
-                    <button className="btn-sm btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
+                    <button className="btn-sm btn block w-full bg-black text-white hover:border-black hover:bg-white hover:text-black lg:hidden">
                       Sign In
                     </button>
                   </SignInButton>
                 </div>
               )}
+
+              {/* Search */}
+              <button
+                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                onClick={() => dialogRef.current?.showModal()}
+              >
+                <span className="flex">Search</span>
+              </button>
             </ul>
           </div>
         </div>
+
         <div className="navbar-center text-2xl font-bold">
-          <Link
-            href={"/"}
-            className="ml-2 mr-2 hover:underline"
-          >
-            SCRIBBLER (Site Is Unfinished)
+          <Link href={"/"} className="ml-2 mr-2 hover:underline">
+            Scribbler
           </Link>
         </div>
 
-        {/* Cart */}
+        {/* Search */}
         <div className="navbar-end gap-2">
-          {/* Search */}
+          {/* Sign In */}
+          {!user.isSignedIn && (
+            <div className="hidden lg:block">
+              <SignInButton mode="modal">
+                <button className="btn-md btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
+                  Sign In
+                </button>
+              </SignInButton>
+            </div>
+          )}
+
           <button
-            className="btn-ghost btn-circle btn"
+            className="btn hidden bg-black hover:bg-white lg:block"
             onClick={() => dialogRef.current?.showModal()}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5"
+              className="my-svg h-5 w-5"
               fill="none"
               viewBox="0 0 24 24"
-              stroke="black"
+              stroke="white"
             >
               <path
                 strokeLinecap="round"
@@ -118,6 +137,8 @@ const NavBar: React.FC = () => {
               />
             </svg>
           </button>
+
+          {/* Search Modal */}
           <div>
             <div>
               <dialog ref={dialogRef} id="my_modal_3" className="modal">
@@ -159,21 +180,9 @@ const NavBar: React.FC = () => {
             </div>
           </div>
 
-          {/* Sign In */}
-          {!user.isSignedIn && (
-            <div className="hidden lg:block">
-              <SignInButton mode="modal">
-                <button className="btn-sm btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
-                  Sign In
-                </button>
-              </SignInButton>
-            </div>
-          )}
-          {/*  */}
-
           {/* Cart */}
           <button
-            className="btn-ghost btn-circle btn"
+            className="btn bg-black hover:bg-white"
             onClick={() => handleCartClick()}
           >
             <div className="relative">
@@ -182,7 +191,7 @@ const NavBar: React.FC = () => {
                 className="icon icon-tabler icon-tabler-shopping-cart h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
+                stroke="white"
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth="2"
@@ -193,7 +202,7 @@ const NavBar: React.FC = () => {
                 <path d="M17 17h-11v-14h-2"></path>
                 <path d="M6 5l14 1l-1 7h-13"></path>
               </svg>
-              <span className="indicator-item badge badge-primary badge-xs absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform">
+              <span className="indicator-item badge badge-primary badge-xs absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform bg-white text-black hover:bg-black hover:text-white">
                 {cartCount}
               </span>
             </div>
