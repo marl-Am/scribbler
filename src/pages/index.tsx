@@ -1,19 +1,22 @@
-
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 import Head from "next/head";
 import Hero from "~/components/Hero";
+import { useState } from "react";
 
 export default function Home() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsToShowPerPage = 8;
+  function handlePageChange(event) {
+    setCurrentPage(Number(event.target.value));
+  }
+
+
   return (
     <>
       <Head>
         <title>Home</title>
       </Head>
-      {/* <div className="flex items-center justify-center">
-        <Hero/>
-      </div> */}
-      {/* <Hero /> */}
       <div className="">
         <div className="center-this mx-auto mt-2 justify-center">
           <Hero />
@@ -32,40 +35,28 @@ export default function Home() {
 
                 <div className="w-full px-4 md:w-1/4">
                   <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
-                    {/* <div className="box-icon inline-block">
-                    <i className="far fa-address-book text-3xl text-green-600"></i>
-                  </div> */}
                     <div className="box-title ml-4 inline-grid">
                       <h3 className="text-md font-bold text-white">
                         Used&nbsp;Items
                       </h3>
-                      {/* <p className="text-white">100% guarantee</p> */}
                     </div>
                   </div>
                 </div>
                 <div className="w-full px-4 md:w-1/4">
                   <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
-                    {/* <div className="box-icon inline-block">
-                    <i className="far fa-money-bill-alt text-3xl text-green-600"></i>
-                  </div> */}
                     <div className="box-title ml-4 inline-grid">
                       <h3 className="text-md font-bold text-white">
                         Huge&nbsp;Savings
                       </h3>
-                      {/* <p className="text-white">at lowest price</p> */}
                     </div>
                   </div>
                 </div>
                 <div className="w-full px-4 md:w-1/4">
                   <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
-                    {/* <div className="box-icon inline-block">
-                    <i className="fas fa-recycle text-3xl text-green-600"></i>
-                  </div> */}
                     <div className="box-title ml-4 inline-grid">
                       <h3 className="text-md font-bold text-white">
                         No&nbsp;Returns
                       </h3>
-                      {/* <p className="text-white">no questions asked</p> */}
                     </div>
                   </div>
                 </div>
@@ -98,40 +89,64 @@ export default function Home() {
             </li>
           </ul>
         </article>
+
+        {/* Products */}
         <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
-          {products.map((product) => (
+          {/* {products.map((product) => (
             <Product product={product} key={product.id} />
-          ))}
+          ))} */}
+          {products
+            .slice(
+              (currentPage - 1) * productsToShowPerPage,
+              currentPage * productsToShowPerPage
+            )
+            .map((product) => (
+              <Product product={product} key={product.id} />
+            ))}
         </div>
+
+        {/* Pagination */}
         <div className="flex justify-center">
           <div className="join mb-2 gap-2">
             <input
               className="btn-square join-item btn"
               type="radio"
               name="options"
+              value="1"
               aria-label="1"
-              checked
+              checked={currentPage === 1}
+              onChange={handlePageChange}
             />
             <input
               className="btn-square join-item btn"
               type="radio"
               name="options"
+              value="2"
               aria-label="2"
+              checked={currentPage === 2}
+              onChange={handlePageChange}
             />
             <input
               className="btn-square join-item btn"
               type="radio"
               name="options"
+              value="3"
               aria-label="3"
+              checked={currentPage === 3}
+              onChange={handlePageChange}
             />
             <input
               className="btn-square join-item btn"
               type="radio"
               name="options"
+              value="4"
               aria-label="4"
+              checked={currentPage === 4}
+              onChange={handlePageChange}
             />
           </div>
         </div>
+        {/* Pagination */}
       </div>
     </>
   );
