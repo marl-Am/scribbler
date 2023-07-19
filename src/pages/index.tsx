@@ -127,7 +127,7 @@ export default function Home() {
               checked={currentPage === 2}
               onChange={handlePageChange}
             />
-            <input
+            {/* <input
               className="btn-square join-item btn"
               type="radio"
               name="options"
@@ -144,7 +144,7 @@ export default function Home() {
               aria-label="4"
               checked={currentPage === 4}
               onChange={handlePageChange}
-            />
+            /> */}
           </div>
         </div>
         {/* Pagination */}
