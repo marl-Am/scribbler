@@ -1,16 +1,17 @@
+import React, { ChangeEvent, useState } from "react";
+
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 import Head from "next/head";
 import Hero from "~/components/Hero";
-import { useState } from "react";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const productsToShowPerPage = 8;
-  function handlePageChange(event) {
+
+  function handlePageChange(event: ChangeEvent<HTMLInputElement>) {
     setCurrentPage(Number(event.target.value));
   }
-
 
   return (
     <>
