@@ -16,6 +16,7 @@ export default function Home() {
       {/* <Hero /> */}
       <div className="">
         <div className="center-this mx-auto mt-2 justify-center">
+          <Hero />
           <section id="shipping" className="bg-black py-4 text-center">
             <div className="container">
               <div className="-mx-4 flex flex-wrap">
@@ -82,6 +83,9 @@ export default function Home() {
             </li>
             <li className="get-started cursor-pointer hover:bg-black hover:text-white">
               Clothes
+            </li>
+            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+              Electronics
             </li>
             <li className="get-started cursor-pointer hover:bg-black hover:text-white">
               Games
