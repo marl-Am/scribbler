@@ -7,6 +7,7 @@ import Hero from "~/components/Hero";
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
+  const [categoryFilter, setCategoryFilter] = useState("All");
   const productsToShowPerPage = 8;
 
   function handlePageChange(event: ChangeEvent<HTMLInputElement>) {
@@ -67,20 +68,35 @@ export default function Home() {
         </div>
         <article className="flex justify-center">
           <ul className="mb-2 ml-2 mr-2 mt-4 flex flex-wrap gap-4">
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            <li
+              onClick={() => setCategoryFilter("All")}
+              className="get-started cursor-pointer hover:bg-black hover:text-white"
+            >
               All
             </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            <li
+              onClick={() => setCategoryFilter("Books")}
+              className="get-started cursor-pointer hover:bg-black hover:text-white"
+            >
               Books
             </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
-              Clothes
-            </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            <li
+              onClick={() => setCategoryFilter("Electronics")}
+              className="get-started cursor-pointer hover:bg-black hover:text-white"
+            >
               Electronics
             </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
+            <li
+              onClick={() => setCategoryFilter("Games")}
+              className="get-started cursor-pointer hover:bg-black hover:text-white"
+            >
               Games
+            </li>
+            <li
+              onClick={() => setCategoryFilter("Others")}
+              className="get-started cursor-pointer hover:bg-black hover:text-white"
+            >
+              Others
             </li>
             <li className="get-started cursor-pointer hover:bg-black hover:text-white">
               Sort Price -
@@ -93,10 +109,12 @@ export default function Home() {
 
         {/* Products */}
         <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
-          {/* {products.map((product) => (
-            <Product product={product} key={product.id} />
-          ))} */}
+          {/* Show products 0 to 8 */}
           {products
+            .filter(
+              (product) =>
+                categoryFilter === "All" || product.category === categoryFilter
+            )
             .slice(
               (currentPage - 1) * productsToShowPerPage,
               currentPage * productsToShowPerPage

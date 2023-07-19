@@ -9,6 +9,7 @@ export const products = [
     emoji: "👛",
     currency: "USD",
     image: "/Zoppen.jpg",
+    category: "Others",
   },
   {
     id: "price_1NViGKBAPlcBoDEX2gAkly4C",
@@ -17,6 +18,7 @@ export const products = [
     emoji: "👛",
     currency: "USD",
     image: "/calc.jpg",
+    category: "Electronics",
   },
   {
     id: "price_1NViWWBAPlcBoDEXgRBEiADe",
@@ -25,6 +27,7 @@ export const products = [
     emoji: "👛",
     currency: "USD",
     image: "/keyboard.jpg",
+    category: "Electronics",
   },
   {
     id: "price_1NVhvABAPlcBoDEX533SDjKl",
@@ -33,6 +36,7 @@ export const products = [
     emoji: "🎮",
     currency: "USD",
     image: "/madden19.jpg",
+    category: "Games",
   },
   {
     id: "price_1NUKwBBAPlcBoDEXdvLOlnIz",
@@ -41,6 +45,7 @@ export const products = [
     emoji: "🎮",
     currency: "USD",
     image: "/HorizonZeroDawn.jpg",
+    category: "Games",
   },
   {
     id: "price_1NVhzcBAPlcBoDEXPCOZuo0q",
@@ -49,15 +54,16 @@ export const products = [
     emoji: "🎮",
     currency: "USD",
     image: "/nba.jpg",
+    category: "Games",
   },
   {
     id: "price_1NUKeyBAPlcBoDEXHylTqXY4",
     name: "Effective Java, 3rd Edition",
-    /* Prices are in smallest currency unit, 105 pence = £1.05 */
     price: 3500, //$35.00
     emoji: "📚",
     currency: "USD",
     image: "/EffectiveJava.jpg",
+    category: "Books",
   },
   {
     id: "price_1NVi5UBAPlcBoDEX9dh95ixd",
@@ -66,6 +72,7 @@ export const products = [
     emoji: "📚",
     currency: "USD",
     image: "/startingOut.jpg",
+    category: "Books",
   },
   {
     id: "price_1NViQFBAPlcBoDEXDjFppRam",
@@ -74,5 +81,6 @@ export const products = [
     emoji: "📚",
     currency: "USD",
     image: "/assemble.jpg",
+    category: "Books",
   },
 ];
