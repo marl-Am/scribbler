@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
       <div className="navbar">
         {/* Dropdown */}
         <div className="navbar-start">
-          <div className="dropdown">
+          <div className="dropdown gap-2">
             <label tabIndex={0} className="btn-ghost btn-square btn">
               <svg viewBox="0 0 100 80" width="35" height="35">
                 <rect width="100" height="20"></rect>
@@ -52,7 +52,7 @@ const NavBar: React.FC = () => {
             </label>
             <ul
               tabIndex={0}
-              className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 gap-3 bg-base-100 p-2 shadow"
+              className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
             >
               <Link
                 href="/"
@@ -99,7 +99,7 @@ const NavBar: React.FC = () => {
                 className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
                 onClick={() => dialogRef.current?.showModal()}
               >
-                <span className="flex">Search</span>
+                Search
               </button>
             </ul>
           </div>
