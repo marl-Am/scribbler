@@ -11,7 +11,6 @@ import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "use-shopping-cart";
 
 import NavBar from "~/components/NavBar";
-// import Head from "next/head";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (

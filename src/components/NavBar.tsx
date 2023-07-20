@@ -60,6 +60,12 @@ const NavBar: React.FC = () => {
               >
                 Homepage
               </Link>
+              <Link
+                href="/view_order"
+                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+              >
+                View Order
+              </Link>
               {user.isSignedIn && (
                 <Link
                   href="/orders"
@@ -98,6 +104,7 @@ const NavBar: React.FC = () => {
             </ul>
           </div>
         </div>
+        {/* Drop down ends */}
 
         <div className="navbar-center text-2xl font-bold">
           <Link href={"/"} className="ml-2 mr-2 hover:underline">
