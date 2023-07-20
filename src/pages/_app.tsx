@@ -15,7 +15,7 @@ import NavBar from "~/components/NavBar";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen flex-col overflow-hidden">
         <CartProvider
           mode="payment"
           cartMode="client-only"
