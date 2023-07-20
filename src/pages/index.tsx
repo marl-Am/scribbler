@@ -8,11 +8,17 @@ import Hero from "~/components/Hero";
 export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
+  const [sortType, setSortType] = useState("Low to High");
+
   const productsToShowPerPage = 8;
 
   function handlePageChange(event: ChangeEvent<HTMLInputElement>) {
     setCurrentPage(Number(event.target.value));
   }
+
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortType(event.target.value);
+  };
 
   return (
     <>
@@ -98,11 +104,15 @@ export default function Home() {
             >
               Others
             </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
-              Sort Price -
-            </li>
-            <li className="get-started cursor-pointer hover:bg-black hover:text-white">
-              Sort Price +
+            <li>
+              <select
+                className="get-started cursor-pointer hover:bg-black hover:text-white"
+                onChange={handleSortChange}
+                value={sortType}
+              >
+                <option value="Low to High">Price: Low to High</option>
+                <option value="High to Low">Price: High to Low</option>
+              </select>
             </li>
           </ul>
         </article>
@@ -114,6 +124,9 @@ export default function Home() {
             .filter(
               (product) =>
                 categoryFilter === "All" || product.category === categoryFilter
+            )
+            .sort((a, b) =>
+              sortType === "Low to High" ? a.price - b.price : b.price - a.price
             )
             .slice(
               (currentPage - 1) * productsToShowPerPage,
@@ -145,24 +158,6 @@ export default function Home() {
               checked={currentPage === 2}
               onChange={handlePageChange}
             />
-            {/* <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              value="3"
-              aria-label="3"
-              checked={currentPage === 3}
-              onChange={handlePageChange}
-            />
-            <input
-              className="btn-square join-item btn"
-              type="radio"
-              name="options"
-              value="4"
-              aria-label="4"
-              checked={currentPage === 4}
-              onChange={handlePageChange}
-            /> */}
           </div>
         </div>
         {/* Pagination */}

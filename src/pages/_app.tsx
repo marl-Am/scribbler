@@ -16,10 +16,6 @@ import NavBar from "~/components/NavBar";
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
     <ClerkProvider {...pageProps}>
-      {/* <Head>
-        <title>Scribbler</title>
-        <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-      </Head> */}
       <div className="flex min-h-screen flex-col">
         <CartProvider
           mode="payment"
