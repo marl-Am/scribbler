@@ -25,7 +25,7 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="">
+      <div className="home">
         <div className="center-this mx-auto mt-2 justify-center">
           <Hero />
           <section id="shipping" className="bg-black py-4 text-center">

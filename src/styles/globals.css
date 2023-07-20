@@ -124,12 +124,13 @@ section #shiping {
 /* .center-this {
 
 } */
-/* 
+
 @media (max-width: 600px) {
-    footer {
-            min-height: 5%;
-        }
-} */
+    .home {
+        margin-left: 4px;
+        margin-right: 4px;
+    }
+}
 
 button:hover svg {
     stroke: black;
