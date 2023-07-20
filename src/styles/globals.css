@@ -127,12 +127,12 @@ section #shiping {
 
 @media (max-width: 600px) {
     .home {
-        width: 80%;
+        width: 100%;
     }
 
     .center-this {
         margin: auto;
-        width: 50%;
+        width: 100%;
     }
 }
 
