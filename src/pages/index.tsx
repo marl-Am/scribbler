@@ -28,7 +28,10 @@ export default function Home() {
       <div className="home">
         <div className="center-this mx-auto mt-2 justify-center">
           <Hero />
-          <section id="shipping" className="bg-black py-4 text-center">
+          <section
+            id="shipping"
+            className="justify-center bg-black text-center"
+          >
             <div className="container">
               <div className="-mx-4 flex flex-wrap">
                 <div className="w-full px-4 md:w-1/4">
