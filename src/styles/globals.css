@@ -127,8 +127,9 @@ section #shiping {
 
 @media (max-width: 600px) {
     .home {
-        margin-left: 4px;
-        margin-right: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
