@@ -26,14 +26,14 @@ export default function Home() {
         <title>Home</title>
       </Head>
       <div className="home">
-        <div className="center-this mx-auto mt-2 justify-center">
+        <div className="center-this mx-auto mt-2 justify-center bg-black">
           <Hero />
           <section
             id="shipping"
             className="justify-center bg-black text-center"
           >
             <div className="container">
-              <div className="-mx-4 flex flex-wrap">
+              <div className="m-4 -mx-4 flex flex-wrap">
                 <div className="w-full px-4 md:w-1/4">
                   <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-4">
                     <div className="box-title ml-4 inline-grid">
