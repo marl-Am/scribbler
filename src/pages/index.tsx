@@ -110,8 +110,12 @@ export default function Home() {
                 onChange={handleSortChange}
                 value={sortType}
               >
-                <option value="Low to High">Price: Low to High</option>
-                <option value="High to Low">Price: High to Low</option>
+                <option value="Low to High" className="cursor-pointer">
+                  Price: Low to High
+                </option>
+                <option value="High to Low" className="cursor-pointer">
+                  Price: High to Low
+                </option>
               </select>
             </li>
           </ul>
