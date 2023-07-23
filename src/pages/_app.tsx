@@ -21,9 +21,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           cartMode="client-only"
           // Connects to our Stripe account (stored in an .env.local file)
           stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-          // Redirected here after successful payments (url stored in .env.local file)
-          successUrl={`${process.env.NEXT_PUBLIC_URL as string}/success`}
-          // Redirected here when you click back on Stripe Checkout (url stored in .env.local file)
+          successUrl={`${process.env.NEXT_PUBLIC_URL as string}/?success=true`}
           cancelUrl={`${process.env.NEXT_PUBLIC_URL as string}/?success=false`}
           currency="USD"
           // Only customers from US will be able to purchase
@@ -46,7 +44,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme="dark"
+            theme="colored"
           />
         </CartProvider>
         <Footer />

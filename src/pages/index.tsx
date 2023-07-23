@@ -1,11 +1,17 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState, useEffect } from "react";
+import type { ChangeEvent } from "react";
 
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 import Head from "next/head";
 import Hero from "~/components/Hero";
+import { useRouter } from "next/router";
+import { toast } from "react-toastify";
+import { useShoppingCart } from "use-shopping-cart";
 
 export default function Home() {
+  const router = useRouter();
+  const { clearCart } = useShoppingCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortType, setSortType] = useState("Low to High");
@@ -19,6 +25,39 @@ export default function Home() {
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSortType(event.target.value);
   };
+
+  const [toastShown, setToastShown] = useState(false);
+
+  useEffect(() => {
+    const isSuccess = router.query.success;
+    if (!toastShown && isSuccess === "true") {
+      clearCart();
+      setToastShown(true);
+      toast.success(
+        "Your payment was successful. Thank you for your purchase.",
+        {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
+      );
+    } else if (!toastShown && isSuccess === "false") {
+      setToastShown(true);
+      toast.warn("Your payment failed. Please try again.", {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
+  }, [router.query.success, clearCart, toastShown]);
 
   return (
     <>
