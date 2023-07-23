@@ -26,8 +26,6 @@ export default function Home() {
     setSortType(event.target.value);
   };
 
-  const successUrl = "/?success=true";
-  const cancelUrl = "/?success=false";
 
   useEffect(() => {
     // Extract success query from router
@@ -42,7 +40,7 @@ export default function Home() {
         toast.success(
           "Your payment was successful. Thank you for your purchase.",
           {
-            position: "top-center",
+            position: "bottom-right",
             autoClose: 2000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -56,7 +54,7 @@ export default function Home() {
       else if (successQuery === "false") {
         setToastShown(true);
         toast.error("Your payment failed. Please try again.", {
-          position: "top-center",
+          position: "bottom-right",
           autoClose: 2000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -71,54 +69,6 @@ export default function Home() {
       setToastShown(false);
     }
   }, [router.query.success]);
-
-
-  // useEffect(() => {
-  //   console.log("UseEffect Pathname: " + router.pathname);
-  //   // Ensure we are not on home page
-  //   if (router.pathname === "/") {
-  //     return;
-  //   }
-
-  //   if (router.pathname !== "/") {
-  //     console.log("Not / Pathname: " + router.pathname);
-  //     const successQuery = router.query.success;
-  //     console.log("Success Query: " + successQuery);
-
-  //     if (!toastShown && router.pathname === successUrl) {
-  //       console.log("Pathname: " + router.pathname);
-  //       console.log("Success URL: " + successUrl);
-
-  //       clearCart();
-  //       setToastShown(true);
-  //       toast.success(
-  //         "Your payment was successful. Thank you for your purchase.",
-  //         {
-  //           position: "top-center",
-  //           autoClose: 2000,
-  //           hideProgressBar: false,
-  //           closeOnClick: true,
-  //           draggable: true,
-  //           progress: undefined,
-  //           theme: "colored",
-  //         }
-  //       );
-  //     } else if (!toastShown && router.pathname === cancelUrl) {
-  //       console.log("Pathname: " + router.pathname);
-  //       console.log("Cancel URL: " + cancelUrl);
-  //       setToastShown(true);
-  //       toast.warn("Your payment failed. Please try again.", {
-  //         position: "top-center",
-  //         autoClose: 2000,
-  //         hideProgressBar: false,
-  //         closeOnClick: true,
-  //         draggable: true,
-  //         progress: undefined,
-  //         theme: "colored",
-  //       });
-  //     }
-  //   }
-  // }, [router.pathname, router.query.success]);
 
   return (
     <>
