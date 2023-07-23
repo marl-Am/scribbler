@@ -15,9 +15,13 @@ export default function CartItem({ item }: ItemProps) {
   const { name, price } = item;
   const { removeItem } = useShoppingCart();
 
-  const removeItemFromCart = () => {
-    removeItem(item.id); // item.id is now string
+  const removeItemFromCart = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    removeItem(item.id);
   };
+
 
   return (
     <div className="mb-3 flex items-center gap-4">
@@ -27,7 +31,7 @@ export default function CartItem({ item }: ItemProps) {
       </div>
       <div className="ml-2 mr-2">
         <button
-          onClick={() => removeItemFromCart()}
+          onClick={(event) => removeItemFromCart(event)}
           className="flex h-10 w-10 items-center justify-center rounded-full p-1 transition-colors duration-200 hover:bg-red-500"
         >
           <Image alt="delete icon" src="./trash.svg" width={25} height={25} />
