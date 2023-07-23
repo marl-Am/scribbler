@@ -13,12 +13,12 @@ export default function ShoppingCart() {
         }`}
       >
         {cartCount && cartCount > 0 ? (
-          <>
+          <div>
             {Object.values(cartDetails ?? {}).map((entry) => (
               <CartItem key={entry.id} item={entry} />
             ))}
             <CheckoutButton />
-          </>
+          </div>
         ) : (
           <div className="p-5">You have no items in your cart</div>
         )}

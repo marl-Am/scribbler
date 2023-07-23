@@ -15,8 +15,8 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortType, setSortType] = useState("Low to High");
-
   const productsToShowPerPage = 8;
+  const [toastShown, setToastShown] = useState(false);
 
   function handlePageChange(event: ChangeEvent<HTMLInputElement>) {
     setCurrentPage(Number(event.target.value));
@@ -26,16 +26,36 @@ export default function Home() {
     setSortType(event.target.value);
   };
 
-  const [toastShown, setToastShown] = useState(false);
+  const successUrl = "/?success=true";
+  const cancelUrl = "/?success=false";
 
   useEffect(() => {
-    const isSuccess = router.query.success;
-    if (!toastShown && isSuccess === "true") {
-      clearCart();
-      setToastShown(true);
-      toast.success(
-        "Your payment was successful. Thank you for your purchase.",
-        {
+    // Extract success query from router
+    const successQuery = router.query.success;
+
+    // Check if successQuery exists and toast has not been shown yet
+    if (!toastShown && successQuery) {
+      // If successQuery is 'true', show success message, clear cart and prevent the toast from showing up again
+      if (successQuery === "true") {
+        clearCart();
+        setToastShown(true);
+        toast.success(
+          "Your payment was successful. Thank you for your purchase.",
+          {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          }
+        );
+      }
+      // If successQuery is 'false', show warning message and prevent the toast from showing up again
+      else if (successQuery === "false") {
+        setToastShown(true);
+        toast.error("Your payment failed. Please try again.", {
           position: "top-center",
           autoClose: 2000,
           hideProgressBar: false,
@@ -43,21 +63,62 @@ export default function Home() {
           draggable: true,
           progress: undefined,
           theme: "colored",
-        }
-      );
-    } else if (!toastShown && isSuccess === "false") {
-      setToastShown(true);
-      toast.warn("Your payment failed. Please try again.", {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
+        });
+      }
     }
-  }, [router.query.success, clearCart, toastShown]);
+    // Reset toastShown if successQuery is not defined, this enables toast messages to show up again if success query changes
+    else if (!successQuery && toastShown) {
+      setToastShown(false);
+    }
+  }, [router.query.success]);
+
+
+  // useEffect(() => {
+  //   console.log("UseEffect Pathname: " + router.pathname);
+  //   // Ensure we are not on home page
+  //   if (router.pathname === "/") {
+  //     return;
+  //   }
+
+  //   if (router.pathname !== "/") {
+  //     console.log("Not / Pathname: " + router.pathname);
+  //     const successQuery = router.query.success;
+  //     console.log("Success Query: " + successQuery);
+
+  //     if (!toastShown && router.pathname === successUrl) {
+  //       console.log("Pathname: " + router.pathname);
+  //       console.log("Success URL: " + successUrl);
+
+  //       clearCart();
+  //       setToastShown(true);
+  //       toast.success(
+  //         "Your payment was successful. Thank you for your purchase.",
+  //         {
+  //           position: "top-center",
+  //           autoClose: 2000,
+  //           hideProgressBar: false,
+  //           closeOnClick: true,
+  //           draggable: true,
+  //           progress: undefined,
+  //           theme: "colored",
+  //         }
+  //       );
+  //     } else if (!toastShown && router.pathname === cancelUrl) {
+  //       console.log("Pathname: " + router.pathname);
+  //       console.log("Cancel URL: " + cancelUrl);
+  //       setToastShown(true);
+  //       toast.warn("Your payment failed. Please try again.", {
+  //         position: "top-center",
+  //         autoClose: 2000,
+  //         hideProgressBar: false,
+  //         closeOnClick: true,
+  //         draggable: true,
+  //         progress: undefined,
+  //         theme: "colored",
+  //       });
+  //     }
+  //   }
+  // }, [router.pathname, router.query.success]);
 
   return (
     <>

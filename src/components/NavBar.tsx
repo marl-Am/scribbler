@@ -100,9 +100,9 @@ const NavBar: React.FC = () => {
 
                 {!user.isSignedIn && (
                   <SignInButton mode="modal">
-                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
+                    <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
                       Sign In
-                    </button>
+                    </span>
                   </SignInButton>
                 )}
               </ul>
@@ -124,9 +124,9 @@ const NavBar: React.FC = () => {
           {!user.isSignedIn && (
             <div className="mr-2 hidden lg:block">
               <SignInButton mode="modal">
-                <button className="btn-md btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
+                <span className="btn-md btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
                   Sign In
-                </button>
+                </span>
               </SignInButton>
             </div>
           )}
