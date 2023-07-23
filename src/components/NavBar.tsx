@@ -40,7 +40,7 @@ const NavBar: React.FC = () => {
   return (
     <div className="nav-container">
       <div className="navbar">
-        {/* Dropdown */}
+        {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
           <div className="dropdown gap-2">
             <label tabIndex={0} className="btn-ghost btn-square btn">
@@ -84,16 +84,6 @@ const NavBar: React.FC = () => {
                 </Link>
               )}
 
-              {!user.isSignedIn && (
-                <div className="">
-                  <SignInButton mode="modal">
-                    <button className="btn-sm btn block w-full bg-black text-white hover:border-black hover:bg-white hover:text-black lg:hidden">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                </div>
-              )}
-
               {/* Search */}
               <button
                 className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
@@ -101,6 +91,14 @@ const NavBar: React.FC = () => {
               >
                 Search
               </button>
+
+              {!user.isSignedIn && (
+                <SignInButton mode="modal">
+                  <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
+                    Sign In
+                  </button>
+                </SignInButton>
+              )}
             </ul>
           </div>
         </div>
