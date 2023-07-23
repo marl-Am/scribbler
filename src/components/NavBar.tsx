@@ -218,8 +218,8 @@ const NavBar: React.FC = () => {
               <span className="indicator-item badge badge-primary badge-xs absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform bg-white text-black hover:bg-black hover:text-white">
                 {cartCount}
               </span>
+              <ShoppingCart />
             </div>
-            <ShoppingCart />
           </button>
 
           {/* User Profile */}

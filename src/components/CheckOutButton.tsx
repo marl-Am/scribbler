@@ -11,10 +11,10 @@ export default function CheckoutButton() {
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
+    setStatus("loading"); // Set status to loading when the button is clicked
     // Add a void keyword to ignore the promise.
     void handleCheckout(); // Call the async function here.
   }
-
 
   async function handleCheckout() {
     if ((cartCount || 0) > 0) {
@@ -63,7 +63,10 @@ export default function CheckoutButton() {
             : false
         }
       >
-        {status !== "loading" ? "Proceed to checkout" : "Loading..."}
+        {status === "loading" ? "Loading..." : "Proceed to checkout"}
+        {status === "loading" && (
+          <span className="loading loading-spinner ml-2 text-primary"></span>
+        )}
       </button>
     </article>
   );
