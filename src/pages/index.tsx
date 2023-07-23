@@ -45,6 +45,7 @@ export default function Home() {
           theme: "colored",
         }
       );
+      setToastShown(false);
     } else if (!toastShown && isSuccess === "false") {
       setToastShown(true);
       toast.warn("Your payment failed. Please try again.", {
@@ -56,6 +57,7 @@ export default function Home() {
         progress: undefined,
         theme: "colored",
       });
+      setToastShown(false);
     }
   }, [router.query.success, clearCart, toastShown]);
 
