@@ -139,3 +139,9 @@ section #shiping {
 button:hover svg {
     stroke: black;
 }
+
+.navbar {
+    position: relative;
+    /* or absolute, depending on your layout */
+    z-index: 1000;
+}
