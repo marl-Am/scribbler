@@ -18,19 +18,12 @@ interface ProductProps {
 
 
 export default function Product({ product }: ProductProps) {
-  const { addItem } = useShoppingCart();
+  const { addItem, cartDetails } = useShoppingCart();
   const { name, price, image } = product;
   const [quantity, setQuantity] = useState(1);
 
-  // const decreaseQuantity = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //   }
-  // };
-
-  // const increaseQuantity = () => {
-  //   setQuantity(quantity + 1);
-  // };
+  // Convert the value to boolean. If the item exists in cartDetails, it will be true, otherwise false.
+  const isInCart = Boolean(cartDetails?.[product.id]);
 
   const addToCart = () => {
     addItem(product, { count: quantity });
@@ -54,11 +47,15 @@ export default function Product({ product }: ProductProps) {
       {/* <span className="mx-3 w-10 rounded-md text-center">{quantity}</span> */}
       <button
         onClick={() => addToCart()}
-        className="rounded-md bg-emerald-50 px-5 py-2 text-emerald-500 transition-colors duration-500 hover:bg-emerald-500 hover:text-white"
+        disabled={isInCart}
+        className={
+          isInCart
+            ? "cursor-not-allowed rounded-md bg-gray-500 px-5 py-2 text-white"
+            : "rounded-md bg-emerald-500 px-5 py-2 text-white transition-colors duration-500 hover:bg-emerald-600"
+        }
       >
-        Add to cart
+        {isInCart ? "Out of Stock" : "Add to Cart"}
       </button>
     </article>
-
   );
 }

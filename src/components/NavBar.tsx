@@ -92,7 +92,7 @@ const NavBar: React.FC = () => {
 
                 {/* Search */}
                 <button
-                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden"
                   onClick={() => dialogRef.current?.showModal()}
                 >
                   Search
@@ -100,7 +100,7 @@ const NavBar: React.FC = () => {
 
                 {!user.isSignedIn && (
                   <SignInButton mode="modal">
-                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
+                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
                       Sign In
                     </button>
                   </SignInButton>
@@ -119,10 +119,10 @@ const NavBar: React.FC = () => {
         </div>
 
         {/* Search */}
-        <div className="navbar-end gap-2">
+        <div className="navbar-end">
           {/* Sign In */}
           {!user.isSignedIn && (
-            <div className="hidden lg:block">
+            <div className="mr-2 hidden lg:block">
               <SignInButton mode="modal">
                 <button className="btn-md btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
                   Sign In
@@ -132,7 +132,7 @@ const NavBar: React.FC = () => {
           )}
 
           <button
-            className="btn hidden bg-black hover:bg-white lg:block"
+            className="btn mr-2 hidden bg-black hover:bg-white lg:block"
             onClick={() => dialogRef.current?.showModal()}
           >
             <svg
@@ -195,7 +195,7 @@ const NavBar: React.FC = () => {
 
           {/* Cart */}
           <button
-            className="btn bg-black hover:bg-white"
+            className="btn mr-2 bg-black hover:bg-white"
             onClick={() => handleCartClick()}
           >
             <div className="relative">
@@ -224,7 +224,7 @@ const NavBar: React.FC = () => {
 
           {/* User Profile */}
           {user.isSignedIn && (
-            <button className="btn-ghost btn-circle btn">
+            <button className="btn-ghost btn-circle btn mr-2">
               <div className="indicator">
                 <UserButton afterSignOutUrl="/" />
               </div>
