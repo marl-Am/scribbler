@@ -10,11 +10,12 @@ const NavBar: React.FC = () => {
   const router = useRouter();
 
   const { handleCartClick, cartCount } = useShoppingCart();
-  // const [isOpen, setIsOpen] = useState(false);
+  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
+  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -43,67 +44,74 @@ const NavBar: React.FC = () => {
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
           <div className="dropdown gap-2">
-            <label tabIndex={0} className="btn-ghost btn-square btn">
+            <label
+              tabIndex={0}
+              className="btn-ghost btn-square btn"
+              onClick={() => setMenuIsOpen(!menuIsOpen)}
+            >
               <svg viewBox="0 0 100 80" width="35" height="35">
                 <rect width="100" height="20"></rect>
                 <rect y="30" width="100" height="20"></rect>
                 <rect y="60" width="100" height="20"></rect>
               </svg>
             </label>
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
-            >
-              <Link
-                href="/"
-                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+            {menuIsOpen && (
+              <ul
+                tabIndex={0}
+                className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
               >
-                Homepage
-              </Link>
-              <Link
-                href="/view_order"
-                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-              >
-                View Order
-              </Link>
-              {user.isSignedIn && (
                 <Link
-                  href="/orders"
+                  href="/"
                   className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
                 >
-                  Orders
+                  Homepage
                 </Link>
-              )}
-
-              {user.isSignedIn && (
                 <Link
-                  href="/inbox"
+                  href="/view_order"
                   className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
                 >
-                  Inbox
+                  View Order
                 </Link>
-              )}
+                {user.isSignedIn && (
+                  <Link
+                    href="/orders"
+                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                  >
+                    Orders
+                  </Link>
+                )}
 
-              {/* Search */}
-              <button
-                className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                onClick={() => dialogRef.current?.showModal()}
-              >
-                Search
-              </button>
+                {user.isSignedIn && (
+                  <Link
+                    href="/inbox"
+                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                  >
+                    Inbox
+                  </Link>
+                )}
 
-              {!user.isSignedIn && (
-                <SignInButton mode="modal">
-                  <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
-                    Sign In
-                  </button>
-                </SignInButton>
-              )}
-            </ul>
+                {/* Search */}
+                <button
+                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                  onClick={() => dialogRef.current?.showModal()}
+                >
+                  Search
+                </button>
+
+                {!user.isSignedIn && (
+                  <SignInButton mode="modal">
+                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                )}
+              </ul>
+            )}
           </div>
         </div>
         {/* Drop down ends */}
 
+        {/* Name of Website */}
         <div className="navbar-center text-2xl font-bold">
           <Link href={"/"} className="ml-2 mr-2 hover:underline">
             Scribbler
