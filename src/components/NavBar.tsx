@@ -100,9 +100,9 @@ const NavBar: React.FC = () => {
 
                 {!user.isSignedIn && (
                   <SignInButton mode="modal">
-                    <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
+                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden btn">
                       Sign In
-                    </span>
+                    </button>
                   </SignInButton>
                 )}
               </ul>
@@ -122,13 +122,11 @@ const NavBar: React.FC = () => {
         <div className="navbar-end">
           {/* Sign In */}
           {!user.isSignedIn && (
-            <div className="mr-2 hidden lg:block">
-              <SignInButton mode="modal">
-                <span className="btn-md btn bg-black text-white hover:border-black hover:bg-white hover:text-black">
-                  Sign In
-                </span>
-              </SignInButton>
-            </div>
+            <SignInButton mode="modal">
+              <button className="btn-md btn mr-2 hidden bg-black text-white hover:border-black hover:bg-white hover:text-black lg:block">
+                Sign In
+              </button>
+            </SignInButton>
           )}
 
           <button
@@ -224,11 +222,9 @@ const NavBar: React.FC = () => {
 
           {/* User Profile */}
           {user.isSignedIn && (
-            <button className="btn-ghost btn-circle btn mr-2">
-              <div className="indicator">
-                <UserButton afterSignOutUrl="/" />
-              </div>
-            </button>
+            <span className="btn-ghost btn-circle indicator btn mr-2">
+              <UserButton afterSignOutUrl="/" />
+            </span>
           )}
         </div>
         {/*  */}

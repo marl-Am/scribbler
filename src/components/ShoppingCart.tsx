@@ -17,7 +17,9 @@ export default function ShoppingCart() {
             {Object.values(cartDetails ?? {}).map((entry) => (
               <CartItem key={entry.id} item={entry} />
             ))}
-            <CheckoutButton />
+            <span>
+              <CheckoutButton />
+            </span>
           </div>
         ) : (
           <div className="p-5">You have no items in your cart</div>

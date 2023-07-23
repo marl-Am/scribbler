@@ -4,7 +4,7 @@ import Image from "next/image";
 
 interface ItemProps {
   item: {
-    id: string; // changed this to string
+    id: string;
     name: string;
     price: number;
     currency: string;
@@ -34,7 +34,9 @@ export default function CartItem({ item }: ItemProps) {
           onClick={(event) => removeItemFromCart(event)}
           className="flex h-10 w-10 items-center justify-center rounded-full p-1 transition-colors duration-200 hover:bg-red-500"
         >
-          <Image alt="delete icon" src="./trash.svg" width={25} height={25} />
+          <span>
+            <Image alt="Delete Item" src="./trash.svg" width={25} height={25} />
+          </span>
         </button>
       </div>
     </div>
