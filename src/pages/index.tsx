@@ -53,7 +53,7 @@ export default function Home() {
       // If successQuery is 'false', show warning message and prevent the toast from showing up again
       else if (successQuery === "false") {
         setToastShown(true);
-        toast.error("Your payment failed. Please try again.", {
+        toast.warn("Left the checkout process without completing a purchase.", {
           position: "bottom-right",
           autoClose: 2000,
           hideProgressBar: false,
