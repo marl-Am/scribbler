@@ -125,7 +125,7 @@ export default function Home() {
             </div>
           </section>
         </div>
-        <article className="flex justify-center">
+        <article className="flex justify-center" id="products">
           <ul className="mb-2 ml-2 mr-2 mt-4 flex flex-wrap gap-4">
             <li
               onClick={() => setCategoryFilter("All")}

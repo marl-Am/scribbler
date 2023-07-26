@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 
 export default function Hero() {
   return (
@@ -22,7 +22,9 @@ export default function Hero() {
               old can&apos;t be gold? Jump in, start digging and grab the best
               deals!
             </p>
-            <span className="get-started">Get Started</span>
+            <Link href={"#products"} className="get-started">
+              Get Started
+            </Link>
           </div>
         </div>
       </div>

@@ -6,12 +6,12 @@ export default function Footer() {
       <footer className="footer bg-base-300 p-10 text-base-content">
         <div>
           <span className="footer-title">Services</span>
-          <Link href={"#"} className="link-hover link">
+          <span className="">
             Branding
-          </Link>
-          <Link href={"#"} className="link-hover link">
+          </span>
+          <span  className="">
             Design
-          </Link>
+          </span>
         </div>
         <div>
           <span className="footer-title">Company</span>
