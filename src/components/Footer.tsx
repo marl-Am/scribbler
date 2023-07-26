@@ -3,24 +3,36 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <>
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-base-300 p-10 text-base-content">
         <div>
           <span className="footer-title">Services</span>
-          <a className="link-hover link">Branding</a>
-          <a className="link-hover link">Design</a>
+          <Link href={"#"} className="link-hover link">
+            Branding
+          </Link>
+          <Link href={"#"} className="link-hover link">
+            Design
+          </Link>
         </div>
         <div>
           <span className="footer-title">Company</span>
-          <a className="link-hover link">About us</a>
-          <a className="link-hover link">Contact</a>
+          <Link href={"/about"} className="link-hover link">
+            About
+          </Link>
+          <Link href={"/contact"} className="link-hover link">
+            Contact Us
+          </Link>
         </div>
         <div>
           <span className="footer-title">Legal</span>
-          <a className="link-hover link">Terms of use</a>
-          <a className="link-hover link">Cookie policy</a>
+          <Link href={"/terms"} className="link-hover link">
+            Terms of use
+          </Link>
+          <Link href={"/cookie"} className="link-hover link">
+            Cookie policy
+          </Link>
         </div>
       </footer>
-      <footer className="footer border-base-300 bg-base-200 text-base-content border-t px-10 py-4">
+      <footer className="footer border-t border-base-300 bg-base-300 px-10 py-4 text-base-content">
         <div className="grid-flow-col items-center">
           <svg
             width="24"

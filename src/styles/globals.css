@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
 .shipping-box {
     background: #1C2F3C;
     padding: 10px;

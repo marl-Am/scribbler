@@ -75,7 +75,7 @@ export default function Home() {
       <Head>
         <title>Home</title>
       </Head>
-      <div className="home">
+      <div className="home bg-base-200">
         <div className="center-this mx-auto mt-2 justify-center bg-black">
           <Hero />
           <section
