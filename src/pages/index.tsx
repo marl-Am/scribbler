@@ -68,7 +68,8 @@ export default function Home() {
     else if (!successQuery && toastShown) {
       setToastShown(false);
     }
-  }, [router.query.success]);
+  }, [router.query.success, clearCart, toastShown]);
+
 
   return (
     <>

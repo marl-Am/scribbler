@@ -21,7 +21,7 @@ function About() {
           <p className="mb-4">
             A cookie is a small piece of data that a website asks your browser
             to store on your computer or mobile device. The cookie allows the
-            website to "remember" your actions or preferences over time.
+            website to “remember” your actions or preferences over time.
           </p>
 
           <p className="mb-4">

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 
 function Terms() {
   return (
@@ -7,12 +6,6 @@ function Terms() {
       <Head>
         <title>Terms of Service</title>
       </Head>
-      {/* <div className="flex min-h-screen flex-col items-center justify-center bg-white">
-        <h1 className="mt-2 text-3xl text-black">Page not found.</h1>
-        <Link href="/" className="mt-4 text-indigo-600 hover:text-indigo-800">
-          Go back to Home
-        </Link>
-      </div> */}
       <div className="flex justify-center bg-gray-100">
         <div className="max-w-2xl px-8 py-6">
           <h1 className="mb-6 text-center text-3xl font-bold">Terms of Use</h1>
@@ -25,9 +18,9 @@ function Terms() {
 
           <p className="mt-4 font-bold">Condition of Items</p>
           <p>
-            All items are sold in their current, used condition. Each item's
-            condition may vary, and items are sold{" "}
-            <span className="font-bold">'as is'</span>.
+            All items are sold in their current, used condition. Each
+            item&apos;s condition may vary, and items are sold{" "}
+            <span className="font-bold">&apos;as is&apos;</span>.
           </p>
 
           <p className="mt-4 font-bold">Pricing and Payment</p>
