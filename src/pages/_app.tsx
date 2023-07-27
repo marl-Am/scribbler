@@ -13,6 +13,7 @@ import { CartProvider } from "use-shopping-cart";
 import NavBar from "~/components/NavBar";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+
   return (
     <ClerkProvider {...pageProps}>
       <div className="flex min-h-screen flex-col overflow-hidden">

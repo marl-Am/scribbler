@@ -60,6 +60,14 @@ const NavBar: React.FC = () => {
                 tabIndex={0}
                 className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
               >
+                {user.isSignedIn && (
+                  <Link
+                    href="/user_details"
+                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
+                  >
+                    User Details
+                  </Link>
+                )}
                 <Link
                   href="/"
                   className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
@@ -100,7 +108,7 @@ const NavBar: React.FC = () => {
 
                 {!user.isSignedIn && (
                   <SignInButton mode="modal">
-                    <button className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden btn">
+                    <button className="get-started-drop btn flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
                       Sign In
                     </button>
                   </SignInButton>
