@@ -25,7 +25,7 @@ export default function ViewOrder() {
       <Head>
         <title>View Order</title>
       </Head>
-      <div className="flex min-h-screen flex-col items-center justify-center">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
         <h1 className="mt-2 text-center text-2xl font-bold text-black">
           View Order
         </h1>

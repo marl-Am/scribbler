@@ -33,11 +33,16 @@ export default function SearchResults() {
     if (searchResults.length) {
       return (
         <>
-        <h2 className="text-center font-bold">Search Results</h2>
-          <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
-            {searchResults.map((product) => (
-              <Product product={product} key={product.id} />
-            ))}
+          <Head>
+            <title>Item Found</title>
+          </Head>
+          <div className="bg-gray-100">
+            <h2 className="text-center font-bold">Search Results</h2>
+            <div className="place-center w-100 b-8 mx-auto mt-8 grid flex-wrap justify-center gap-4 sm:grid-cols-2 md:max-w-[900px] md:grid-cols-4">
+              {searchResults.map((product) => (
+                <Product product={product} key={product.id} />
+              ))}
+            </div>
           </div>
         </>
       );
@@ -47,7 +52,7 @@ export default function SearchResults() {
           <Head>
             <title>Item Not Found</title>
           </Head>
-          <div className="flex min-h-screen flex-col items-center justify-center">
+          <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
             <Image
               className="my-element pt-0"
               src={"/SearchError.svg"}
