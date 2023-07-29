@@ -34,10 +34,13 @@ export default function HamburgerBtn() {
 
   return (
     <>
-      <div className="relative gap-2">
+      <div className="dropdown relative gap-2">
         <button
           className="group z-10 flex h-9 w-10 flex-col items-center justify-center rounded border-2 border-black"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            console.log("isOpen state:", !isOpen);
+          }}
         >
           <div
             className={`${genericHamburgerLine} ${
