@@ -36,7 +36,7 @@ export default function HamburgerBtn() {
     <>
       <div className="relative">
         <button
-          className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
+          className="group z-10 flex h-9 w-10 flex-col items-center justify-center rounded border-2 border-black"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
