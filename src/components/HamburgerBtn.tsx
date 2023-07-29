@@ -37,9 +37,6 @@ export default function HamburgerBtn() {
       <div className="dropdown relative gap-2">
         <button
           className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
-          id="menu-button"
-          aria-expanded="true"
-          aria-haspopup="true"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
@@ -70,7 +67,7 @@ export default function HamburgerBtn() {
             <Link
               href="/"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              onClick={() => setIsOpen(false)}
+              
             >
               Home
             </Link>
@@ -80,21 +77,21 @@ export default function HamburgerBtn() {
                 <Link
                   href="/inbox"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={() => setIsOpen(false)}
+                  
                 >
                   Inbox
                 </Link>
                 <Link
                   href="/orders"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={() => setIsOpen(false)}
+                  
                 >
                   Orders
                 </Link>
                 <Link
                   href="/user_details"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  onClick={() => setIsOpen(false)}
+                  
                 >
                   User Details
                 </Link>

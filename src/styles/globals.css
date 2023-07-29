@@ -43,3 +43,7 @@ button:hover svg {
     /* or absolute, depending on your layout */
     /* z-index: 1000; */
 }
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
