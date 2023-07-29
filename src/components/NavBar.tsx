@@ -42,9 +42,7 @@ const NavBar: React.FC = () => {
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
-          <div className="gap-2">
             <HamburgerBtn />
-          </div>
 
           {/* User Profile */}
           {user.isSignedIn && (
