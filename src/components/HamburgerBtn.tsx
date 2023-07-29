@@ -27,14 +27,14 @@ export default function HamburgerBtn() {
   };
 
   const closeDialog = (event: React.MouseEvent) => {
-    event.stopPropagation(); // This will stop the event from bubbling up and prevent any parent handler from being executed.
-    event.preventDefault(); // This will prevent the event from carrying out the default action it was supposed to do. In this case, it will prevent form submission.
+    event.stopPropagation();
+    event.preventDefault();
     dialogRef.current?.close();
   };
 
   return (
     <>
-      <div className="relative">
+      <div className="relative gap-2">
         <button
           className="group z-10 flex h-9 w-10 flex-col items-center justify-center rounded border-2 border-black"
           onClick={() => setIsOpen(!isOpen)}
