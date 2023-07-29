@@ -39,12 +39,12 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className="nav-container">
+    <div className="nav-container bg-gray-700">
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
           <div className="dropdown gap-2">
-            <HamburgerBtn/>
+            <HamburgerBtn />
           </div>
 
           {/* User Profile */}
@@ -62,7 +62,7 @@ const NavBar: React.FC = () => {
 
         {/* Name of Website */}
         <div className="navbar-center text-2xl font-bold">
-          <Link href={"/"} className="ml-2 mr-2 text-black hover:underline">
+          <Link href={"/"} className="ml-2 mr-2 text-white hover:underline">
             Scribbler
           </Link>
         </div>
@@ -72,14 +72,14 @@ const NavBar: React.FC = () => {
           {/* Sign In */}
           {!user.isSignedIn && (
             <SignInButton mode="modal">
-              <button className="btn-md btn mr-2 hidden bg-gray-700 text-white hover:border-black hover:bg-white hover:text-black lg:block">
+              <button className="btn-md btn mr-2 hidden border border-none bg-gray-700 text-white hover:border-black hover:bg-white hover:text-black lg:block">
                 Sign In
               </button>
             </SignInButton>
           )}
 
           <button
-            className="btn mr-2 hidden bg-gray-700 hover:bg-white lg:block"
+            className="btn mr-2 hidden border border-none bg-gray-700 hover:bg-white lg:block"
             onClick={() => dialogRef.current?.showModal()}
           >
             <svg
@@ -142,7 +142,7 @@ const NavBar: React.FC = () => {
 
           {/* Cart */}
           <button
-            className="btn mr-2 bg-gray-700 hover:bg-white"
+            className="btn mr-2 border border-none bg-gray-700 hover:bg-white"
             onClick={() => handleCartClick()}
           >
             <div className="relative">
