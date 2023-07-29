@@ -97,6 +97,12 @@ export default function HamburgerBtn() {
                 </Link>
               </>
             )}
+            <Link
+              href="/view_order"
+              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+            >
+              View Order
+            </Link>
             <button
               className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden"
               onClick={() => dialogRef.current?.showModal()}
