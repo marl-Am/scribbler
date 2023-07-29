@@ -35,10 +35,10 @@ export default function Product({ product }: ProductProps) {
     <article className="mb-6 flex flex-col gap-3 rounded-xl bg-white p-8 text-center shadow-md">
       <Image
         src={image}
-        className="text-4xl"
+        className="text-3xl"
         alt={name}
-        width={205}
-        height={170}
+        width={200}
+        height={150}
       ></Image>
       <div className="text-lg">{name}</div>
       <div className="mt-auto text-2xl font-semibold">

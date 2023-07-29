@@ -129,6 +129,9 @@ const NavBar: React.FC = () => {
         </div>
         {/* Drop down ends */}
 
+        {/*  */}
+        {/*  */}
+
         {/* Name of Website */}
         <div className="navbar-center text-2xl font-bold">
           <Link href={"/"} className="ml-2 mr-2 hover:underline">
