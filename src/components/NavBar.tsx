@@ -15,7 +15,6 @@ const NavBar: React.FC = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
 
   const [searchTerm, setSearchTerm] = useState("");
-  
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
@@ -28,7 +27,7 @@ const NavBar: React.FC = () => {
       router
         .push(`/search-results?term=${searchTerm}`)
         .then(() => dialogRef.current?.close())
-        .catch((err) => console.log(err)); // Handle any errors here.
+        .catch((err) => console.log(err));
     }
   };
 
@@ -39,7 +38,7 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className="nav-container">
+    <div className="nav-container bg-base-200">
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
@@ -116,6 +115,18 @@ const NavBar: React.FC = () => {
               </ul>
             )}
           </div>
+
+          {user.isSignedIn && (
+            // <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
+            //   <UserButton afterSignOutUrl="/" />
+            // </span>
+            <div className="relative mr-2">
+              <span className="h-10 w-10 rounded">
+                <UserButton afterSignOutUrl="/" />
+              </span>
+              <span className="absolute left-7 top-0  h-3.5 w-3.5 rounded-full border-2 border-white bg-green-400 dark:border-gray-800"></span>
+            </div>
+          )}
         </div>
         {/* Drop down ends */}
 
@@ -221,7 +232,7 @@ const NavBar: React.FC = () => {
                 <path d="M17 17h-11v-14h-2"></path>
                 <path d="M6 5l14 1l-1 7h-13"></path>
               </svg>
-              <span className="indicator-item badge badge-primary badge-xs absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform bg-white text-black hover:bg-black hover:text-white">
+              <span className="badge badge-primary badge-xs indicator-item absolute right-0 top-0 -translate-y-1/2 translate-x-1/2 transform bg-white text-black hover:bg-black hover:text-white">
                 {cartCount}
               </span>
               <ShoppingCart />
@@ -229,11 +240,17 @@ const NavBar: React.FC = () => {
           </button>
 
           {/* User Profile */}
-          {user.isSignedIn && (
-            <span className="btn-ghost btn-circle indicator btn mr-2">
-              <UserButton afterSignOutUrl="/" />
-            </span>
-          )}
+          {/* {user.isSignedIn && (
+            // <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
+            //   <UserButton afterSignOutUrl="/" />
+            // </span>
+            <div className="relative mr-2">
+              <span className="h-10 w-10 rounded">
+                <UserButton afterSignOutUrl="/" />
+              </span>
+              <span className="absolute left-7 top-0  h-3.5 w-3.5 rounded-full border-2 border-white bg-green-400 dark:border-gray-800"></span>
+            </div>
+          )} */}
         </div>
         {/*  */}
       </div>

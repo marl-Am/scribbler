@@ -36,6 +36,8 @@ model Order {
   status        String
   orderDate     DateTime @default(now())
   orderDetails  OrderDetails[]
+
+  @@index([userId])
 }
 
 model OrderDetails {
@@ -46,4 +48,7 @@ model OrderDetails {
   productId   String
   quantity    Int
   price       Float
+
+  @@index([orderId])
+  @@index([productId])
 }
