@@ -4,6 +4,7 @@ import ShoppingCart from "./ShoppingCart";
 import { SignInButton, useUser, UserButton } from "@clerk/nextjs";
 import { useState, useRef } from "react";
 import { useRouter } from "next/router";
+import HamburgerBtn from "./HamburgerBtn";
 
 const NavBar: React.FC = () => {
   const user = useUser();
@@ -38,87 +39,17 @@ const NavBar: React.FC = () => {
   };
 
   return (
-    <div className="nav-container bg-base-200">
+    <div className="nav-container">
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
           <div className="dropdown gap-2">
-            <label
-              tabIndex={0}
-              className="btn-ghost btn-square btn"
-              onClick={() => setMenuIsOpen(!menuIsOpen)}
-            >
-              <svg viewBox="0 0 100 80" width="35" height="35">
-                <rect width="100" height="20"></rect>
-                <rect y="30" width="100" height="20"></rect>
-                <rect y="60" width="100" height="20"></rect>
-              </svg>
-            </label>
-            {menuIsOpen && (
-              <ul
-                tabIndex={0}
-                className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
-              >
-                {user.isSignedIn && (
-                  <Link
-                    href="/user_details"
-                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                  >
-                    User Details
-                  </Link>
-                )}
-                <Link
-                  href="/"
-                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                >
-                  Homepage
-                </Link>
-                <Link
-                  href="/view_order"
-                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                >
-                  View Order
-                </Link>
-                {user.isSignedIn && (
-                  <Link
-                    href="/orders"
-                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                  >
-                    Orders
-                  </Link>
-                )}
-
-                {user.isSignedIn && (
-                  <Link
-                    href="/inbox"
-                    className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black"
-                  >
-                    Inbox
-                  </Link>
-                )}
-
-                {/* Search */}
-                <button
-                  className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden"
-                  onClick={() => dialogRef.current?.showModal()}
-                >
-                  Search
-                </button>
-
-                {!user.isSignedIn && (
-                  <SignInButton mode="modal">
-                    <button className="get-started-drop btn flex items-center justify-center bg-black text-white hover:bg-white hover:text-black lg:hidden">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                )}
-              </ul>
-            )}
+            <HamburgerBtn/>
           </div>
 
           {/* User Profile */}
           {user.isSignedIn && (
-            <div className="relative mr-2">
+            <div className="relative ml-2 mr-2">
               <span className="h-10 w-10 rounded">
                 <UserButton afterSignOutUrl="/" />
               </span>
@@ -129,12 +60,9 @@ const NavBar: React.FC = () => {
         </div>
         {/* Drop down ends */}
 
-        {/*  */}
-        {/*  */}
-
         {/* Name of Website */}
         <div className="navbar-center text-2xl font-bold">
-          <Link href={"/"} className="ml-2 mr-2 hover:underline">
+          <Link href={"/"} className="ml-2 mr-2 text-black hover:underline">
             Scribbler
           </Link>
         </div>
@@ -144,14 +72,14 @@ const NavBar: React.FC = () => {
           {/* Sign In */}
           {!user.isSignedIn && (
             <SignInButton mode="modal">
-              <button className="btn-md btn mr-2 hidden bg-black text-white hover:border-black hover:bg-white hover:text-black lg:block">
+              <button className="btn-md btn mr-2 hidden bg-gray-700 text-white hover:border-black hover:bg-white hover:text-black lg:block">
                 Sign In
               </button>
             </SignInButton>
           )}
 
           <button
-            className="btn mr-2 hidden bg-black hover:bg-white lg:block"
+            className="btn mr-2 hidden bg-gray-700 hover:bg-white lg:block"
             onClick={() => dialogRef.current?.showModal()}
           >
             <svg
@@ -214,7 +142,7 @@ const NavBar: React.FC = () => {
 
           {/* Cart */}
           <button
-            className="btn mr-2 bg-black hover:bg-white"
+            className="btn mr-2 bg-gray-700 hover:bg-white"
             onClick={() => handleCartClick()}
           >
             <div className="relative">
@@ -240,7 +168,6 @@ const NavBar: React.FC = () => {
               <ShoppingCart />
             </div>
           </button>
-
         </div>
         {/*  */}
       </div>
