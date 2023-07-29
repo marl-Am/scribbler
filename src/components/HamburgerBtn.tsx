@@ -37,10 +37,7 @@ export default function HamburgerBtn() {
       <div className="dropdown relative gap-2">
         <button
           className="group z-10 flex h-9 w-10 flex-col items-center justify-center rounded border-2 border-black"
-          onClick={() => {
-            setIsOpen(!isOpen);
-            console.log("isOpen state:", !isOpen);
-          }}
+          onClick={() => setIsOpen(!isOpen)}
         >
           <div
             className={`${genericHamburgerLine} ${
@@ -69,7 +66,7 @@ export default function HamburgerBtn() {
           >
             <Link
               href="/"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="get-started-drop block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
               onClick={() => setIsOpen(false)}
             >
               Home
@@ -79,21 +76,21 @@ export default function HamburgerBtn() {
               <>
                 <Link
                   href="/inbox"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="get-started-drop block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   Inbox
                 </Link>
                 <Link
                   href="/orders"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="get-started-drop block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   Orders
                 </Link>
                 <Link
                   href="/user_details"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="get-started-drop block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                   onClick={() => setIsOpen(false)}
                 >
                   User Details
@@ -102,12 +99,12 @@ export default function HamburgerBtn() {
             )}
             <Link
               href="/view_order"
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              className="get-started-drop block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
             >
               View Order
             </Link>
             <button
-              className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden"
+              className="get-started-drop block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden"
               onClick={() => dialogRef.current?.showModal()}
             >
               Search
@@ -115,7 +112,7 @@ export default function HamburgerBtn() {
 
             {!user.isSignedIn && (
               <SignInButton mode="modal">
-                <button className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden">
+                <button className="get-started-drop block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden">
                   Sign In
                 </button>
               </SignInButton>

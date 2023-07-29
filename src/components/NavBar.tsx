@@ -11,7 +11,6 @@ const NavBar: React.FC = () => {
   const router = useRouter();
 
   const { handleCartClick, cartCount } = useShoppingCart();
-  const [menuIsOpen, setMenuIsOpen] = useState(false);
 
   const dialogRef = useRef<HTMLDialogElement>(null);
 
