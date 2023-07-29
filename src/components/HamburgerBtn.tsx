@@ -37,6 +37,9 @@ export default function HamburgerBtn() {
       <div className="dropdown relative gap-2">
         <button
           className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
+          id="menu-button"
+          aria-expanded="true"
+          aria-haspopup="true"
           onClick={() => setIsOpen(!isOpen)}
         >
           <div
