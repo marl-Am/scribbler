@@ -116,10 +116,8 @@ const NavBar: React.FC = () => {
             )}
           </div>
 
+          {/* User Profile */}
           {user.isSignedIn && (
-            // <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
-            //   <UserButton afterSignOutUrl="/" />
-            // </span>
             <div className="relative mr-2">
               <span className="h-10 w-10 rounded">
                 <UserButton afterSignOutUrl="/" />
@@ -127,6 +125,7 @@ const NavBar: React.FC = () => {
               <span className="absolute left-7 top-0  h-3.5 w-3.5 rounded-full border-2 border-white bg-green-400 dark:border-gray-800"></span>
             </div>
           )}
+          {/* User Profile */}
         </div>
         {/* Drop down ends */}
 
@@ -239,18 +238,6 @@ const NavBar: React.FC = () => {
             </div>
           </button>
 
-          {/* User Profile */}
-          {/* {user.isSignedIn && (
-            // <span className="get-started-drop flex items-center justify-center bg-black text-white hover:bg-white hover:text-black">
-            //   <UserButton afterSignOutUrl="/" />
-            // </span>
-            <div className="relative mr-2">
-              <span className="h-10 w-10 rounded">
-                <UserButton afterSignOutUrl="/" />
-              </span>
-              <span className="absolute left-7 top-0  h-3.5 w-3.5 rounded-full border-2 border-white bg-green-400 dark:border-gray-800"></span>
-            </div>
-          )} */}
         </div>
         {/*  */}
       </div>
