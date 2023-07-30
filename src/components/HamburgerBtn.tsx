@@ -7,7 +7,6 @@ export default function HamburgerBtn() {
   const user = useUser();
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
 
-
   return (
     <>
       <div className="relative gap-2">
@@ -17,7 +16,7 @@ export default function HamburgerBtn() {
             className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
             onClick={() => setIsOpen(!isOpen)}
           >
-            {/* <div
+            <div
               className={`${genericHamburgerLine} ${
                 isOpen
                   ? "translate-y-3 rotate-45 opacity-50 group-hover:opacity-100"
@@ -35,12 +34,12 @@ export default function HamburgerBtn() {
                   ? "-translate-y-3 -rotate-45 opacity-50 group-hover:opacity-100"
                   : "opacity-50 group-hover:opacity-100"
               }`}
-            /> */}
+            />
           </button>
           {isOpen && (
             <ul
               tabIndex={0}
-              className="dropdown-content menu rounded-box menu-sm z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
+              className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
             >
               <Link
                 href="/"
@@ -50,27 +49,32 @@ export default function HamburgerBtn() {
               </Link>
 
               {user.isSignedIn && (
-                <>
-                  <Link
-                    href="/inbox"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Inbox
-                  </Link>
-                  <Link
-                    href="/orders"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    Orders
-                  </Link>
-                  <Link
-                    href="/user_details"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  >
-                    User Details
-                  </Link>
-                </>
+                <Link
+                  href="/inbox"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Inbox
+                </Link>
               )}
+
+              {user.isSignedIn && (
+                <Link
+                  href="/orders"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Orders
+                </Link>
+              )}
+
+              {user.isSignedIn && (
+                <Link
+                  href="/user_details"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  User Details
+                </Link>
+              )}
+
               <Link
                 href="/view_order"
                 className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
