@@ -1,8 +1,8 @@
+import React, { useState } from "react";
 import { SignInButton, useUser } from "@clerk/nextjs";
 import Link from "next/link";
-import { useState } from "react";
 
-export default function HamburgerBtn() {
+const HamburgerBtn: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const user = useUser();
   const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
@@ -13,7 +13,7 @@ export default function HamburgerBtn() {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black cursor-pointer"
+            className="group z-10 flex h-10 w-10 cursor-pointer flex-col items-center justify-center rounded border-2 border-black"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div
@@ -95,4 +95,6 @@ export default function HamburgerBtn() {
       </div>
     </>
   );
-}
+};
+
+export default HamburgerBtn;
