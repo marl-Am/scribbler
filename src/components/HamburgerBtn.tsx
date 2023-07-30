@@ -13,7 +13,7 @@ export default function HamburgerBtn() {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
+            className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div
@@ -90,41 +90,6 @@ export default function HamburgerBtn() {
                 </SignInButton>
               )}
             </ul>
-
-            // <ul
-            //   tabIndex={0}
-            //   className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
-            // >
-            //   <li className="dropdown-item">
-            //     <Link href="/home" className="menu-link">
-            //       Home
-            //     </Link>
-            //   </li>
-            //   <li className="dropdown-item">
-            //     <Link href="/about" className="menu-link">
-            //       About Us
-            //     </Link>
-            //   </li>
-            //   <li className="dropdown-item">
-            //     <Link href="/services" className="menu-link">
-            //       Services
-            //     </Link>
-            //   </li>
-            //   {user.isSignedIn && (
-            //     <li className="dropdown-item">
-            //       <Link href="/contact" className="menu-link">
-            //         Contact
-            //       </Link>
-            //     </li>
-            //   )}
-            //   {!user.isSignedIn && (
-            //     <li className="dropdown-item">
-            //       <SignInButton mode="modal">
-            //         <button className="menu-link">Sign In</button>
-            //       </SignInButton>
-            //     </li>
-            //   )}
-            // </ul>
           )}
         </div>
       </div>
