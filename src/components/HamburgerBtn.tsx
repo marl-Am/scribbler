@@ -37,93 +37,94 @@ export default function HamburgerBtn() {
             />
           </button>
           {isOpen && (
-            // <ul
-            //   tabIndex={0}
-            //   className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
-            // >
-            //   <Link
-            //     href="/"
-            //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            //   >
-            //     Home
-            //   </Link>
-
-            //   {user.isSignedIn && (
-            //     <Link
-            //       href="/inbox"
-            //       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            //     >
-            //       Inbox
-            //     </Link>
-            //   )}
-
-            //   {user.isSignedIn && (
-            //     <Link
-            //       href="/orders"
-            //       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            //     >
-            //       Orders
-            //     </Link>
-            //   )}
-
-            //   {user.isSignedIn && (
-            //     <Link
-            //       href="/user_details"
-            //       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            //     >
-            //       User Details
-            //     </Link>
-            //   )}
-
-            //   <Link
-            //     href="/view_order"
-            //     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-            //   >
-            //     View Order
-            //   </Link>
-
-            //   {!user.isSignedIn && (
-            //     <SignInButton mode="modal">
-            //       <button className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden">
-            //         Sign In
-            //       </button>
-            //     </SignInButton>
-            //   )}
-            // </ul>
             <ul
               tabIndex={0}
               className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
             >
-              <li className="dropdown-item">
-                <Link href="/home" className="menu-link">
-                  Home
-                </Link>
-              </li>
-              <li className="dropdown-item">
-                <Link href="/about" className="menu-link">
-                  About Us
-                </Link>
-              </li>
-              <li className="dropdown-item">
-                <Link href="/services" className="menu-link">
-                  Services
-                </Link>
-              </li>
+              <Link
+                href="/"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                Home
+              </Link>
+
               {user.isSignedIn && (
-                <li className="dropdown-item">
-                  <Link href="/contact" className="menu-link">
-                    Contact
-                  </Link>
-                </li>
+                <Link
+                  href="/inbox"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Inbox
+                </Link>
               )}
+
+              {user.isSignedIn && (
+                <Link
+                  href="/orders"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  Orders
+                </Link>
+              )}
+
+              {user.isSignedIn && (
+                <Link
+                  href="/user_details"
+                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  User Details
+                </Link>
+              )}
+
+              <Link
+                href="/view_order"
+                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+              >
+                View Order
+              </Link>
+
               {!user.isSignedIn && (
-                <li className="dropdown-item">
-                  <SignInButton mode="modal">
-                    <button className="menu-link">Sign In</button>
-                  </SignInButton>
-                </li>
+                <SignInButton mode="modal">
+                  <button className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 lg:hidden">
+                    Sign In
+                  </button>
+                </SignInButton>
               )}
             </ul>
+
+            // <ul
+            //   tabIndex={0}
+            //   className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
+            // >
+            //   <li className="dropdown-item">
+            //     <Link href="/home" className="menu-link">
+            //       Home
+            //     </Link>
+            //   </li>
+            //   <li className="dropdown-item">
+            //     <Link href="/about" className="menu-link">
+            //       About Us
+            //     </Link>
+            //   </li>
+            //   <li className="dropdown-item">
+            //     <Link href="/services" className="menu-link">
+            //       Services
+            //     </Link>
+            //   </li>
+            //   {user.isSignedIn && (
+            //     <li className="dropdown-item">
+            //       <Link href="/contact" className="menu-link">
+            //         Contact
+            //       </Link>
+            //     </li>
+            //   )}
+            //   {!user.isSignedIn && (
+            //     <li className="dropdown-item">
+            //       <SignInButton mode="modal">
+            //         <button className="menu-link">Sign In</button>
+            //       </SignInButton>
+            //     </li>
+            //   )}
+            // </ul>
           )}
         </div>
       </div>
