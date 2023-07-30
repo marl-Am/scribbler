@@ -8,7 +8,7 @@ export default function PurchaseSuccessful({}) {
 
   useEffect(() => {
     clearCart();
-  }, []);
+  }, [clearCart]);
 
   return (
     <>
@@ -19,7 +19,7 @@ export default function PurchaseSuccessful({}) {
         <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 text-center">
           <h1 className="mb-4 text-2xl font-bold text-green-600">Thank You!</h1>
           <p className="mb-4">
-            Thank you for your purchase! We've received your order and will
+            Thank you for your purchase! We&apos;ve received your order and will
             begin processing it shortly.
           </p>
           <Link
@@ -29,7 +29,6 @@ export default function PurchaseSuccessful({}) {
             Return to Homepage
           </Link>
         </div>
-
       </div>
     </>
   );

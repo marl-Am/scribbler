@@ -10,7 +10,6 @@ interface Product {
   id: string;
   name: string;
   price: number;
-  emoji: string;
   currency: string;
   image: string;
 }
