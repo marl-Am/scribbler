@@ -123,7 +123,7 @@ const NavBar: React.FC = () => {
                         }
                       }}
                       required
-                      autofocus
+                      autoFocus
                     />
 
                     <button
