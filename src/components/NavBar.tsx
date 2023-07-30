@@ -42,7 +42,7 @@ const NavBar: React.FC = () => {
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
-            <HamburgerBtn />
+          <HamburgerBtn />
 
           {/* User Profile */}
           {user.isSignedIn && (
@@ -112,7 +112,7 @@ const NavBar: React.FC = () => {
                   </h3>
                   <div className="flex justify-center">
                     <input
-                      className="input-bordered input-info input w-full max-w-xs"
+                      className="input-bordered input-info input w-full max-w-xs focus:outline-none"
                       type="search"
                       placeholder="Search"
                       onChange={handleChange}
@@ -123,6 +123,7 @@ const NavBar: React.FC = () => {
                         }
                       }}
                       required
+                      autofocus
                     />
 
                     <button

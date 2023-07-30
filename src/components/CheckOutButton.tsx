@@ -21,7 +21,6 @@ export default function CheckoutButton() {
       setStatus("loading");
       try {
         const result = (await redirectToCheckout().catch((error: unknown) => {
-          // Catch block will handle the errors
           console.error(error);
           return { error }; // This ensures that the error object structure is maintained
         })) as CheckoutResponse; // Type assertion to ensure type safety
