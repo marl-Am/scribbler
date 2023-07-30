@@ -11,7 +11,7 @@ export default function HamburgerBtn() {
     <>
       <div className="relative gap-2">
         <div className="dropdown">
-          <button
+          <label
             tabIndex={0}
             className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
             onClick={() => setIsOpen(!isOpen)}
@@ -35,7 +35,7 @@ export default function HamburgerBtn() {
                   : "opacity-50 group-hover:opacity-100"
               }`}
             />
-          </button>
+          </label>
           {isOpen && (
             <ul
               tabIndex={0}
