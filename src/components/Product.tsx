@@ -40,7 +40,7 @@ export default function Product({ product }: ProductProps) {
         width={200}
         height={150}
       ></Image>
-      <div className="text-lg">{name}</div>
+      <div className="text-md">{name}</div>
       <div className="mt-auto text-2xl font-semibold">
         {formatCurrencyString({ value: price, currency: "USD" })}
       </div>
@@ -56,6 +56,10 @@ export default function Product({ product }: ProductProps) {
       >
         {isInCart ? "Out of Stock" : "Add to Cart"}
       </button>
+
+      {/* <button className="rounded-md bg-blue-500 px-5 py-2 text-white transition-colors duration-500 hover:bg-blue-600">
+        Buy Now
+      </button> */}
     </article>
   );
 }

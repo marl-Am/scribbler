@@ -17,7 +17,7 @@ export const products = [
     price: 1000, //$8.99
     emoji: "👛",
     currency: "USD",
-    image: "/calc.jpg",
+    image: "/calculator.jpg",
     category: "Electronics",
   },
   {
