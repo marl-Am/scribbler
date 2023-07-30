@@ -76,7 +76,7 @@ const NavBar: React.FC = () => {
           )}
 
           <button
-            className="btn mr-2 hidden border border-none bg-gray-700 hover:bg-white lg:block"
+            className="btn mr-2 border border-none bg-gray-700 hover:bg-white"
             onClick={() => dialogRef.current?.showModal()}
           >
             <svg
