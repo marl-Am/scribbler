@@ -1,22 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import type { ChangeEvent } from "react";
 
 import Product from "~/components/Product";
 import { products } from "~/data/products";
 import Head from "next/head";
 import Hero from "~/components/Hero";
-import { useRouter } from "next/router";
-import { toast } from "react-toastify";
-import { useShoppingCart } from "use-shopping-cart";
 
 export default function Home() {
-  const router = useRouter();
-  const { clearCart } = useShoppingCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortType, setSortType] = useState("Low to High");
   const productsToShowPerPage = 8;
-  const [toastShown, setToastShown] = useState(false);
 
   function handlePageChange(event: ChangeEvent<HTMLInputElement>) {
     setCurrentPage(Number(event.target.value));
@@ -26,51 +20,6 @@ export default function Home() {
     setSortType(event.target.value);
   };
 
-
-  useEffect(() => {
-    // Extract success query from router
-    const successQuery = router.query.success;
-
-    // Check if successQuery exists and toast has not been shown yet
-    if (!toastShown && successQuery) {
-      // If successQuery is 'true', show success message, clear cart and prevent the toast from showing up again
-      if (successQuery === "true") {
-        clearCart();
-        setToastShown(true);
-        toast.success(
-          "Your payment was successful. Thank you for your purchase.",
-          {
-            position: "bottom-right",
-            autoClose: 2000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          }
-        );
-      }
-      // If successQuery is 'false', show warning message and prevent the toast from showing up again
-      else if (successQuery === "false") {
-        setToastShown(true);
-        toast.warn("Left the checkout process without completing a purchase.", {
-          position: "bottom-right",
-          autoClose: 2000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
-    }
-    // Reset toastShown if successQuery is not defined, this enables toast messages to show up again if success query changes
-    else if (!successQuery && toastShown) {
-      setToastShown(false);
-    }
-  }, [router.query.success, clearCart, toastShown]);
-
-
   return (
     <>
       <Head>
@@ -79,46 +28,6 @@ export default function Home() {
       <div className="home bg-base-200">
         <div className="center-this bg-black">
           <Hero />
-
-          {/* <section id="shipping" className=" bg-black">
-            <div className="container flex items-center justify-center text-center">
-              <div className="m-2 -mx-4 flex flex-wrap">
-                <div className="flex w-full justify-around px-4 md:w-full">
-                  <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-2">
-                    <div className="box-title ml-4 inline-grid text-center">
-                      <h3 className="text-md font-bold text-white">
-                        Standard Shipping
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-2">
-                    <div className="box-title ml-4 inline-grid text-center">
-                      <h3 className="text-md font-bold text-white">
-                        Used Items
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-2">
-                    <div className="box-title ml-4 inline-grid text-center">
-                      <h3 className="text-md font-bold text-white">
-                        Huge Savings
-                      </h3>
-                    </div>
-                  </div>
-
-                  <div className="shipping-box mb-4 ml-2 mr-2 rounded bg-blue-900 p-2">
-                    <div className="box-title ml-4 inline-grid text-center">
-                      <h3 className="text-md font-bold text-white">
-                        No Returns
-                      </h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section> */}
 
           {/* Store Details */}
           <div
@@ -213,9 +122,7 @@ export default function Home() {
                   <p className="font-700 mb-1 text-[15px] tracking-wide text-black">
                     No Returns
                   </p>
-                  <p className="text-qgray text-sm">
-                    Items As Is
-                  </p>
+                  <p className="text-qgray text-sm">Items As Is</p>
                 </div>
               </div>
             </div>

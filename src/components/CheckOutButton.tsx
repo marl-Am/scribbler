@@ -11,9 +11,8 @@ export default function CheckoutButton() {
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
-    setStatus("loading"); // Set status to loading when the button is clicked
-    // Add a void keyword to ignore the promise.
-    void handleCheckout(); // Call the async function here.
+    setStatus("loading");
+    void handleCheckout();
   }
 
   async function handleCheckout() {
@@ -22,8 +21,8 @@ export default function CheckoutButton() {
       try {
         const result = (await redirectToCheckout().catch((error: unknown) => {
           console.error(error);
-          return { error }; // This ensures that the error object structure is maintained
-        })) as CheckoutResponse; // Type assertion to ensure type safety
+          return { error };
+        })) as CheckoutResponse;
 
         if (result?.error) {
           console.error(result);

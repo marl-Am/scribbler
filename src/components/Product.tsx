@@ -56,6 +56,7 @@ export default function Product({ product }: ProductProps) {
       >
         {isInCart ? "Out of Stock" : "Add to Cart"}
       </button>
+      
 
       {/* <button className="rounded-md bg-blue-500 px-5 py-2 text-white transition-colors duration-500 hover:bg-blue-600">
         Buy Now

@@ -20,13 +20,12 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         <CartProvider
           mode="payment"
           cartMode="client-only"
-          // Connects to our Stripe account (stored in an .env.local file)
           stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-          successUrl={`${process.env.NEXT_PUBLIC_URL as string}/?success=true`}
-          cancelUrl={`${process.env.NEXT_PUBLIC_URL as string}/?success=false`}
+          successUrl={`${
+            process.env.NEXT_PUBLIC_URL as string
+          }/purchase_successful`}
+          cancelUrl={`${process.env.NEXT_PUBLIC_URL as string}/purchase_failed`}
           currency="USD"
-          // Only customers from US will be able to purchase
-          // Having this setting means that we will capture shipping address
           allowedCountries={["US"]}
           // Enables local storage
           shouldPersist={true}
