@@ -95,25 +95,34 @@ export default function HamburgerBtn() {
               className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
             >
               <li className="dropdown-item">
-                <a href="/home" className="menu-link">
+                <Link href="/home" className="menu-link">
                   Home
-                </a>
+                </Link>
               </li>
               <li className="dropdown-item">
-                <a href="/about" className="menu-link">
+                <Link href="/about" className="menu-link">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="dropdown-item">
-                <a href="/services" className="menu-link">
+                <Link href="/services" className="menu-link">
                   Services
-                </a>
+                </Link>
               </li>
-              <li className="dropdown-item">
-                <a href="/contact" className="menu-link">
-                  Contact
-                </a>
-              </li>
+              {user.isSignedIn && (
+                <li className="dropdown-item">
+                  <Link href="/contact" className="menu-link">
+                    Contact
+                  </Link>
+                </li>
+              )}
+              {!user.isSignedIn && (
+                <li className="dropdown-item">
+                  <SignInButton mode="modal">
+                    <button className="menu-link">Sign In</button>
+                  </SignInButton>
+                </li>
+              )}
             </ul>
           )}
         </div>
