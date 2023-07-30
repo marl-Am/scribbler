@@ -17,7 +17,7 @@ export default function HamburgerBtn() {
             className="group z-10 flex h-10 w-10 flex-col items-center justify-center rounded border-2 border-black"
             onClick={() => setIsOpen(!isOpen)}
           >
-            <div
+            {/* <div
               className={`${genericHamburgerLine} ${
                 isOpen
                   ? "translate-y-3 rotate-45 opacity-50 group-hover:opacity-100"
@@ -35,7 +35,7 @@ export default function HamburgerBtn() {
                   ? "-translate-y-3 -rotate-45 opacity-50 group-hover:opacity-100"
                   : "opacity-50 group-hover:opacity-100"
               }`}
-            />
+            /> */}
           </button>
           {isOpen && (
             <ul
