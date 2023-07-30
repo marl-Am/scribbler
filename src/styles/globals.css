@@ -41,7 +41,7 @@ button:hover svg {
 .navbar {
     position: relative;
     /* or absolute, depending on your layout */
-    /* z-index: 1000; */
+    z-index: 1000;
 }
 
 .dropdown:hover .dropdown-menu {
