@@ -8,7 +8,8 @@ export default function PurchaseSuccessful({}) {
 
   useEffect(() => {
     clearCart();
-  }, [clearCart]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <>
