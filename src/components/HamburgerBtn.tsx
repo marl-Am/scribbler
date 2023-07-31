@@ -13,7 +13,7 @@ const HamburgerBtn: React.FC = () => {
         <div className="dropdown">
           <label
             tabIndex={0}
-            className="group z-10 flex h-10 w-10 cursor-pointer flex-col items-center justify-center rounded border-2 border-black"
+            className="group z-10 flex h-10 w-10 cursor-pointer flex-col items-center justify-center"
             onClick={() => setIsOpen(!isOpen)}
           >
             <div

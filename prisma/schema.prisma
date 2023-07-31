@@ -15,30 +15,31 @@ model User {
   id            String   @id @default(uuid())
   clerkId       String   @unique
   name          String
-  address       String
+  email         String   @unique
   orders        Order[]
 }
+
 
 model Product {
   id            String   @id @default(uuid())
   name          String
-  description   String
   price         Float
+  quantity      Int
   orderDetails  OrderDetails[]
 }
 
 model Order {
-  id            String   @id @default(uuid())
-  user          User     @relation(fields: [userId], references: [id])
-  userId        String
-  totalPrice    Float
-  deliveryAddress String
-  status        String
-  orderDate     DateTime @default(now())
-  orderDetails  OrderDetails[]
+  id              String   @id @default(uuid())
+  user            User     @relation(fields: [clerkId], references: [clerkId])
+  clerkId         String
+  totalPrice      Float
+  status          String
+  orderDate       DateTime @default(now())
+  orderDetails    OrderDetails[]
 
-  @@index([userId])
+  @@index([clerkId])
 }
+
 
 model OrderDetails {
   id          String   @id @default(uuid())

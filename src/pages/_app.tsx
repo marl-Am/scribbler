@@ -11,11 +11,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { CartProvider } from "use-shopping-cart";
 
 import NavBar from "~/components/NavBar";
+import { neobrutalism } from "@clerk/themes";
 
 const MyApp: AppType = ({ Component, pageProps }) => {
-
   return (
-    <ClerkProvider {...pageProps}>
+    <ClerkProvider
+      {...pageProps}
+      appearance={{
+        baseTheme: neobrutalism,
+      }}
+    >
       <div className="flex min-h-screen flex-col overflow-hidden">
         <CartProvider
           mode="payment"

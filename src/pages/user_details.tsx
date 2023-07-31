@@ -3,7 +3,7 @@ import Head from "next/head";
 import Forbidden from "./403";
 
 export default function UserDetails() {
-  const { userId, sessionId } = useAuth();
+  const { userId } = useAuth();
   const { isSignedIn, user } = useUser();
 
   if (!user || !userId || !isSignedIn) {
@@ -28,7 +28,8 @@ export default function UserDetails() {
               ))}
             </ul>
             <p className="font-bold">User Id: {userId}</p>
-            <p className="font-bold">User Session Id: {sessionId}</p>
+            {/* Session Id is different everytime i sign in */}
+            {/* <p className="font-bold">User Session Id: {sessionId}</p> */}
           </div>
         )}
       </div>
