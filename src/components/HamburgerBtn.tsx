@@ -50,15 +50,6 @@ const HamburgerBtn: React.FC = () => {
 
               {user.isSignedIn && (
                 <Link
-                  href="/inbox"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                >
-                  Inbox
-                </Link>
-              )}
-
-              {user.isSignedIn && (
-                <Link
                   href="/orders"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                 >
@@ -74,13 +65,6 @@ const HamburgerBtn: React.FC = () => {
                   User Details
                 </Link>
               )}
-
-              <Link
-                href="/view_order"
-                className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-              >
-                View Order
-              </Link>
 
               {!user.isSignedIn && (
                 <SignInButton mode="modal">
