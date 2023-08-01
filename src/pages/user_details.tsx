@@ -3,9 +3,10 @@ import Head from "next/head";
 import Forbidden from "./403";
 
 export default function UserDetails() {
-  const { userId } = useAuth();
+  const { userId } = useAuth(); // sessionId
   const { isSignedIn, user } = useUser();
 
+  console.log(user);
   if (!user || !userId || !isSignedIn) {
     return <Forbidden />; // Return the Forbidden component if the user doesn't have access.
   }

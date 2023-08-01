@@ -9,6 +9,7 @@ export const products = [
     currency: "USD",
     image: "/Zoppen.jpg",
     category: "Others",
+    stock: 1,
   },
   {
     id: "price_1NViGKBAPlcBoDEX2gAkly4C",
@@ -17,6 +18,7 @@ export const products = [
     currency: "USD",
     image: "/calculator.jpg",
     category: "Electronics",
+    stock: 1,
   },
   {
     id: "price_1NViWWBAPlcBoDEXgRBEiADe",
@@ -25,6 +27,7 @@ export const products = [
     currency: "USD",
     image: "/keyboard.jpg",
     category: "Electronics",
+    stock: 1,
   },
   {
     id: "price_1NVhvABAPlcBoDEX533SDjKl",
@@ -33,6 +36,7 @@ export const products = [
     currency: "USD",
     image: "/madden19.jpg",
     category: "Games",
+    stock: 1,
   },
   {
     id: "price_1NUKwBBAPlcBoDEXdvLOlnIz",
@@ -41,6 +45,7 @@ export const products = [
     currency: "USD",
     image: "/HorizonZeroDawn.jpg",
     category: "Games",
+    stock: 1,
   },
   {
     id: "price_1NVhzcBAPlcBoDEXPCOZuo0q",
@@ -49,6 +54,7 @@ export const products = [
     currency: "USD",
     image: "/nba.jpg",
     category: "Games",
+    stock: 1,
   },
   {
     id: "price_1NUKeyBAPlcBoDEXHylTqXY4",
@@ -57,6 +63,7 @@ export const products = [
     currency: "USD",
     image: "/EffectiveJava.jpg",
     category: "Books",
+    stock: 1,
   },
   {
     id: "price_1NVi5UBAPlcBoDEX9dh95ixd",
@@ -65,6 +72,7 @@ export const products = [
     currency: "USD",
     image: "/startingOut.jpg",
     category: "Books",
+    stock: 1,
   },
   {
     id: "price_1NViQFBAPlcBoDEXDjFppRam",
@@ -73,5 +81,6 @@ export const products = [
     currency: "USD",
     image: "/assemble.jpg",
     category: "Books",
+    stock: 1,
   },
 ];

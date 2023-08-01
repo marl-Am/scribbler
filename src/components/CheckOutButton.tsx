@@ -62,9 +62,6 @@ export default function CheckoutButton() {
         }
       >
         {status === "loading" ? "Loading..." : "Proceed to checkout"}
-        {status === "loading" && (
-          <span className="loading loading-spinner ml-2 text-primary"></span>
-        )}
       </button>
     </article>
   );

@@ -1,14 +1,18 @@
 import { useShoppingCart } from "use-shopping-cart";
 import Link from "next/link";
 import ShoppingCart from "./ShoppingCart";
-import { SignInButton, useUser, UserButton } from "@clerk/nextjs";
-import { useState, useRef } from "react";
+import { SignInButton, useUser, UserButton, useAuth } from "@clerk/nextjs";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
-import HamburgerBtn from "./HamburgerBtn";
+import axios from "axios";
 
 const NavBar: React.FC = () => {
-  const user = useUser();
+  const { isSignedIn, user } = useUser();
+  const { userId } = useAuth();
   const router = useRouter();
+
+  const [isOpen, setIsOpen] = useState(false);
+  const genericHamburgerLine = `h-1 w-6 my-1 rounded-full bg-black transition ease transform duration-300`;
 
   const { handleCartClick, cartCount } = useShoppingCart();
 
@@ -37,15 +41,113 @@ const NavBar: React.FC = () => {
     dialogRef.current?.close();
   };
 
+  // In your component
+  useEffect(() => {
+    if (isSignedIn && userId) {
+      const saveUser = async () => {
+        const username = user?.username as string;
+        const emailAddress = user?.emailAddresses[0]?.emailAddress as string;
+
+        // Ensure username and emailAddress are not undefined before proceeding
+        if (username && emailAddress) {
+          const userData = {
+            clerkId: userId,
+            name: username,
+            email: emailAddress,
+          };
+
+          try {
+            await axios.post("/api/saveUser", userData);
+          } catch (error) {
+            console.error("Failed to save user", error);
+          }
+        } else {
+          console.error("Username or email address is missing");
+        }
+      };
+
+      void saveUser();
+    }
+  }, [isSignedIn, userId, user?.username, user?.emailAddresses]);
+
   return (
     <div className="nav-container bg-gray-700">
       <div className="navbar">
         {/* Responsive Dropdown Menu */}
         <div className="navbar-start">
-          <HamburgerBtn />
+          {/* Hamburger Menu */}
+          <div className="relative gap-2">
+            <div className="dropdown">
+              <label
+                tabIndex={0}
+                className="group z-10 flex h-10 w-10 cursor-pointer flex-col items-center justify-center"
+                onClick={() => setIsOpen(!isOpen)}
+              >
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "translate-y-3 rotate-45 opacity-50 group-hover:opacity-100"
+                      : "opacity-50 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen ? "opacity-0" : "opacity-50 group-hover:opacity-100"
+                  }`}
+                />
+                <div
+                  className={`${genericHamburgerLine} ${
+                    isOpen
+                      ? "-translate-y-3 -rotate-45 opacity-50 group-hover:opacity-100"
+                      : "opacity-50 group-hover:opacity-100"
+                  }`}
+                />
+              </label>
+              {isOpen && (
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content menu rounded-box menu-md z-[1] mt-3 w-52 bg-base-100 p-2 shadow"
+                >
+                  <Link
+                    href="/"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:underline"
+                  >
+                    Home
+                  </Link>
+
+                  {isSignedIn && (
+                    <Link
+                      href="/orders"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:underline"
+                    >
+                      Orders
+                    </Link>
+                  )}
+
+                  {isSignedIn && (
+                    <Link
+                      href="/user_details"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:underline"
+                    >
+                      User Details
+                    </Link>
+                  )}
+
+                  {!isSignedIn && (
+                    <SignInButton mode="modal">
+                      <button className="block px-4 py-2 text-left text-sm text-gray-700 hover:bg-gray-100 hover:underline lg:hidden">
+                        Sign In
+                      </button>
+                    </SignInButton>
+                  )}
+                </ul>
+              )}
+            </div>
+          </div>
+          {/* Hamburger Menu Ends */}
 
           {/* User Profile */}
-          {user.isSignedIn && (
+          {isSignedIn && (
             <div className="relative ml-2 mr-2">
               <span className="h-10 w-10 rounded">
                 <UserButton afterSignOutUrl="/" />
@@ -67,9 +169,9 @@ const NavBar: React.FC = () => {
         {/* Search */}
         <div className="navbar-end">
           {/* Sign In */}
-          {!user.isSignedIn && (
+          {!isSignedIn && (
             <SignInButton mode="modal">
-              <button className="btn-md btn mr-2 hidden border border-none bg-gray-700 text-white hover:border-black hover:bg-white hover:text-black lg:block">
+              <button className="btn-md btn mr-2 hidden border border-none bg-gray-700 text-white hover:border-black hover:bg-white hover:text-black hover:underline lg:block">
                 Sign In
               </button>
             </SignInButton>
