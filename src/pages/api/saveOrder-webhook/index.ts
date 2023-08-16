@@ -8,7 +8,7 @@ import { buffer } from "micro";
 const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const rawBody = (await buffer(req)).toString();
-    if (rawBody){
+    if (rawBody) {
       console.log("Error saving order\n", rawBody, "\n");
     }
 
@@ -38,22 +38,23 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
       return res.status(400).send("Webhook Error");
     }
 
+    // Successfully constructed event.
+    console.log(`✅ Success event id: ${event.id}`);
+
     if (event.type === "payment_intent.succeeded") {
       const paymentIntentSucceeded = event.data.object as Stripe.PaymentIntent;
+      console.log(`💰 PaymentIntent status: ${paymentIntentSucceeded.status}`);
+      console.log("-----------------------------------------------------");
 
+      console.log("\npaymentIntentSucceeded: \n", paymentIntentSucceeded, "\n");
+
+      if (paymentIntentSucceeded.metadata) {
         console.log(
-          "\npaymentIntentSucceeded: \n",
-          paymentIntentSucceeded,
+          "\npaymentIntentSucceeded.metadata: \n",
+          paymentIntentSucceeded.metadata,
           "\n"
         );
 
-      if (paymentIntentSucceeded.metadata) {
-
-        console.log(
-          "\npaymentIntentSucceeded.metadata: \n",
-          paymentIntentSucceeded.metadata
-        ,"\n");
-        
         const userId = paymentIntentSucceeded.metadata.userId;
         const cartItemsString = paymentIntentSucceeded.metadata.cart;
 
@@ -76,6 +77,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
 
           try {
             const order = await saveOrder(userId, cartItems);
+            console.log("\nSaving order\n", order, "\n");
             res.status(200).send("Success");
           } catch (err) {
             console.log("\nError saving order\n", err, "\n");
@@ -89,6 +91,28 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
         console.log("Metadata is null");
         res.status(400).send("Bad Request");
       }
+    } else if (event.type === "payment_intent.payment_failed") {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log("❌ Payment failed: payment_intent.payment_failed");
+    } else if (event.type === "customer.created") {
+      const customer = event.data.object as Stripe.Customer;
+      console.log(`Customer created: ${customer.id}`);
+      console.log("-----------------------------------------------------");
+    } else if (event.type === "payment_intent.requires_action") {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log(`❌ Payment requires action: ${paymentIntent.id}`);
+    } else if (event.type === "payment_intent.succeeded") {
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log(`💰 Payment succeeded: ${paymentIntent.id}`);
+      console.log("-----------------------------------------------------");
+    } else if (event.type === "charge.succeeded") {
+      const charge = event.data.object as Stripe.Charge;
+      console.log(`💵 Charge id: ${charge.id}`);
+      console.log("-----------------------------------------------------");
+    } else if (event.type === "checkout.session.completed") {
+      const checkout_session = event.data.object as Stripe.Checkout.Session;
+      console.log(`💳 Session id: ${checkout_session.id}`);
+      console.log("-----------------------------------------------------");
     }
   }
 };
