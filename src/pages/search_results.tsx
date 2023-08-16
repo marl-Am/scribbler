@@ -24,7 +24,7 @@ export default function SearchResults() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    if (!router.query.term) return;
+    // if (!router.query.term) return;
 
     if (router.query.term) {
       setLoading(true);
@@ -64,7 +64,7 @@ export default function SearchResults() {
       );
     }
 
-    if (searchResults.length) {
+    if (searchResults.length > 0) {
       return (
         <>
           <Head>

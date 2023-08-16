@@ -6,25 +6,14 @@ import { CartContext } from "~/context/CartContext";
 import type { CartItem } from "~/context/CartContext";
 import { toast } from "react-toastify";
 
-
 import StoreDetails from "~/components/StoreDetails";
-
-type Product = {
-  id: string;
-  name: string;
-  price: number;
-  currency: string;
-  image: string;
-  category: string;
-  stock: number;
-};
+import type { Product } from "@prisma/client";
 
 interface GetProductsResponse {
   results: Product[];
 }
 
 export default function Home() {
-
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -41,14 +30,13 @@ export default function Home() {
     setSortType(event.target.value);
   };
 
-
   const cartContext = useContext(CartContext);
 
   if (!cartContext) {
     throw new Error("Navbar must be used within a CartProvider");
   }
   const { cart, setCart } = cartContext;
-  
+
   const isInCart = (product: CartItem) =>
     cart.some((item) => item.id === product.id);
 
@@ -82,9 +70,13 @@ export default function Home() {
 
   useEffect(() => {
     fetch("/api/prisma/getProducts")
-      .then((response) => response.json() as Promise<GetProductsResponse>)
-      .then((data) => {
-        setProducts(data.results);
+      .then((response) => response.json())
+      .then((data: GetProductsResponse) => {
+        if (data && data.results) {
+          setProducts(data.results);
+        } else {
+          console.error("Invalid data structure:", data);
+        }
         setTimeout(() => {
           setIsLoading(false);
         }, 1000);
@@ -94,7 +86,6 @@ export default function Home() {
         setIsLoading(false);
       });
   }, []);
-
 
   return (
     <>

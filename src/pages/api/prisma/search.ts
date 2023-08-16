@@ -17,7 +17,8 @@ export default async function searchProducts(
         },
       },
     });
-    res.status(200).json(products);
+    res.status(200).json({ results: products });
+    // res.status(200).json(products);
   } catch (error) {
     console.error(error);
     res.status(500).send("An error occurred while searching for products.");
