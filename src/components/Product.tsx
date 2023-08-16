@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext } from "react";
 import { formatCurrencyString } from "use-shopping-cart";
-import { useShoppingCart } from "use-shopping-cart";
+
 import Image from "next/image";
 import { toast } from "react-toastify";
+import { CartContext } from "~/context/CartContext";
+import type { CartItem } from "~/context/CartContext";
 
 interface ProductProps {
   product: {
@@ -11,25 +13,57 @@ interface ProductProps {
     price: number;
     currency: string;
     image: string;
+    category: string;
+    stock: number;
   };
 }
 
 export default function Product({ product }: ProductProps) {
-  const { addItem, cartDetails } = useShoppingCart();
-  const { name, price, image } = product;
-  const [quantity, setQuantity] = useState(1);
+  const { id, name, price, image } = product;
 
-  // Convert the value to boolean. If the item exists in cartDetails, it will be true, otherwise false.
-  const isInCart = Boolean(cartDetails?.[product.id]);
+  const cartContext = useContext(CartContext);
 
-  const addToCart = () => {
-    addItem(product, { count: quantity });
-    setQuantity(1);
-    toast("Added To Cart: " + `${product.name}`);
+  if (!cartContext) {
+    throw new Error("Navbar must be used within a CartProvider");
+  }
+  const { cart, setCart } = cartContext;
+
+  const isInCart = (product: CartItem) =>
+    cart.some((item) => item.id === product.id);
+
+  const addToCart = (product: CartItem) => {
+    if (isInCart(product)) {
+      toast.warn("Only one item is in stock.", {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      return;
+    }
+
+    setCart([...cart, product]);
+    toast.success("Added To Cart: " + `${product.name}`, {
+      position: "bottom-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "dark",
+    });
   };
 
   return (
-    <article className="mb-6 flex flex-col gap-3 rounded-xl bg-white p-8 text-center shadow-md">
+    <article
+      key={id}
+      className="mb-6 flex flex-col gap-3 rounded-xl bg-white p-8 text-center shadow-md"
+    >
       <Image
         src={image}
         className="text-3xl"
@@ -41,23 +75,23 @@ export default function Product({ product }: ProductProps) {
       <div className="mt-auto text-2xl font-semibold">
         {formatCurrencyString({ value: price, currency: "USD" })}
       </div>
-      {/* <span className="mx-3 w-10 rounded-md text-center">{quantity}</span> */}
       <button
-        onClick={() => addToCart()}
-        disabled={isInCart}
-        className={
-          isInCart
-            ? "cursor-not-allowed rounded-md bg-gray-500 px-5 py-2 text-white"
-            : "rounded-md bg-emerald-500 px-5 py-2 text-white transition-colors duration-500 hover:bg-emerald-600"
-        }
+        disabled={product.stock === 0}
+        onClick={() => addToCart(product)}
+        className="mx-5 -mb-4 flex justify-center rounded-full bg-emerald-600 p-2 text-white hover:bg-emerald-500 focus:bg-emerald-500 focus:outline-none"
       >
-        {isInCart ? "Out of Stock" : "Add to Cart"}
+        <svg
+          className="h-5 w-5"
+          fill="none"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+        </svg>
       </button>
-      
-
-      {/* <button className="rounded-md bg-blue-500 px-5 py-2 text-white transition-colors duration-500 hover:bg-blue-600">
-        Buy Now
-      </button> */}
     </article>
   );
 }

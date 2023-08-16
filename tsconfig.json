@@ -21,13 +21,20 @@
       "~/*": ["./src/*"]
     }
   },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
+  },
   "include": [
     ".eslintrc.cjs",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.cjs",
-    "**/*.mjs"
-, "src/pages/api/(hello)/route.tsx", "src/components/ZoppenBuyBtn.jsx"  ],
+    "**/*.mjs",
+    "src/pages/api/(hello)/route.tsx",
+    "src/components/ZoppenBuyBtn.jsx"
+  ],
   "exclude": ["node_modules"]
 }

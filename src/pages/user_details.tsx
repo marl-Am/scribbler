@@ -6,9 +6,8 @@ export default function UserDetails() {
   const { userId } = useAuth(); // sessionId
   const { isSignedIn, user } = useUser();
 
-  console.log(user);
   if (!user || !userId || !isSignedIn) {
-    return <Forbidden />; // Return the Forbidden component if the user doesn't have access.
+    return <Forbidden />;
   }
 
   return (
@@ -28,9 +27,6 @@ export default function UserDetails() {
                 <li key={index}>{email.emailAddress}</li>
               ))}
             </ul>
-            <p className="font-bold">User Id: {userId}</p>
-            {/* Session Id is different everytime i sign in */}
-            {/* <p className="font-bold">User Session Id: {sessionId}</p> */}
           </div>
         )}
       </div>

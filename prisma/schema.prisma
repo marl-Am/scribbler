@@ -12,11 +12,12 @@ generator client {
 }
 
 model User {
-  id      String  @id @default(uuid())
-  clerkId String  @unique
-  name    String
-  email   String  @unique
-  orders  Order[]
+  id        String   @id @default(uuid())
+  clerkId   String   @unique
+  name      String
+  email     String   @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Product {
@@ -24,28 +25,37 @@ model Product {
   name       String
   price      Float
   currency   String
+  image      String
+  category   String
   stock      Int
   orderItems OrderItem[]
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 }
 
 model Order {
-  id         String   @id @default(uuid())
-  total      Int
+  id         String      @id @default(uuid())
+  total      Float
   userId     String
-  user       User     @relation(fields: [userId], references: [id])
   orderItems OrderItem[]
-  createdAt  DateTime @default(now())
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
 
   @@index([userId])
 }
 
+
 model OrderItem {
-  id        String  @id @default(uuid())
+  id        String   @id @default(uuid())
+  name      String
   quantity  Int
+  price     Float
   productId String
-  product   Product @relation(fields: [productId], references: [id])
+  product   Product  @relation(fields: [productId], references: [id])
   orderId   String
-  order     Order   @relation(fields: [orderId], references: [id])
+  order     Order    @relation(fields: [orderId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([productId])
   @@index([orderId])

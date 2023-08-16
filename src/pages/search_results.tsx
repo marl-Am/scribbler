@@ -1,7 +1,5 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { products } from "~/data/products";
-
 import Image from "next/image";
 import Head from "next/head";
 import Product from "~/components/Product";
@@ -12,28 +10,65 @@ interface Product {
   price: number;
   currency: string;
   image: string;
+  category: string;
+  stock: number;
+}
+
+interface SearchResponse {
+  results: Product[];
 }
 
 export default function SearchResults() {
   const router = useRouter();
   const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+    if (!router.query.term) return;
+
     if (router.query.term) {
+      setLoading(true);
       const term = router.query.term.toString();
-      const results = products.filter((product) =>
-        product.name.toLowerCase().includes(term.toLowerCase())
-      );
-      setSearchResults(results);
+
+      fetch(`/api/prisma/search?term=${term}`)
+        .then((response) => response.json() as Promise<SearchResponse>)
+        .then((data) => {
+          setSearchResults(data.results);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.error(
+            "An error occurred while searching for products:",
+            error
+          );
+          setLoading(false);
+        });
     }
   }, [router.query]);
 
   const renderSearchResults = () => {
+    if (loading) {
+      return (
+        <>
+          <Head>
+            <title>Item: Searching...</title>
+          </Head>
+          <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 text-center">
+            <svg
+              className="... mr-3 h-5 w-5 animate-spin"
+              viewBox="0 0 24 24"
+            ></svg>
+            Searching...
+          </div>
+        </>
+      );
+    }
+
     if (searchResults.length) {
       return (
         <>
           <Head>
-            <title>Item Found</title>
+            <title>Item: Found</title>
           </Head>
           <div className="bg-gray-100">
             <h2 className="text-center font-bold">Search Results</h2>
@@ -49,7 +84,7 @@ export default function SearchResults() {
       return (
         <>
           <Head>
-            <title>Item Not Found</title>
+            <title>Item: Not Found</title>
           </Head>
           <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
             <Image

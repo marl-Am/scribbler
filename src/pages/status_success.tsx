@@ -1,15 +1,18 @@
 import Head from "next/head";
 import Link from "next/link";
-import { useEffect } from "react";
-import { useShoppingCart } from "use-shopping-cart";
+import { useContext, useEffect } from "react";
+import { CartContext } from "~/context/CartContext";
 
 export default function PurchaseSuccessful({}) {
-  const { clearCart } = useShoppingCart();
+  const cartContext = useContext(CartContext);
+  const clearCart = cartContext?.clearCart;
+  const myCart = cartContext?.cart;
 
   useEffect(() => {
-    clearCart();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (myCart && myCart.length > 0) {
+      clearCart?.();
+    }
+  }, [clearCart, myCart]);
 
   return (
     <>

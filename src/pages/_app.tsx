@@ -8,12 +8,14 @@ import Footer from "~/components/Footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import { CartProvider } from "use-shopping-cart";
-
 import NavBar from "~/components/NavBar";
 import { neobrutalism } from "@clerk/themes";
+import { CartProvider } from "~/context/CartContext";
+
 
 const MyApp: AppType = ({ Component, pageProps }) => {
+
+
   return (
     <ClerkProvider
       {...pageProps}
@@ -21,20 +23,8 @@ const MyApp: AppType = ({ Component, pageProps }) => {
         baseTheme: neobrutalism,
       }}
     >
-      <div className="flex min-h-screen flex-col overflow-hidden">
-        <CartProvider
-          mode="payment"
-          cartMode="client-only"
-          stripe={process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY as string}
-          successUrl={`${
-            process.env.NEXT_PUBLIC_URL as string
-          }/purchase_successful`}
-          cancelUrl={`${process.env.NEXT_PUBLIC_URL as string}/purchase_failed`}
-          currency="USD"
-          allowedCountries={["US"]}
-          // Enables local storage
-          shouldPersist={true}
-        >
+      <CartProvider>
+        <div className="flex min-h-screen flex-col overflow-hidden">
           <NavBar />
           <main className="">
             <Component {...pageProps} />
@@ -51,9 +41,9 @@ const MyApp: AppType = ({ Component, pageProps }) => {
             pauseOnHover
             theme="colored"
           />
-        </CartProvider>
-        <Footer />
-      </div>
+          <Footer />
+        </div>
+      </CartProvider>
     </ClerkProvider>
   );
 };
