@@ -46,12 +46,12 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
         const userId = paymentIntentSucceeded.metadata.userId;
         const cartItemsString = paymentIntentSucceeded.metadata.cart;
 
-        if (userId) {
-          console.log("userId:\n", userId, "\n");
+        if (!userId) {
+          console.log("\nuserId is missing\n");
         }
 
-        if (cartItemsString) {
-          console.log("cartItemsString:\n", cartItemsString, "\n");
+        if (!cartItemsString) {
+          console.log("\ncartItemsString is missing\n");
         }
 
         if (userId && cartItemsString) {
@@ -59,15 +59,19 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
             cartItemsString
           ) as CartItem[];
 
+          console.log("\nuserId: \n", userId, "\n");
+
+          console.log("\ncartItemsString: \n", cartItemsString, "\n");
+
           try {
             const order = await saveOrder(userId, cartItems);
             res.status(200).send("Success");
           } catch (err) {
-            console.log("Error saving order\n", err);
+            console.log("\nError saving order\n", err, "\n");
             res.status(500).send("Error saving order");
           }
         } else {
-          console.log("userId or cartItemsString missing in metadata");
+          console.log("\nuserId or cartItemsString missing in metadata\n");
           res.status(400).send("Bad Request");
         }
       } else {
