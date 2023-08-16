@@ -39,8 +39,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     if (event.type === "payment_intent.succeeded") {
-      const paymentIntentSucceeded = event.data
-        .object as Stripe.Checkout.Session;
+      const paymentIntentSucceeded = event.data.object as Stripe.PaymentIntent;
 
         console.log(
           "\npaymentIntentSucceeded: \n",
@@ -94,6 +93,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 };
 
+// Stripe requires the raw body to construct the event.
 export const config = {
   api: {
     bodyParser: false,
