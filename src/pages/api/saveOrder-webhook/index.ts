@@ -42,6 +42,12 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
       const paymentIntentSucceeded = event.data
         .object as Stripe.Checkout.Session;
 
+        console.log(
+          "\npaymentIntentSucceeded: \n",
+          paymentIntentSucceeded,
+          "\n"
+        );
+
       if (paymentIntentSucceeded.metadata) {
 
         console.log(
