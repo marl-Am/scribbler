@@ -42,21 +42,16 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     console.log(`✅ Success event id: ${event.id}`);
 
     if (event.type === "payment_intent.succeeded") {
-      const paymentIntentSucceeded = event.data.object as Stripe.PaymentIntent;
-      console.log(`💰 PaymentIntent status: ${paymentIntentSucceeded.status}`);
+      const paymentIntent = event.data.object as Stripe.PaymentIntent;
+
+      console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
       console.log("-----------------------------------------------------");
 
-      console.log("\npaymentIntentSucceeded: \n", paymentIntentSucceeded, "\n");
+      console.log("\npaymentIntent: \n", paymentIntent, "\n");
 
-      if (paymentIntentSucceeded.metadata) {
-        console.log(
-          "\npaymentIntentSucceeded.metadata: \n",
-          paymentIntentSucceeded.metadata,
-          "\n"
-        );
-
-        const userId = paymentIntentSucceeded.metadata.userId;
-        const cartItemsString = paymentIntentSucceeded.metadata.cart;
+      if (paymentIntent.metadata) {
+        const userId = paymentIntent.metadata.userId;
+        const cartItemsString = paymentIntent.metadata.cart;
 
         if (!userId) {
           console.log("\nuserId is missing\n");
@@ -93,26 +88,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
       }
     } else if (event.type === "payment_intent.payment_failed") {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log("❌ Payment failed: payment_intent.payment_failed");
-    } else if (event.type === "customer.created") {
-      const customer = event.data.object as Stripe.Customer;
-      console.log(`Customer created: ${customer.id}`);
-      console.log("-----------------------------------------------------");
-    } else if (event.type === "payment_intent.requires_action") {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log(`❌ Payment requires action: ${paymentIntent.id}`);
-    } else if (event.type === "payment_intent.succeeded") {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log(`💰 Payment succeeded: ${paymentIntent.id}`);
-      console.log("-----------------------------------------------------");
-    } else if (event.type === "charge.succeeded") {
-      const charge = event.data.object as Stripe.Charge;
-      console.log(`💵 Charge id: ${charge.id}`);
-      console.log("-----------------------------------------------------");
-    } else if (event.type === "checkout.session.completed") {
-      const checkout_session = event.data.object as Stripe.Checkout.Session;
-      console.log(`💳 Session id: ${checkout_session.id}`);
-      console.log("-----------------------------------------------------");
+      console.log("❌ Payment failed:paymentIntent \n", paymentIntent, "\n");
     }
   }
 };

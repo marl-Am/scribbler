@@ -65,9 +65,11 @@ export default async function handler(
           mode: "payment",
           success_url: `${origin}/status_success`,
           cancel_url: `${origin}/status_cancel`,
-          metadata: {
-            userId: userId,
-            cart: JSON.stringify(itemsToOrder),
+          payment_intent_data: {
+            metadata: {
+              userId: userId,
+              cart: JSON.stringify(itemsToOrder),
+            },
           },
         };
 
