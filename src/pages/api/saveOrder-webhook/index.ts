@@ -3,32 +3,26 @@ import stripe from "../base/_base";
 import type Stripe from "stripe";
 import { saveOrder } from "../orders/saveOrder";
 import type { CartItem } from "~/context/CartContext";
-import captureRawBody from "~/middleware/captureRawBody";
+import { buffer } from "micro";
 
-interface NextApiRequestWithRawBody extends NextApiRequest {
-  rawBody?: string;
-}
-
-const handleRequest = async (
-  req: NextApiRequestWithRawBody,
-  res: NextApiResponse
-) => {
+const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
-    // Apply the middleware
-    await captureRawBody(req);
+    const rawBody = (await buffer(req)).toString();
 
     const sig = req.headers["stripe-signature"] as string;
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-    // console.log("\n[req.body]:\n ", (req as any).rawBody, "\n");
+    if (!sig) {
+      console.log("\nSignature is null or empty ");
+      return;
+    }
 
-    if (!sig || !endpointSecret) {
-      console.log("\nSignature is null or empty. ");
+    if (!endpointSecret) {
       console.log("Endpoint secret is null or empty.\n");
       return;
     }
 
-    if (typeof req.rawBody !== "string") {
+    if (typeof rawBody !== "string") {
       console.log("req: NextApiRequest body, not string.");
       return;
     }
@@ -36,17 +30,12 @@ const handleRequest = async (
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
-      //
-      console.log("\nTrying event");
+      event = stripe.webhooks.constructEvent(rawBody, sig, endpointSecret);
     } catch (err) {
-      console.log("Webhook Error: \n", err, "\n");
       return res.status(400).send("Webhook Error");
     }
-    if (event.type === "payment_intent.succeeded") {
-      //
-      console.log("\nThe payment_intent.succeeded");
 
+    if (event.type === "payment_intent.succeeded") {
       const paymentIntentSucceeded = event.data
         .object as Stripe.Checkout.Session;
 
@@ -77,6 +66,12 @@ const handleRequest = async (
       }
     }
   }
+};
+
+export const config = {
+  api: {
+    bodyParser: false,
+  },
 };
 
 export default handleRequest;
