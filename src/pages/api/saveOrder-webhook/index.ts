@@ -8,6 +8,9 @@ import { buffer } from "micro";
 const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const rawBody = (await buffer(req)).toString();
+    if (rawBody){
+      console.log("Error saving order\n", rawBody, "\n");
+    }
 
     const sig = req.headers["stripe-signature"] as string;
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
@@ -43,6 +46,14 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
         const userId = paymentIntentSucceeded.metadata.userId;
         const cartItemsString = paymentIntentSucceeded.metadata.cart;
 
+        if (userId) {
+          console.log("userId:\n", userId, "\n");
+        }
+
+        if (cartItemsString) {
+          console.log("cartItemsString:\n", cartItemsString, "\n");
+        }
+
         if (userId && cartItemsString) {
           const cartItems: CartItem[] = JSON.parse(
             cartItemsString
@@ -50,10 +61,9 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
 
           try {
             const order = await saveOrder(userId, cartItems);
-            console.log("Order saved:", order);
             res.status(200).send("Success");
           } catch (err) {
-            console.log(err);
+            console.log("Error saving order\n", err);
             res.status(500).send("Error saving order");
           }
         } else {
