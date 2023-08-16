@@ -9,6 +9,8 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     const sig = req.headers["stripe-signature"] as string;
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
+    console.log("/n[req.body]:\n ", req.body, "/n");
+
     if (!sig || !endpointSecret) {
       console.log("\nSignature is null or empty. ");
       console.log("Endpoint secret is null or empty.\n");
@@ -16,7 +18,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     if (typeof req.body !== "string") {
-      console.log("\nRequets body, not string. ");
+      console.log("req: NextApiRequest body, not string. ");
       return;
     }
 
@@ -25,11 +27,16 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
 
     try {
       event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+      //
+      console.log("\nTrying event");
     } catch (err) {
       console.log("Webhook Error: \n", err, "\n");
       return res.status(400).send("Webhook Error");
     }
     if (event.type === "payment_intent.succeeded") {
+      //
+      console.log("\nThe payment_intent.succeeded");
+
       const paymentIntentSucceeded = event.data
         .object as Stripe.Checkout.Session;
 
