@@ -3,13 +3,24 @@ import stripe from "../base/_base";
 import type Stripe from "stripe";
 import { saveOrder } from "../orders/saveOrder";
 import type { CartItem } from "~/context/CartContext";
+import captureRawBody from "~/middleware/captureRawBody";
 
-const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
+interface NextApiRequestWithRawBody extends NextApiRequest {
+  rawBody?: string;
+}
+
+const handleRequest = async (
+  req: NextApiRequestWithRawBody,
+  res: NextApiResponse
+) => {
   if (req.method === "POST") {
+    // Apply the middleware
+    await captureRawBody(req);
+
     const sig = req.headers["stripe-signature"] as string;
     const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
-    console.log("/n[req.body]:\n ", req.body, "/n");
+    // console.log("\n[req.body]:\n ", (req as any).rawBody, "\n");
 
     if (!sig || !endpointSecret) {
       console.log("\nSignature is null or empty. ");
@@ -17,16 +28,15 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
       return;
     }
 
-    if (typeof req.body !== "string") {
-      console.log("req: NextApiRequest body, not string. ");
+    if (typeof req.rawBody !== "string") {
+      console.log("req: NextApiRequest body, not string.");
       return;
     }
-
 
     let event;
 
     try {
-      event = stripe.webhooks.constructEvent(req.body, sig, endpointSecret);
+      event = stripe.webhooks.constructEvent(req.rawBody, sig, endpointSecret);
       //
       console.log("\nTrying event");
     } catch (err) {
@@ -48,7 +58,6 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
           const cartItems: CartItem[] = JSON.parse(
             cartItemsString
           ) as CartItem[];
-
 
           try {
             const order = await saveOrder(userId, cartItems);
