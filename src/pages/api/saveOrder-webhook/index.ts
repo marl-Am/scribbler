@@ -7,7 +7,7 @@ import type { CartItem } from "~/context/CartContext";
 const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "POST") {
     const sig = req.headers["stripe-signature"] as string;
-    const endpointSecret = process.env.STRIPE_ENDPOINT_SECRET as string;
+    const endpointSecret = process.env.STRIPE_WEBHOOK_SECRET as string;
 
     if (!sig || !endpointSecret) {
       console.log("\nSignature is null or empty. ");
