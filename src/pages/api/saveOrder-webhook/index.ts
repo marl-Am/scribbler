@@ -26,7 +26,7 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     if (typeof rawBody !== "string") {
-      console.log("req: NextApiRequest body, not string.");
+      console.log("rawBody not a string.");
       return;
     }
 
@@ -39,13 +39,13 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
     }
 
     // Successfully constructed event.
-    console.log(`✅ Success event id: ${event.id}`);
+    // console.log(`✅ Success event id: ${event.id}`);
 
     if (event.type === "payment_intent.succeeded") {
       const paymentIntent = event.data.object as Stripe.PaymentIntent;
 
-      console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
-      console.log("-----------------------------------------------------");
+      // console.log(`💰 PaymentIntent status: ${paymentIntent.status}`);
+      // console.log("-----------------------------------------------------");
 
       console.log("\npaymentIntent: \n", paymentIntent, "\n");
 
@@ -54,11 +54,13 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
         const cartItemsString = paymentIntent.metadata.cart;
 
         if (!userId) {
-          console.log("\nuserId is missing\n");
+          console.log("\nUser Id is missing\n");
+          return;
         }
 
         if (!cartItemsString) {
-          console.log("\ncartItemsString is missing\n");
+          console.log("\nCart Items String is missing\n");
+          return;
         }
 
         if (userId && cartItemsString) {
@@ -66,29 +68,28 @@ const handleRequest = async (req: NextApiRequest, res: NextApiResponse) => {
             cartItemsString
           ) as CartItem[];
 
-          console.log("\nuserId: \n", userId, "\n");
-
-          console.log("\ncartItemsString: \n", cartItemsString, "\n");
+          // console.log("\nuserId: \n", userId, "\n");
+          // console.log("\ncartItemsString: \n", cartItemsString, "\n");
 
           try {
-            const order = await saveOrder(userId, cartItems);
-            console.log("\nSaving order\n", order, "\n");
+            await saveOrder(userId, cartItems);
+            // console.log("\nSaving order\n", order, "\n");
             res.status(200).send("Success");
           } catch (err) {
-            console.log("\nError saving order\n", err, "\n");
+            // console.log("\nError saving order\n", err, "\n");
             res.status(500).send("Error saving order");
           }
         } else {
-          console.log("\nuserId or cartItemsString missing in metadata\n");
+          // console.log("\nuserId or cartItemsString missing in metadata\n");
           res.status(400).send("Bad Request");
         }
       } else {
-        console.log("Metadata is null");
+        // console.log("Metadata is null");
         res.status(400).send("Bad Request");
       }
     } else if (event.type === "payment_intent.payment_failed") {
-      const paymentIntent = event.data.object as Stripe.PaymentIntent;
-      console.log("❌ Payment failed:paymentIntent \n", paymentIntent, "\n");
+      // const paymentIntent = event.data.object as Stripe.PaymentIntent;
+      console.log("❌ Payment failed.");
     }
   }
 };
