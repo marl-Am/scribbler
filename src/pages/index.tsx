@@ -17,7 +17,7 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [isAllOutOfStock, setIsAllOutOfStock] = useState<boolean>(true);
+  const [isAllOutOfStock, setIsAllOutOfStock] = useState<boolean>(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
@@ -71,26 +71,6 @@ export default function Home() {
   };
 
   // get products from database
-  // useEffect(() => {
-  //   fetch("/api/prisma/getProducts")
-  //     .then((response) => response.json())
-  //     .then((data: GetProductsResponse) => {
-  //       if (data && data.results) {
-  //         setProducts(data.results);
-  //       } else {
-  //         console.error("Invalid data structure:", data);
-  //       }
-  //       setTimeout(() => {
-  //         setIsLoading(false);
-  //       }, 1000);
-  //     })
-  //     .catch((error) => {
-  //       console.error("An error occurred while fetching products:", error);
-  //       setIsLoading(false);
-  //     });
-  // }, []);
-
-  // get products from database
   useEffect(() => {
     fetch("/api/prisma/getProducts")
       .then((response) => response.json())
@@ -98,10 +78,10 @@ export default function Home() {
         if (data && data.results) {
           setProducts(data.results);
 
-          // const allOutOfStock = data.results.every(
-          //   (product) => product.stock === 0
-          // );
-          // setIsAllOutOfStock(allOutOfStock);
+          const allOutOfStock = data.results.every(
+            (product) => product.stock === 0
+          );
+          setIsAllOutOfStock(allOutOfStock);
         } else {
           console.error("Invalid data structure:", data);
         }
