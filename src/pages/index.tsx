@@ -17,6 +17,8 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const [isAllOutOfStock, setIsAllOutOfStock] = useState<boolean>(false);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
   const [sortType, setSortType] = useState("Low to High");
@@ -68,12 +70,38 @@ export default function Home() {
     });
   };
 
+  // get products from database
+  // useEffect(() => {
+  //   fetch("/api/prisma/getProducts")
+  //     .then((response) => response.json())
+  //     .then((data: GetProductsResponse) => {
+  //       if (data && data.results) {
+  //         setProducts(data.results);
+  //       } else {
+  //         console.error("Invalid data structure:", data);
+  //       }
+  //       setTimeout(() => {
+  //         setIsLoading(false);
+  //       }, 1000);
+  //     })
+  //     .catch((error) => {
+  //       console.error("An error occurred while fetching products:", error);
+  //       setIsLoading(false);
+  //     });
+  // }, []);
+
+  // get products from database
   useEffect(() => {
     fetch("/api/prisma/getProducts")
       .then((response) => response.json())
       .then((data: GetProductsResponse) => {
         if (data && data.results) {
           setProducts(data.results);
+          
+          const allOutOfStock = data.results.every(
+            (product) => product.stock === 0
+          );
+          setIsAllOutOfStock(allOutOfStock);
         } else {
           console.error("Invalid data structure:", data);
         }
@@ -99,6 +127,7 @@ export default function Home() {
         </div>
 
         {isLoading ? (
+          // Loading spinner code
           <div className="flex min-h-screen flex-col items-center justify-center bg-gray-100 text-center">
             <div className="text-center">
               <div role="status">
@@ -122,7 +151,27 @@ export default function Home() {
               </div>
             </div>
           </div>
+        ) : isAllOutOfStock ? (
+          // Out of stock message code
+          <div className="grid h-screen place-content-center bg-white px-4">
+            <div className="text-center">
+              <h1 className="text-9xl font-black text-gray-400">
+                Out of Stock
+              </h1>
+
+              <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+                Uh-oh!
+              </p>
+
+              <p className="mt-4 text-gray-500">We have no items left.</p>
+
+              <span className="mt-6 inline-block rounded bg-indigo-600 px-5 py-3 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring">
+                Please Come Back Later
+              </span>
+            </div>
+          </div>
         ) : (
+          // Display products
           <div>
             <article className="flex justify-center" id="products">
               <ul className="mb-2 ml-2 mr-2 mt-4 flex flex-wrap gap-4">
@@ -262,6 +311,9 @@ export default function Home() {
             {/* Pagination */}
           </div>
         )}
+
+        
+        {/*  */}
       </div>
     </>
   );
