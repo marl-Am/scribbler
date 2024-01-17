@@ -17,7 +17,7 @@ export default function Home() {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  const [isAllOutOfStock, setIsAllOutOfStock] = useState<boolean>(false);
+  const [isAllOutOfStock, setIsAllOutOfStock] = useState<boolean>(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [categoryFilter, setCategoryFilter] = useState("All");
@@ -97,11 +97,11 @@ export default function Home() {
       .then((data: GetProductsResponse) => {
         if (data && data.results) {
           setProducts(data.results);
-          
-          const allOutOfStock = data.results.every(
-            (product) => product.stock === 0
-          );
-          setIsAllOutOfStock(allOutOfStock);
+
+          // const allOutOfStock = data.results.every(
+          //   (product) => product.stock === 0
+          // );
+          // setIsAllOutOfStock(allOutOfStock);
         } else {
           console.error("Invalid data structure:", data);
         }
