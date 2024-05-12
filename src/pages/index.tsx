@@ -266,28 +266,31 @@ export default function Home() {
             </div>
 
             {/* Pagination */}
-            <div className="flex justify-center">
-              <div className="join mb-2 gap-2">
-                <input
-                  className="btn btn-square join-item p-6"
-                  type="radio"
-                  name="options"
-                  value="1"
-                  aria-label="1"
-                  checked={currentPage === 1}
-                  onChange={handlePageChange}
-                />
-                <input
-                  className="btn btn-square join-item p-6"
-                  type="radio"
-                  name="options"
-                  value="2"
-                  aria-label="2"
-                  checked={currentPage === 2}
-                  onChange={handlePageChange}
-                />
-              </div>
+        {/* Render pagination only if products are loaded and not empty */}
+        {!isLoading && products.length > 0 && (
+          <div className="flex justify-center">
+            <div className="join mb-2 gap-2">
+              <input
+                className="btn btn-square join-item p-6"
+                type="radio"
+                name="options"
+                value="1"
+                aria-label="1"
+                checked={currentPage === 1}
+                onChange={handlePageChange}
+              />
+              <input
+                className="btn btn-square join-item p-6"
+                type="radio"
+                name="options"
+                value="2"
+                aria-label="2"
+                checked={currentPage === 2}
+                onChange={handlePageChange}
+              />
             </div>
+          </div>
+        )}
             {/* Pagination */}
           </div>
         )}
